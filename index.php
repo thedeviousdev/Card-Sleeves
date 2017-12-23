@@ -2,14 +2,15 @@
 session_start();
 
 
-// echo '<pre>';
-// print_r($_SESSION); 
-// echo '</pre>';
+echo '<pre>';
+print_r($_SESSION); 
+echo '</pre>';
 
 // session_destroy();
 
-include("game_session.php");
-include("header.php");
+include_once("game_session.php");
+include_once("header.php");
+include_once("game_detail.php");
 
 $file = 'data/game-list.sqlite';
 
@@ -58,7 +59,14 @@ else {
 	
 </div>
 <div class="current_games">
-	
+<!-- 	<?php if(isset($_SESSION['add_games'])){
+		$games_arr = $_SESSION['add_games'];
+
+		foreach($games_arr as $game) {
+
+		}
+	}
+	?> -->
 </div>
 <?php
 include("footer.php");

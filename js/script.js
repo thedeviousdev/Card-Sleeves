@@ -4,7 +4,6 @@ $(document).ready(function() {
 	$( ".form_search" ).submit(function( event ) {
 	  event.preventDefault();
     var data = $(this).serialize();
-    // alert(data);
 
 	 	$.ajax({
 		  method: "GET",
@@ -19,20 +18,18 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '.btn_add', function() {
-		console.log('add');
 
 		var game_id = $(this).data( "game_id" );
 
 	 	$.ajax({
 		  method: "GET",
 		  url: "game_session.php",
-		  data: { add_game: game_id}
+		  data: { 'add_game' : game_id}
 		})
 	  .done(function( msg ) {
 	  	var search = $(".search_result").html();
 	  	$(".search_result").html("");
 
 	  	$(".current_games").append(search);
-	    // alert( "Data Saved: " + msg );
 	  });
 	});
