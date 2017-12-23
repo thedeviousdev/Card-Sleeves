@@ -54,9 +54,11 @@ else {
 	  echo '</select><input type="submit" value="Search" /></form>';
 }
 ?>
+<h3>Search results:</h3>
 <div class="search_result">
-	
 </div>
+
+<h3>Current games:</h3>
 <div class="current_games">
 	<?php if(isset($_SESSION['add_games'])){
 		$games_arr = $_SESSION['add_games'];
