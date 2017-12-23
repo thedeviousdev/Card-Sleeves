@@ -40,9 +40,8 @@ if (!file_exists($file)) {
 
 	  $db = NULL;
 	}
-	catch(PDOException $e)
-	{
-	  print 'Exception : '.$e->getMessage();
+	catch(PDOException $e) 	{
+	  print 'Exception : '. $e->getMessage();
 	}
 }
 else {
@@ -50,15 +49,19 @@ else {
 
 	  $result = $db->query('SELECT * FROM Game');
 
-	  echo '<form action="" class="form_account" method="get"><select data-placeholder="Search for game..." class="game-select" tabindex="1" name="game"><option value=""></option>';
+	  echo '<form action="" class="btn_search" method="get"><select data-placeholder="Search for game..." class="game-select" tabindex="1" name="game"><option value=""></option>';
 
 	  foreach($result as $row) {
   	?>
       <option value="<?php echo $row['Id']; ?>"><?php echo $row['Name']; ?></option>
 	  <?php
 	  }
-	  echo '</select><input type="submit" value="Submit" /></form>';
+	  echo '</select><input type="submit" value="Search" /></form>';
 }
-
+?>
+<div class="search_result">
+	
+</div>
+<?php
 include("footer.php");
 ?>
