@@ -31,5 +31,19 @@ $(document).on('click', '.btn_add', function() {
 	  	$(".search_result").html("");
 
 	  	$(".current_games").append(search);
-	  });
-	});
+  });
+});
+
+$(document).on('click', '.btn_remove', function() {
+
+		var game_id = $(this).data( "game_id" );
+
+	 	$.ajax({
+		  method: "GET",
+		  url: "game_session.php",
+		  data: { 'remove_game' : game_id}
+		})
+	  .done(function( msg ) {
+	  	$("." + game_id).remove();
+  });
+});

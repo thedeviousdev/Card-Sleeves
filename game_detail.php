@@ -15,7 +15,7 @@ function game_detail($g){
 
 	  foreach($result as $row) {
   	?>
-  	<div>
+  	<div class="<?php echo $g; ?>">
 	  	<img src="" />
 	  	<h2><?php echo $row['Name']; ?></h2>
 	  	<sub><?php echo $row['Edition']; ?></sub>
@@ -23,6 +23,7 @@ function game_detail($g){
 			<h1><?php echo $row['CardNumber']; ?></h1>
 	  	<p><?php echo $row['Width']; ?>mm x <?php echo $row['Height']; ?>mm</p>
 	  	<p><a href="#">BoardGameGeek</a></p>
+	  	<span data-game_id="<?php echo $g; ?>" class="btn_remove">Remove</span>
 	  	<span data-game_id="<?php echo $g; ?>" class="btn_add">Add</span>
   	</div>
 	  <?php
