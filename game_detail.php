@@ -18,7 +18,7 @@ if(isset($_GET['game'])) {
 			<h1><?php echo $row['CardNumber']; ?></h1>
 	  	<p><?php echo $row['Width']; ?>mm x <?php echo $row['Height']; ?>mm</p>
 	  	<p><a href="#">BoardGameGeek</a></p>
-	  	<input type="button" value="Add" class="btn_add" />
+	  	<span data-game_id="<?php echo $game_ID; ?>">Add</span>
   	</div>
 	  <?php
 	  }
