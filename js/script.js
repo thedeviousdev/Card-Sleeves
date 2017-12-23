@@ -1,7 +1,7 @@
 $(document).ready(function() {
  	$(".game-select").chosen({no_results_text: "Oops, nothing found!"});
 
-	$( "form" ).submit(function( event ) {
+	$( ".form_search" ).submit(function( event ) {
 	  event.preventDefault();
     var data = $(this).serialize();
     // alert(data);
@@ -13,8 +13,26 @@ $(document).ready(function() {
 		})
 	  .done(function( msg ) {
 	  	$(".search_result").html(msg);
-	    // alert( "Data Saved: " + msg );
 	  });
 	});
 
 });
+
+$(document).on('click', '.btn_add', function() {
+		console.log('add');
+
+		var game_id = $(this).data( "game_id" );
+
+	 	$.ajax({
+		  method: "GET",
+		  url: "game_session.php",
+		  data: { add_game: game_id}
+		})
+	  .done(function( msg ) {
+	  	var search = $(".search_result").html();
+	  	$(".search_result").html("");
+
+	  	$(".current_games").append(search);
+	    // alert( "Data Saved: " + msg );
+	  });
+	});

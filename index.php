@@ -1,19 +1,14 @@
 <?php
 session_start();
 
-if(isset($_GET['game']) && $_GET['game'] != NULL && !in_array($_GET['game'], $_SESSION['games'])) {
-	$game_arr = $_SESSION['games'];
-	$game_arr[] = $_GET['game'];
-	$_SESSION['games'] = $game_arr;
-}
 
-
-echo '<pre>';
-print_r($_SESSION); 
-echo '</pre>';
+// echo '<pre>';
+// print_r($_SESSION); 
+// echo '</pre>';
 
 // session_destroy();
 
+include("game_session.php");
 include("header.php");
 
 $file = 'data/game-list.sqlite';
@@ -49,7 +44,7 @@ else {
 
 	  $result = $db->query('SELECT * FROM Game');
 
-	  echo '<form action="" class="btn_search" method="get"><select data-placeholder="Search for game..." class="game-select" tabindex="1" name="game"><option value=""></option>';
+	  echo '<form action="" class="form_search" method="get"><select data-placeholder="Search for game..." class="game-select" tabindex="1" name="game"><option value=""></option>';
 
 	  foreach($result as $row) {
   	?>
@@ -60,6 +55,9 @@ else {
 }
 ?>
 <div class="search_result">
+	
+</div>
+<div class="current_games">
 	
 </div>
 <?php
