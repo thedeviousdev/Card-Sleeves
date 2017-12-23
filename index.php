@@ -59,14 +59,14 @@ else {
 	
 </div>
 <div class="current_games">
-<!-- 	<?php if(isset($_SESSION['add_games'])){
+	<?php if(isset($_SESSION['add_games'])){
 		$games_arr = $_SESSION['add_games'];
 
 		foreach($games_arr as $game) {
-
+			echo game_detail($game);
 		}
 	}
-	?> -->
+	?>
 </div>
 <?php
 include("footer.php");
