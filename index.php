@@ -1,6 +1,14 @@
 <?php
 session_start();
-$_SESSION['games'] = NULL;
+
+$game_arr = $_SESSION['games'];
+
+$game_arr[] = $_GET['game'];
+$_SESSION['games'] = $game_arr;
+
+echo '<pre>';
+print_r($_SESSION); 
+echo '</pre>';
 
 include("header.php");
 
