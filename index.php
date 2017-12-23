@@ -1,14 +1,18 @@
 <?php
 session_start();
 
-$game_arr = $_SESSION['games'];
+if(isset($_GET['game']) && $_GET['game'] != NULL && !in_array($_GET['game'], $_SESSION['games'])) {
+	$game_arr = $_SESSION['games'];
+	$game_arr[] = $_GET['game'];
+	$_SESSION['games'] = $game_arr;
+}
 
-$game_arr[] = $_GET['game'];
-$_SESSION['games'] = $game_arr;
 
 echo '<pre>';
 print_r($_SESSION); 
 echo '</pre>';
+
+// session_destroy();
 
 include("header.php");
 
