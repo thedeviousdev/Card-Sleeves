@@ -48,22 +48,13 @@ if (!file_exists($file)) {
 else {
 	  $db = new PDO('sqlite:data/game-list.sqlite');
 
-	  // print "<table border=1>";
-	  // print "<tr><td>Id</td><td>Name</td><td>Edition</td><td>CardNumber</td><td>Width</td><td>Height</td></tr>";
 	  $result = $db->query('SELECT * FROM Game');
 
-	  echo '<form action="" class="form_account" method="get"><select data-placeholder="Search for game..." class="game-select" tabindex="1" name="game">';
+	  echo '<form action="" class="form_account" method="get"><select data-placeholder="Search for game..." class="game-select" tabindex="1" name="game"><option value=""></option>';
 
 	  foreach($result as $row) {
   	?>
       <option value="<?php echo $row['Id']; ?>"><?php echo $row['Name']; ?></option>
-
-<!-- 			// print "<tr><td>".$row['Id']."</td>";
-	  //   print "<td>".$row['Name']."</td>";
-	  //   print "<td>".$row['Edition']."</td>";
-	  //   print "<td>".$row['CardNumber']."</td>";
-	  //   print "<td>".$row['Width']."</td>";
-	  //   print "<td>".$row['Height']."</td></tr>"; -->
 	  <?php
 	  }
 	  echo '</select><input type="submit" value="Submit" /></form>';
