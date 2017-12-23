@@ -3,7 +3,7 @@
   <head>
       <meta charset="UTF-8">
       <meta content="width=device-width,initial-scale=1" name="viewport">
-      <title>Insert Title</title>
+      <title>Sleeved.io - How many sleeves do YOU need?</title>
 
       <meta content="name" name="author">
       <meta content="description here" name="description">
