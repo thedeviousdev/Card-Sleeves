@@ -16,7 +16,7 @@ function game_detail($g){
 	  foreach($result as $row) {
   	?>
   	<div class="<?php echo $g; ?>">
-	  	<img src="http://via.placeholder.com/250x350" />
+	  	<!-- <img src="http://via.placeholder.com/250x350" /> -->
 	  	<h2><?php echo $row['Name']; ?></h2>
 	  	<sub><?php echo $row['Edition']; ?></sub>
 

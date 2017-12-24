@@ -21,3 +21,9 @@
       
   </head>
   <body>
+    
+<div class="wrapper">
+  <div class="search">
+    <header>
+      <img src="http://via.placeholder.com/150x50" />
+    </header>

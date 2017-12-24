@@ -12,7 +12,9 @@ include_once("header.php");
 include_once("game_detail.php");
 
 $file = 'data/game-list.sqlite';
+?>
 
+		<?php
 if (!file_exists($file)) {
 	try {
 	  $db = new PDO('sqlite:data/game-list.sqlite');
@@ -54,20 +56,24 @@ else {
 	  echo '</select><input type="submit" value="Search" /></form>';
 }
 ?>
-<h3>Search results:</h3>
-<div class="search_result">
-</div>
+		<h3>Search results:</h3>
+		<div class="search_result">
+		</div>
+	</div>
 
-<h3>Current games:</h3>
-<div class="current_games">
-	<?php if(isset($_SESSION['add_games'])){
-		$games_arr = $_SESSION['add_games'];
+	<aside>
+		<h3>Games list:</h3>
+		<div class="current_games">
+			<?php if(isset($_SESSION['add_games'])){
+				$games_arr = $_SESSION['add_games'];
 
-		foreach($games_arr as $game) {
-			echo game_detail($game);
-		}
-	}
-	?>
+				foreach($games_arr as $game) {
+					echo game_detail($game);
+				}
+			}
+			?>
+		</div>
+	</aside>
 </div>
 <?php
 include("footer.php");
