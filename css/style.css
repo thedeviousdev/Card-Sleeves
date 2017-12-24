@@ -61,15 +61,39 @@ table {
 /*************************************|
 |*******        GLOBAL       *********|
 **************************************/
-
-.current_games {
+body {
+    background-color: #404E4D;
+    color: #fff;
+}
+/*.current_games {
     font-size: 0;
 }
 .current_games > div {
     display: inline-block;
     text-align: center;
     font-size: 16px;
-}
+}*/
 .btn_add, .btn_remove {
     cursor: pointer;
+}
+header {
+    background-color: #596362;
+    width: 100%;
+    padding: 15px;
+}
+.wrapper {
+    display: flex;
+}
+.search {
+    width: 75%;
+}
+aside {
+    color: #000;
+    background-color: #BFB5AF;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 25%;
+
 }
