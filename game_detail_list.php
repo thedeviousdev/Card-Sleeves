@@ -16,7 +16,7 @@ function game_detail_list($g){
 	  foreach($result as $row) {
   	?>
   	<div class="<?php echo $g; ?>">
-  		<span data-game_id="<?php echo $g; ?>" class="btn_remove">X</span>
+  		<span data-game_id="<?php echo $g; ?>" class="btn_remove"><i class="fas fa-times-square"></i></span>
 	  	<!-- <img src="http://via.placeholder.com/250x350" /> -->
 	  	<h2><?php echo $row['Name']; ?></h2>
 	  	<sub><?php echo $row['Edition']; ?></sub>

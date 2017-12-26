@@ -34,7 +34,7 @@ function game_add($g){
 	  	<?php
 		  }
 		  ?>
-	  	<span data-game_id="<?php echo $g; ?>" class="btn_add">Add</span>
+	  	<span data-game_id="<?php echo $g; ?>" class="btn_add"><i class="fas fa-plus-circle"></i></span>
   	</div>
 	  <?php
 	  }

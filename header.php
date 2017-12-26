@@ -16,6 +16,7 @@
       <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
       <script src="js/jquery-3.1.1.min.js"></script>
       <script src="assets/chosen/chosen.jquery.js" type="text/javascript"></script>
+      <script src="assets/fontawesome/svg-with-js/js/fontawesome-all.min.js" type="text/javascript"></script>
 
       <script src="js/script.js"></script>
       
