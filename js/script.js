@@ -27,10 +27,15 @@ $(document).on('click', '.btn_add', function() {
 		  data: { 'add_game' : game_id}
 		})
 	  .done(function( msg ) {
-	  	var search = $(".search_result").html();
-	  	$(".search_result").html("");
 
-	  	$(".current_games").append(search);
+		 	$.ajax({
+			  method: "GET",
+			  url: "game_detail_list.php",
+			  data: { 'game' : game_id}
+			})
+		  .done(function( msg ) {
+		  	$(".current_games").append(msg);
+	  });
   });
 });
 
