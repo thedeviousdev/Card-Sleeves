@@ -9,7 +9,7 @@ session_start();
 
 include_once("game_session.php");
 include_once("header.php");
-include_once("game_detail.php");
+include_once("game_detail_list.php");
 
 $file = 'data/game-list_test.sqlite';
 ?>
@@ -30,22 +30,14 @@ if (!file_exists($file)) {
 	        $language = $data[1];
 	        $year = $data[2];
 	        $edition = $data[3];
-	        $url = $data[4];
-	        $image = $data[5];
+	        $image = $data[4];
+	        $url = $data[5];
 
 			    $db->exec("INSERT INTO Game (Name, Language, Year, Edition, URL, Image) VALUES ('" . $name . "', '" . $language . "', '" . $year . "', '" . $edition . "', '" . $url . "', '" . $image . "');");
 			    $pk_id = $db->lastInsertId();
 
-			    echo "INSERT INTO Game (Name, Language, Year, Edition, URL, Image) VALUES ('" . $name . "', '" . $language . "', '" . $year . "', '" . $edition . "', '" . $url . "', '" . $image . "'); <br />";
-
-
 	        for ($i = 6; $i < 24; $i+=3) {
 	        	if($data[$i] != NULL) {
-			        $card_number = $data[$i];
-			        $width = $data[$i+1];
-			        $height = $data[$i+2];
-
-				   		echo "INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $pk_id . "', '" . $card_number . "', '" . $width . "', '" . $height . "');<br />";
 			        $card_number = $data[$i];
 			        $width = $data[$i+1];
 			        $height = $data[$i+2];
@@ -97,17 +89,17 @@ else {
 	  // }
 	  // print "</table>";
 
-	  print "<table border=1>";
-	  print "<tr><td>Id</td><td>Name</td><td>Edition</td><td>CardNumber</td><td>Width</td><td>Height</td></tr>";
-	  $result = $db->query('SELECT * FROM GameCards ORDER BY GameID ASC');
-	  foreach($result as $row) {
-	    print "<tr><td>".$row['Id']."</td>";
-	    print "<td>".$row['GameID']."</td>";
-	    print "<td>".$row['CardNumber']."</td>";
-	    print "<td>".$row['Width']."</td>";
-	    print "<td>".$row['Height']."</td></tr>";
-	  }
-	  print "</table>";
+	  // print "<table border=1>";
+	  // print "<tr><td>Id</td><td>Name</td><td>Edition</td><td>CardNumber</td><td>Width</td><td>Height</td></tr>";
+	  // $result = $db->query('SELECT * FROM GameCards ORDER BY GameID ASC');
+	  // foreach($result as $row) {
+	  //   print "<tr><td>".$row['Id']."</td>";
+	  //   print "<td>".$row['GameID']."</td>";
+	  //   print "<td>".$row['CardNumber']."</td>";
+	  //   print "<td>".$row['Width']."</td>";
+	  //   print "<td>".$row['Height']."</td></tr>";
+	  // }
+	  // print "</table>";
 ?>
 		<h3>Search results:</h3>
 		<div class="search_result">
@@ -121,7 +113,7 @@ else {
 				$games_arr = $_SESSION['add_games'];
 
 				foreach($games_arr as $game) {
-					echo game_detail($game);
+					echo game_detail_list($game);
 				}
 			}
 			?>
