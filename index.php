@@ -73,44 +73,14 @@ else {
 	  $db = new PDO('sqlite:data/game-list_test.sqlite');
 
 	  $result = $db->query('SELECT * FROM Game');
+	  ?>
 
-	  echo '<form action="" class="form_search" method="get"><select data-placeholder="Search for game..." class="game-select" tabindex="1" name="game"><option value=""></option>';
+	  <form action="" class="form_search" method="get">
+	  	<input type="text" class="game-select" name="game" />
+		  <input type="submit" value="Search" />
+		</form>
+<?php } ?>
 
-	  foreach($result as $row) {
-  	?>
-      <option value="<?php echo $row['Name']; ?>"><?php echo $row['Name']; ?></option>
-	  <?php
-	  }
-	  echo '</select><input type="submit" value="Search" /></form>';
-}
-
-	  // $db = new PDO('sqlite:data/game-list_test.sqlite');
-	  // print "<table border=1>";
-	  // print "<tr><td>Id</td><td>Name</td><td>Edition</td><td>CardNumber</td><td>Width</td><td>Height</td></tr>";
-	  // $result = $db->query('SELECT * FROM Game');
-	  // foreach($result as $row) {
-	  //   print "<tr><td>".$row['Id']."</td>";
-	  //   print "<td>".$row['Name']."</td>";
-	  //   print "<td>".$row['Language']."</td>";
-	  //   print "<td>".$row['Year']."</td>";
-	  //   print "<td>".$row['Edition']."</td>";
-	  //   print "<td>".$row['URL']."</td>";
-	  //   print "<td>".$row['Image']."</td></tr>";
-	  // }
-	  // print "</table>";
-
-	  // print "<table border=1>";
-	  // print "<tr><td>Id</td><td>Name</td><td>Edition</td><td>CardNumber</td><td>Width</td><td>Height</td></tr>";
-	  // $result = $db->query('SELECT * FROM GameCards ORDER BY GameID ASC');
-	  // foreach($result as $row) {
-	  //   print "<tr><td>".$row['Id']."</td>";
-	  //   print "<td>".$row['GameID']."</td>";
-	  //   print "<td>".$row['CardNumber']."</td>";
-	  //   print "<td>".$row['Width']."</td>";
-	  //   print "<td>".$row['Height']."</td></tr>";
-	  // }
-	  // print "</table>";
-?>
 		<h3>Search results:</h3>
 		<div class="search_result">
 		</div>

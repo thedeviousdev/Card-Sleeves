@@ -1,5 +1,16 @@
 $(document).ready(function() {
- 	$(".game-select").chosen({no_results_text: "Oops, nothing found!"});
+
+	var options = {
+		url: "data/games.json",
+		list: {
+			match: {
+				enabled: true
+			}
+		}
+		// data: json_data
+	};
+
+	$(".game-select").easyAutocomplete(options);
 
 	$( ".form_search" ).submit(function( event ) {
 	  event.preventDefault();
