@@ -16,6 +16,7 @@ $file = 'data/game-list_test.sqlite';
 
 		<?php
 if (!file_exists($file)) {
+
 	try {
 	  $db = new PDO('sqlite:data/game-list_test.sqlite');
 	  $db->exec("CREATE TABLE Game (Id INTEGER PRIMARY KEY, Name TEXT, Language TEXT, Year INTEGER, Edition TEXT, URL TEXT, Image TEXT)");
@@ -24,40 +25,49 @@ if (!file_exists($file)) {
 
 
 		if (($handle = fopen("data/Sleeves_test.csv", "r")) !== FALSE) {
-		    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+			$game_arr = array();
 
-	        $name = $data[0];
-	        $language = $data[1];
-	        $year = $data[2];
-	        $edition = $data[3];
-	        $image = $data[4];
-	        $url = $data[5];
+	    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 
-			    $db->exec("INSERT INTO Game (Name, Language, Year, Edition, URL, Image) VALUES ('" . $name . "', '" . $language . "', '" . $year . "', '" . $edition . "', '" . $url . "', '" . $image . "');");
-			    $pk_id = $db->lastInsertId();
+        $name = $data[0];
+        $language = $data[1];
+        $year = $data[2];
+        $edition = $data[3];
+        $image = $data[4];
+        $url = $data[5];
 
-	        for ($i = 6; $i < 24; $i+=3) {
-	        	if($data[$i] != NULL) {
-			        $card_number = $data[$i];
-			        $width = $data[$i+1];
-			        $height = $data[$i+2];
+	    	$game_arr[] = $name;
 
-			    		$db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $pk_id . "', '" . $card_number . "', '" . $width . "', '" . $height . "');");
-			      }
-			      else 
-			      	break;
-				  }
+		    $db->exec("INSERT INTO Game (Name, Language, Year, Edition, URL, Image) VALUES ('" . $name . "', '" . $language . "', '" . $year . "', '" . $edition . "', '" . $url . "', '" . $image . "');");
+		    $pk_id = $db->lastInsertId();
+
+        for ($i = 6; $i < 24; $i+=3) {
+        	if($data[$i] != NULL) {
+		        $card_number = $data[$i];
+		        $width = $data[$i+1];
+		        $height = $data[$i+2];
+
+		    		$db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $pk_id . "', '" . $card_number . "', '" . $width . "', '" . $height . "');");
+		      }
+		      else 
+		      	break;
+			  }
 
 
-		    }
-		    fclose($handle);
+	    }
+	    fclose($handle);
 		}
+
+    $encoded_rows = array_map('utf8_encode', $game_arr);
+		$json_data = json_encode($encoded_rows);
+		file_put_contents("data/games.json",$json_data);
 
 	  $db = NULL;
 	}
 	catch(PDOException $e) 	{
 	  print 'Exception : '. $e->getMessage();
 	}
+
 }
 else {
 	  $db = new PDO('sqlite:data/game-list_test.sqlite');
@@ -68,13 +78,13 @@ else {
 
 	  foreach($result as $row) {
   	?>
-      <option value="<?php echo $row['Id']; ?>"><?php echo $row['Name']; ?></option>
+      <option value="<?php echo $row['Name']; ?>"><?php echo $row['Name']; ?></option>
 	  <?php
 	  }
 	  echo '</select><input type="submit" value="Search" /></form>';
 }
 
-	  $db = new PDO('sqlite:data/game-list_test.sqlite');
+	  // $db = new PDO('sqlite:data/game-list_test.sqlite');
 	  // print "<table border=1>";
 	  // print "<tr><td>Id</td><td>Name</td><td>Edition</td><td>CardNumber</td><td>Width</td><td>Height</td></tr>";
 	  // $result = $db->query('SELECT * FROM Game');

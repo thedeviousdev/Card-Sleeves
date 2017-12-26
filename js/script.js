@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 	 	$.ajax({
 		  method: "GET",
-		  url: "add_game.php",
+		  url: "search_game.php",
 		  data: data
 		})
 	  .done(function( msg ) {

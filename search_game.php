@@ -2,22 +2,21 @@
 if(isset($_GET['game'])) {
 	
 	$game_ID = $_GET['game'];
-	game_detail_list($game_ID);
+	game_search($game_ID);
 
 }
 
-function game_detail_list($g){
+function game_search($g){
 
 	try {
 		$db = new PDO('sqlite:data/game-list_test.sqlite');
 
-	  $result = $db->query("SELECT * FROM Game WHERE Id = '" . $g . "'");
+	  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%'");
 
 	  foreach($result as $row) {
   	?>
   	<div class="<?php echo $g; ?>">
-  		<span data-game_id="<?php echo $g; ?>" class="btn_remove"><i class="fas fa-times-square"></i></span>
-	  	<!-- <img src="http://via.placeholder.com/250x350" /> -->
+	  	<img src="img/<?php echo $row['Image']; ?>" />
 	  	<h2><?php echo $row['Name']; ?></h2>
 	  	<sub><?php echo $row['Edition']; ?></sub>
 
@@ -35,6 +34,7 @@ function game_detail_list($g){
 	  	<?php
 		  }
 		  ?>
+	  	<span data-game_id="<?php echo $g; ?>" class="btn_add"><i class="fas fa-plus-circle"></i></span>
   	</div>
 	  <?php
 	  }
