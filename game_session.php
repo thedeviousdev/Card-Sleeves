@@ -1,4 +1,8 @@
 <?php 
+include_once("game_add.php");
+include_once('game.php');
+include_once('card.php');
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -7,16 +11,32 @@ if(isset($_GET['add_game'])) {
 	add_game_to_session($_GET['add_game']);
 }
 
-function add_game_to_session($game) {
-	if($game != NULL && !isset($_SESSION['add_games'])) {
-		$add_game_arr[] = $game;
-		$_SESSION['add_games'] = $add_game_arr;
+// Check if game exists in the array
+function is_game_in_array($game_arr, $new_game){
 
+	foreach($game_arr as $game) {
+		if($game->get_id() == $new_game) {
+			return true;
+		}
 	}
-	else if($game != NULL && !in_array($game, $_SESSION['add_games'])) {
-		$add_game_arr = $_SESSION['add_games'];
-		$add_game_arr[] = $game;
+	return false;
+}
+
+function add_game_to_session($game_ID) {
+
+	if($game_ID != NULL && !isset($_SESSION['add_games'])) {
+		$add_game_arr[] = game_add($game_ID);
 		$_SESSION['add_games'] = $add_game_arr;
+		echo 'Game added';
+	}
+	else if($game_ID != NULL && !is_game_in_array($_SESSION['add_games'], $game_ID)) {
+		$add_game_arr = $_SESSION['add_games'];
+		$add_game_arr[] = game_add($game_ID);
+		$_SESSION['add_games'] = $add_game_arr;
+		echo 'Game added';
+	}
+	else {
+		echo 'Duplicate game found';
 	}
 }
 
@@ -24,14 +44,21 @@ if(isset($_GET['remove_game'])) {
 	remove_game_from_session($_GET['remove_game']);
 }
 
-function remove_game_from_session($game) {
+function remove_game_from_session($game_ID) {
 
-	if(isset($_SESSION['add_games']) && $game != NULL && in_array($game, $_SESSION['add_games'])) {
+	if(isset($_SESSION['add_games']) && $game_ID != NULL) {
 		$add_game_arr = $_SESSION['add_games'];
-		if (($key = array_search($game, $add_game_arr)) !== false) {
-	    unset($add_game_arr[$key]);
+
+
+		foreach($add_game_arr as $key => $game) {
+
+			if($game->get_id() == $game_ID) 
+		    unset($add_game_arr[$key]);
 		}
 		$_SESSION['add_games'] = $add_game_arr;
+
+		if(empty($add_game_arr))
+			session_destroy();
 	}
 }
 

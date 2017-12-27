@@ -1,17 +1,19 @@
 <?php
-session_start();
+
+include_once("game_session.php");
+include_once("header.php");
+include_once("game_detail.php");
+
+$file = 'data/game-list_test.sqlite';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // echo '<pre>';
 // print_r($_SESSION); 
 // echo '</pre>';
 
 // session_destroy();
-
-include_once("game_session.php");
-include_once("header.php");
-include_once("game_detail_list.php");
-
-$file = 'data/game-list_test.sqlite';
 ?>
 
 		<?php
@@ -93,7 +95,7 @@ else {
 				$games_arr = $_SESSION['add_games'];
 
 				foreach($games_arr as $game) {
-					echo game_detail_list($game);
+					echo game_detail($game);
 				}
 			}
 			?>

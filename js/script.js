@@ -38,15 +38,19 @@ $(document).on('click', '.btn_add', function() {
 		  data: { 'add_game' : game_id}
 		})
 	  .done(function( msg ) {
-
-		 	$.ajax({
-			  method: "GET",
-			  url: "game_detail_list.php",
-			  data: { 'game' : game_id}
-			})
-		  .done(function( msg ) {
-		  	$(".current_games").append(msg);
-	  });
+	  	console.log(msg);
+	  	if(msg == 'Game added') {
+		  	$(this).text('Added!');
+			 	$.ajax({
+				  method: "GET",
+				  url: "game_detail.php",
+				  data: { 'game' : game_id}
+				})
+			  .done(function( msg ) {
+			  	console.log(msg);
+			  	$(".current_games").append(msg);
+		  });
+		}
   });
 });
 

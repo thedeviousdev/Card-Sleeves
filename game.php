@@ -1,23 +1,31 @@
 <?php
-class game {
-	$name = NULL;
-	$language = 'English';
-	$year = NULL;
-	$edition = NULL;
-	$image = 'placeholder.png';
-	$URL = 'https://boardgamegeek.com/';
-	$cards = array();
+include_once('card.php');
 
-	function __construct($name, $lang, $year, $ed, $img, $URL) {
+class game {
+	var $id = NULL;
+	var $name = NULL;
+	var $language = 'English';
+	var $year = NULL;
+	var $edition = NULL;
+	var $image = 'placeholder.png';
+	var $URL = 'https://boardgamegeek.com/';
+	var $cards = array();
+
+	function __construct($id, $name, $lang, $year, $ed, $img, $URL, $card_arr) {
+		$this->id = $id;
 		$this->name = $name;
 		$this->language = $lang;
 		$this->year = $year;
 		$this->edition = $ed;
 		$this->image = $img;
 		$this->URL = $URL;
+		$this->cards = $card_arr;
 	}
 
 	// Setters
+	function set_id($id){
+		$this->id = $id;
+	}
 	function set_name($name){
 		$this->name = $name;
 	}
@@ -36,33 +44,36 @@ class game {
 	function set_URL($URL){
 		$this->URL = $URL;
 	}
-	function add_card($URL){
-		$cards[] = new card($cards, $height, $width);
+	function add_card($card){
+		$this->$cards[] = $card;
 	}
 
 	// Getters
+	function get_id(){
+		 	 return $this->id;
+	}
 	function get_name(){
-		 	 return $this->$name;
+		 	 return $this->name;
 	}
 	function get_lang(){
-		 	 return $this->$language;
+		 	 return $this->language;
 	}
 	function get_year(){
-		 	 return $this->$year;
+		 	 return $this->year;
 	}
 	function get_edition(){
-		 	 return $this->$edition;
+		 	 return $this->edition;
 	}
 	function get_image(){
-		 	 return $this->$image;
+		 	 return $this->image;
 	}
 	function get_URL(){
-		 	 return $this->$URL;
+		 	 return $this->URL;
 	}
-	function get_cards($URL){
-		return $this->$cards;
+	function get_cards(){
+		return $this->cards;
 	}
-	
+
 }
 
 ?>

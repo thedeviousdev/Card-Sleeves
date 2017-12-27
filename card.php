@@ -1,8 +1,8 @@
 <?php
 class card {
-	$nb_of_cards = 0;
-	$height = 0;
-	$width = 0;
+	var $nb_of_cards = 0;
+	var $height = 0;
+	var $width = 0;
 
 	function __construct($cards, $height, $width) {
 		$this->nb_of_cards = $cards;
@@ -22,14 +22,14 @@ class card {
 	}
 
 	// Getters
-	function set_nb_cards() {
-		return $this->$nb_of_cards;
+	function get_nb_cards() {
+		return $this->nb_of_cards;
 	}
-	function set_height() {
-		return $this->$height;	
+	function get_height() {
+		return $this->height;	
 	}
-	function set_width() {
-		return $this->$width;
+	function get_width() {
+		return $this->width;
 	}
 
 
