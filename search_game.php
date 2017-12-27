@@ -21,19 +21,6 @@ function game_search($g){
 	  	<sub><?php echo $row['Edition']; ?></sub>
 
 	  	<p><a href="<?php echo $row['URL']; ?>">BoardGameGeek</a></p>
-
-		  <?php 
-		  $cards = $db->query("SELECT * FROM GameCards WHERE GameID = '" . $g . "'");
-
-		  foreach($cards as $row) {
-	  	?>
-
-				<h1><?php echo $row['CardNumber']; ?></h1>
-		  	<p><?php echo $row['Width']; ?>mm x <?php echo $row['Height']; ?>mm</p>
-
-	  	<?php
-		  }
-		  ?>
 	  	<span data-game_id="<?php echo $g; ?>" class="btn_add"><i class="fas fa-plus-circle"></i></span>
   	</div>
 	  <?php
