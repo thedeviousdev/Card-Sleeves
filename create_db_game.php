@@ -56,6 +56,33 @@ if (!file_exists($file)) {
 }
 
 
-$encoded_rows = array_map('utf8_encode', $game_arr);
-$json_data = json_encode($encoded_rows);
-file_put_contents("data/games.json",$json_data);
+try {
+  $db = new PDO('sqlite:data/game-list_test.sqlite');
+  $db->exec("CREATE TABLE SleeveCompany (Id INTEGER PRIMARY KEY, Name TEXT)");
+  $db->exec("INSERT INTO SleeveCompany (Name) VALUES ('Mayday Games');");
+  $pk_sleeve_id = $db->lastInsertId();
+
+  $db->exec("CREATE TABLE Sleeve (Id INTEGER PRIMARY KEY, CompanyID INTEGER, SleeveName TEXT, Width INTEGER, Height INTEGER);");
+
+
+	if (($handle = fopen("data/Sleeves_Mayday.csv", "r")) !== FALSE) {
+		$game_arr = array();
+
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+
+	    $name = $data[0];
+	    $width = $data[1];
+	    $height = $data[2];
+
+	  	$game_arr[] = $name;
+			$db->exec("INSERT INTO Sleeve (CompanyID, SleeveName, Width, Height) VALUES ('" . $pk_sleeve_id . "', '" . $name . "', '" . $width . "', '" . $height . "');");
+
+    }
+    fclose($handle);
+	}
+
+  $db = NULL;
+}
+catch(PDOException $e) 	{
+  print 'Exception : '. $e->getMessage();
+}
