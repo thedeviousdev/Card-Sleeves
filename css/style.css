@@ -10,15 +10,20 @@
 html {
     box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 .clearfix:after {
-    height: 0;
+    font-size: 0;
+
     display: block;
     visibility: hidden;
     clear: both;
-    font-size: 0;
+
+    height: 0;
+
     content: ' ';
 }
 * html .clearfix {
@@ -28,28 +33,126 @@ html {
     zoom: 1;
 }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-    margin: 0;
-    padding: 0;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
     font: inherit;
     font-size: 100%;
+
+    margin: 0;
+    padding: 0;
+
     vertical-align: baseline;
+
     border: 0;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
     display: block;
 }
 body {
     line-height: 1;
 }
-ol, ul {
+ol,
+ul {
     list-style: none;
 }
-blockquote, q {
+blockquote,
+q {
     quotes: none;
 }
-blockquote:before, blockquote:after, q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
     content: '';
     content: none;
 }
@@ -62,8 +165,8 @@ table {
 |*******        GLOBAL       *********|
 **************************************/
 body {
-    background-color: #404E4D;
-    color: #fff;
+    background-color: #efefef;
+    /*color: #fff;*/
 }
 /*.current_games {
     font-size: 0;
@@ -73,31 +176,221 @@ body {
     text-align: center;
     font-size: 16px;
 }*/
-.btn_add, .btn_remove {
+.btn_add,
+.btn_remove {
     cursor: pointer;
 }
 header {
-    background-color: #596362;
-    width: 100%;
+    position: fixed;
+    z-index: 1;
+
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:      -o-flex;
+    display:         flex;
+            flex-direction: row;
+
+    width: 75%;
     padding: 15px;
+
+    background-color: #596362;
+
+    -webkit-flex-wrap: wrap;
+       -moz-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+         -o-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-flex-direction: row;
+       -moz-flex-direction: row;
+        -ms-flex-direction: row;
+         -o-flex-direction: row;
+    -ms-align-items: center;
+        align-items: center;
+}
+header .logo {
+    /*flex-basis: 150px;*/
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.search {
+    position: fixed;
+    top: 83px;
+
+    overflow-y: scroll;
+
+    height: calc(100% - 83px);
+}
+.logo img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+}
+header .form {
+    text-align: right;
+    /*flex-basis: 200px;*/
+
+    flex-grow: 3;
+    flex-shrink: 1;
 }
 .wrapper {
-    display: flex;
+    /*display: flex;*/
 }
 .search {
     width: 75%;
+    padding: 15px;
 }
 aside {
-    color: #000;
-    background-color: #BFB5AF;
-    height: 100vh;
+    /*padding: 15px;*/
     position: fixed;
-    right: 0;
     top: 0;
+    right: 0;
+
+    overflow-y: scroll;
+
     width: 25%;
+    height: 100vh;
 
+    color: #000;
+    background-color: #bfb5af;
 }
+.easy-autocomplete {
+    display: inline-block;
 
+    width: 100%;
+    max-width: 600px;
+}
+.easy-autocomplete input {
+    width: 100%;
+}
+.easy-autocomplete-container {
+    text-align: left;
+}
 .easy-autocomplete-container ul li div {
     color: #000;
+}
+.search_result {
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:      -o-flex;
+    display:         flex;
+
+    width: 100%;
+
+    -webkit-flex-wrap: wrap;
+       -moz-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+         -o-flex-wrap: wrap;
+            flex-wrap: wrap;
+    justify-content: left;
+}
+.search_result > div {
+    height: 300px;
+    flex-basis: 200px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    position: relative;
+    margin: 10px;
+    background-color: #fff;
+    padding: 15px;
+}
+.wrapper_img {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 15px 0;
+    justify-content: center;
+}
+.wrapper_text {
+
+}
+.search_result img {
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.btn_add {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    height: 42px;
+    width: 42px;
+    display: flex;
+    align-items: center;
+    color: #a198bf;
+    justify-content: center;
+}
+.btn_add:hover {
+    color: #000;
+}
+.btn_remove {
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    padding: 15px;
+    opacity: .4;
+}
+.btn_remove:hover {
+    opacity: 1;
+}
+h3 {
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.wrapper_detail {
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:      -o-flex;
+    display:         flex;
+
+    -webkit-flex-wrap: wrap;
+       -moz-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+         -o-flex-wrap: wrap;
+            flex-wrap: wrap;
+    justify-content: left;
+}
+.wrapper_cards > div {
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:      -o-flex;
+    display:         flex;
+
+}
+.current_games > div {
+    position: relative;
+    padding: 0 15px 5px;
+}
+.cards_size {
+    flex-grow: 3;
+    flex-shrink: 1;
+    position: relative;
+    padding-left: 15px;
+}
+.cards_number {
+    flex-basis: 30px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    position: relative;
+}
+h2 {
+    /*font-size: 18px;*/
+    font-weight: bold;
+    margin: 15px 0 0;
+}
+.wrapper_cards {
+    border-left: 1px solid grey;
+    margin: 10px 0;
+}
+.current_games > div:nth-child(odd) {
+    background-color: #ccc4c0;
 }
