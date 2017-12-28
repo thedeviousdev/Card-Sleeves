@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 	var options = {
 		url: "data/games.json",
+		adjustWidth: false,
 		list: {
 			match: {
 				enabled: true
@@ -18,7 +19,7 @@ $(document).ready(function() {
 
 	 	$.ajax({
 		  method: "GET",
-		  url: "search_game.php",
+		  url: "game_search.php",
 		  data: data
 		})
 	  .done(function( msg ) {
@@ -40,7 +41,6 @@ $(document).on('click', '.btn_add', function() {
 	  .done(function( msg ) {
 	  	console.log(msg);
 	  	if(msg == 'Game added') {
-		  	$(this).text('Added!');
 			 	$.ajax({
 				  method: "GET",
 				  url: "game_detail.php",
@@ -64,6 +64,6 @@ $(document).on('click', '.btn_remove', function() {
 		  data: { 'remove_game' : game_id}
 		})
 	  .done(function( msg ) {
-	  	$("." + game_id).remove();
+	  	$(".current_games ." + game_id).remove();
   });
 });
