@@ -24,7 +24,15 @@
   <body>
     
 <div class="wrapper">
-  <div class="search">
-    <header>
+  <header>
+    <div class="logo">
       <img src="http://via.placeholder.com/150x50" />
-    </header>
+    </div>
+    <div class="form">
+      <form action="" class="form_search" method="get">
+        <input type="text" class="game-select" name="game" />
+        <input type="submit" value="Search" />
+      </form>
+    </div>
+  </header>
+  <div class="search">
