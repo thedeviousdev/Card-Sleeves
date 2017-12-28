@@ -13,23 +13,27 @@ function game_detail($game){
 	?>
 	<div class="<?php echo $game->get_id(); ?>">
 		<span data-game_id="<?php echo $game->get_id(); ?>" class="btn_remove"><i class="fas fa-times-square"></i></span>
-  	<!-- <img src="http://via.placeholder.com/250x350" /> -->
-  	<h2><?php echo $game->get_name(); ?></h2>
-  	<sub><?php echo $game->get_edition(); ?></sub>
-
-  	<p><a href="<?php echo $game->get_URL(); ?>">BoardGameGeek</a></p>
-
-	  <?php
-	  $cards = $game->get_cards();
-	  foreach($cards as $card) {
-  	?>
-
-			<h1><?php echo $card->get_nb_cards(); ?></h1>
-	  	<p><?php echo $card->get_width(); ?>mm x <?php echo $card->get_height(); ?>mm</p>
-
-  	<?php
-	  }
-	  ?>
+		<div class="wrapper_detail">
+			<div><!-- <img src="http://via.placeholder.com/250x350" /> --></div>
+			<div>
+				<h2><?php echo $game->get_name(); ?></h2>
+		  	<sub><?php echo $game->get_edition(); ?></sub>
+		  	<p><a href="<?php echo $game->get_URL(); ?>" target="_blank">BoardGameGeek</a></p>
+		  </div>
+	  </div>
+	  <div class="wrapper_cards">
+		  <?php
+		  $cards = $game->get_cards();
+		  foreach($cards as $card) {
+	  	?>
+	  	<div>
+		  	<div class="cards_size"><p><?php echo $card->get_width(); ?>mm x <?php echo $card->get_height(); ?>mm</p></div>
+		  	<div class="cards_number"><p><?php echo $card->get_nb_cards(); ?></p></div>
+		  </div>
+	  	<?php
+		  }
+		  ?>
+	  </div>
 	</div>
   <?php
 }
