@@ -4,7 +4,7 @@ class card {
 	var $height = 0;
 	var $width = 0;
 
-	function __construct($cards, $height, $width) {
+	function __construct($cards, $width, $height) {
 		$this->nb_of_cards = $cards;
 		$this->height = $height;
 		$this->width = $width;
