@@ -3,6 +3,7 @@
 include_once("game_session.php");
 include_once("header.php");
 include_once("game_detail.php");
+include_once("game_total.php");
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -13,6 +14,7 @@ if (session_status() == PHP_SESSION_NONE) {
 // echo '</pre>';
 
 // session_destroy();
+
 ?>
 
 		<h3>Search results:</h3>
@@ -32,8 +34,13 @@ if (session_status() == PHP_SESSION_NONE) {
 			}
 			?>
 		</div>
-		<div class="total_cards">
-			<h2>Total:</h2>
+		<div class="total">
+			<h3>Total:</h3>
+			<div class="total_cards">
+				<?php 
+				get_total_sleeves();
+				?>
+			</div>
 		</div>
 	</aside>
 </div>
