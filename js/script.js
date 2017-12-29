@@ -1,3 +1,15 @@
+function update_total() {
+ 	$.ajax({
+	  method: "GET",
+	  url: "game_total.php",
+	  data: { 'total' : true}
+	})
+  .done(function( msg ) {
+  	$(".total_cards").html(msg);
+  });
+
+}
+
 $(document).ready(function() {
 
 	var options = {
@@ -49,6 +61,7 @@ $(document).on('click', '.btn_add', function() {
 			  .done(function( msg ) {
 			  	console.log(msg);
 			  	$(".current_games").append(msg);
+			  	update_total();
 		  });
 		}
   });
@@ -65,5 +78,6 @@ $(document).on('click', '.btn_remove', function() {
 		})
 	  .done(function( msg ) {
 	  	$(".current_games ." + game_id).remove();
+	  	update_total();
   });
 });
