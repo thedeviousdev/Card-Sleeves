@@ -53,36 +53,35 @@ if (!file_exists($file)) {
 	  print 'Exception : '. $e->getMessage();
 	}
 
-}
+	try {
+	  $db = new PDO('sqlite:data/game-list_test.sqlite');
+	  $db->exec("CREATE TABLE SleeveCompany (Id INTEGER PRIMARY KEY, Name TEXT)");
+	  $db->exec("INSERT INTO SleeveCompany (Name) VALUES ('Mayday Games');");
+	  $pk_sleeve_id = $db->lastInsertId();
+
+	  $db->exec("CREATE TABLE Sleeve (Id INTEGER PRIMARY KEY, CompanyID INTEGER, SleeveName TEXT, Width INTEGER, Height INTEGER);");
 
 
-try {
-  $db = new PDO('sqlite:data/game-list_test.sqlite');
-  $db->exec("CREATE TABLE SleeveCompany (Id INTEGER PRIMARY KEY, Name TEXT)");
-  $db->exec("INSERT INTO SleeveCompany (Name) VALUES ('Mayday Games');");
-  $pk_sleeve_id = $db->lastInsertId();
+		if (($handle = fopen("data/Sleeves_Mayday.csv", "r")) !== FALSE) {
+			$game_arr = array();
 
-  $db->exec("CREATE TABLE Sleeve (Id INTEGER PRIMARY KEY, CompanyID INTEGER, SleeveName TEXT, Width INTEGER, Height INTEGER);");
+	    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 
+		    $name = $data[0];
+		    $width = $data[1];
+		    $height = $data[2];
 
-	if (($handle = fopen("data/Sleeves_Mayday.csv", "r")) !== FALSE) {
-		$game_arr = array();
+		  	$game_arr[] = $name;
+				$db->exec("INSERT INTO Sleeve (CompanyID, SleeveName, Width, Height) VALUES ('" . $pk_sleeve_id . "', '" . $name . "', '" . $width . "', '" . $height . "');");
 
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+	    }
+	    fclose($handle);
+		}
 
-	    $name = $data[0];
-	    $width = $data[1];
-	    $height = $data[2];
-
-	  	$game_arr[] = $name;
-			$db->exec("INSERT INTO Sleeve (CompanyID, SleeveName, Width, Height) VALUES ('" . $pk_sleeve_id . "', '" . $name . "', '" . $width . "', '" . $height . "');");
-
-    }
-    fclose($handle);
+	  $db = NULL;
+	}
+	catch(PDOException $e) 	{
+	  print 'Exception : '. $e->getMessage();
 	}
 
-  $db = NULL;
-}
-catch(PDOException $e) 	{
-  print 'Exception : '. $e->getMessage();
 }
