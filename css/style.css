@@ -169,12 +169,7 @@ body {
     /*color: #fff;*/
 }
 /*.current_games {
-    font-size: 0;
-}
-.current_games > div {
-    display: inline-block;
-    text-align: center;
-    font-size: 16px;
+     overflow-y: scroll; 
 }*/
 .btn_add,
 .btn_remove {
@@ -366,7 +361,7 @@ h3 {
     display:         flex;
 
 }
-.current_games > div {
+.current_games > div, .total_cards {
     position: relative;
     padding: 0 15px 5px;
 }
@@ -393,4 +388,10 @@ h2 {
 }
 .current_games > div:nth-child(odd) {
     background-color: #ccc4c0;
+}
+.total {
+    /*position: absolute;*/
+    bottom: 0;
+    background-color: white;
+    width: 100%;
 }
