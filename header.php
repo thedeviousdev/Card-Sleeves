@@ -10,8 +10,10 @@
       <meta content="keywords, here" name="keywords">
       <link href="favicon.ico" rel="shortcut icon" type="img/fav.ico">
 
-      <link href="css/style.css" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Montserrat:400,600,700" rel="stylesheet">
       <link rel="stylesheet" href="assets/EasyAutocomplete-1.3.5/easy-autocomplete.min.css">
+      <link href="css/style.css" rel="stylesheet" type="text/css">
+
 
       <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
       <script src="js/jquery-3.1.1.min.js"></script>
@@ -26,12 +28,12 @@
 <div class="wrapper">
   <header>
     <div class="logo">
-      <img src="http://via.placeholder.com/150x50" />
+      <img src="img/sleeved_logo.svg" />
     </div>
     <div class="form">
       <form action="" class="form_search" method="get">
-        <input type="text" class="game-select" name="game" />
-        <input type="submit" value="Search" />
+        <input type="text" class="game-select" name="game" placeholder="Search..." />
+        <button type="submit" /><i class="fas fa-search"></i></button>
       </form>
     </div>
   </header>

@@ -161,12 +161,17 @@ table {
     border-collapse: collapse;
 }
 
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Montserrat', sans-serif;
+
+}
 /*************************************|
 |*******        GLOBAL       *********|
 **************************************/
 body {
     background-color: #efefef;
-    /*color: #fff;*/
+    color: #392d44;
+    font-family: 'Hind', sans-serif;
 }
 /*.current_games {
      overflow-y: scroll; 
@@ -189,7 +194,7 @@ header {
     width: 75%;
     padding: 15px;
 
-    background-color: #596362;
+    background-color: #392d44;
 
     -webkit-flex-wrap: wrap;
        -moz-flex-wrap: wrap;
@@ -246,8 +251,11 @@ aside {
     width: 25%;
     height: 100vh;
 
-    color: #000;
-    background-color: #bfb5af;
+background-color: #bfd4d8;
+    border-left: 1px solid #392d44;
+}
+.total sub {
+    padding-left: 15px;
 }
 .easy-autocomplete {
     display: inline-block;
@@ -281,7 +289,7 @@ aside {
     justify-content: left;
 }
 .search_result > div {
-    height: 300px;
+    /*height: 300px;*/
     flex-basis: 200px;
     flex-grow: 1;
     flex-shrink: 1;
@@ -318,11 +326,12 @@ aside {
     width: 42px;
     display: flex;
     align-items: center;
-    color: #a198bf;
+    color: #55abb9;
     justify-content: center;
+    transition: .4s all;
 }
 .btn_add:hover {
-    color: #000;
+    color: #5b7e84;
 }
 .btn_remove {
     font-size: 20px;
@@ -330,6 +339,8 @@ aside {
     right: 0;
     padding: 15px;
     opacity: .4;
+    transition: .4s all;
+    color: #364c50;
 }
 .btn_remove:hover {
     opacity: 1;
@@ -337,6 +348,12 @@ aside {
 h3 {
     padding: 15px;
     font-size: 24px;
+    font-weight: bold;
+}
+h4 {
+    display: block;
+    padding: 15px 15px 0;
+    font-size: 20px;
     font-weight: bold;
 }
 .wrapper_detail {
@@ -365,33 +382,131 @@ h3 {
     position: relative;
     padding: 0 15px 5px;
 }
+li {
+    font-size: 0;
+}
+li div {
+    font-size: 16px;
+    letter-spacing: .04em;
+}
 .cards_size {
-    flex-grow: 3;
-    flex-shrink: 1;
-    position: relative;
-    padding-left: 15px;
+    display: inline-block;
+    width: 40%;
 }
 .cards_number {
-    flex-basis: 30px;
-    flex-grow: 1;
-    flex-shrink: 1;
-    position: relative;
+    display: inline-block;
+    width: 60%;
 }
 h2 {
-    /*font-size: 18px;*/
+    font-size: 14px;
+    /*line-height: 2em;*/
     font-weight: bold;
-    margin: 15px 0 0;
+    margin: 15px 0 5px;
+}
+sub {
+    font-size: 12px;
 }
 .wrapper_cards {
-    border-left: 1px solid grey;
+    /*border-left: 1px solid grey;*/
     margin: 10px 0;
 }
 .current_games > div:nth-child(odd) {
-    background-color: #ccc4c0;
+    background-color: #e8f4f6;
 }
 .total {
     /*position: absolute;*/
     bottom: 0;
     background-color: white;
     width: 100%;
+}
+.easy-autocomplete input, input {
+    border-radius: 0;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #5b7e84;
+    color: #fff;
+    width: 300px;
+    transition: .4s all;
+}
+input:focus {
+    width: 100%;
+    outline-style: solid;
+    outline-color: #55abb9;
+    outline-width: 2px;
+}
+.form_search {
+    font-size: 0;
+}
+button[type="submit"] {
+    background: #55abb9;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: .4s all;
+}
+button[type="submit"]:hover {
+        background: #364c50;
+}
+button:focus {
+    outline: none;
+}
+.search_result a {
+    color: #55abb9;
+    font-size: 14px;
+    transition: .4s all;
+     /*padding: 0 5px; */
+}
+.search_result a:hover {
+    /*background-color: #55abb9;*/
+    color: #c4beca;
+}
+.current_games a {
+    font-size: 14px;
+    color: #000;
+    /*display: inline-block;*/
+    /*padding: 5px;*/
+    transition: .4s all;
+}
+.current_games a:hover {
+    /*background-color: #55abb9;*/
+    color: #55abb9;
+}
+
+input::-webkit-input-placeholder {
+  color: #eaeaea;
+  font-size: 16px;
+}
+input::-moz-placeholder {
+  color: #fff;
+}
+input:-ms-input-placeholder {
+  color: #fff;
+}
+input:-moz-placeholder {
+  color: #fff;
+}
+.contribute {
+    line-height: 0;
+    font-size: 300px;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.contribute span {
+    font-size: 32px;
+    font-weight: bold;
+}
+.contribute a {
+    color: #bfd4d8;
+    text-decoration: none;
+    transition: .4s all;
+}
+.contribute a:hover {
+    color: #392d44;    
 }

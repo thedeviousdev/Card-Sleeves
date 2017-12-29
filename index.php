@@ -16,9 +16,11 @@ if (session_status() == PHP_SESSION_NONE) {
 // session_destroy();
 
 ?>
-
-		<h3>Search results:</h3>
-		<div class="search_result">
+		<div class="contribute">
+			<a href="https://github.com/thedeviousdev/Card-Sleeves" target="_blank">
+				<i class="fab fa-github"></i><br />
+				<span>Contribute?</span>
+			</a>
 		</div>
 	</div>
 
@@ -35,7 +37,9 @@ if (session_status() == PHP_SESSION_NONE) {
 			?>
 		</div>
 		<div class="total">
-			<h3>Total:</h3>
+			<h4>Total:</h4>
+			<sub>(Mayday Sleeves)</sub>
+
 			<div class="total_cards">
 				<?php 
 				get_total_sleeves();

@@ -35,7 +35,7 @@ $(document).ready(function() {
 		  data: data
 		})
 	  .done(function( msg ) {
-	  	$(".search_result").html(msg);
+	  	$(".search").html(msg);
 	  });
 	});
 

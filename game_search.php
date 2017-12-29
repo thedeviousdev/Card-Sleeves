@@ -12,7 +12,11 @@ function game_search($g){
 		$db = new PDO('sqlite:data/game-list_test.sqlite');
 
 	  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%'");
+	  ?>
 
+		<div class="search_result">
+		<h3>Search results:</h3>
+		<?php
 	  foreach($result as $row) {
   	?>
   	<div class="<?php echo $row['Id']; ?>">
@@ -29,6 +33,9 @@ function game_search($g){
   	</div>
 	  <?php
 	  }
+	  ?>
+	  </div>
+	  <?php
 	}
 	catch(PDOException $e) 	{
 	  print 'Exception : '. $e->getMessage();

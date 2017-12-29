@@ -17,22 +17,24 @@ function game_detail($game){
 			<div><!-- <img src="http://via.placeholder.com/250x350" /> --></div>
 			<div>
 				<h2><?php echo $game->get_name(); ?></h2>
-		  	<sub><?php echo $game->get_edition(); ?></sub>
-		  	<p><a href="<?php echo $game->get_URL(); ?>" target="_blank">BoardGameGeek</a></p>
+		  	<sub>Details</sub>
+		  	<!-- <p><a href="<?php echo $game->get_URL(); ?>" target="_blank">BoardGameGeek</a></p> -->
 		  </div>
 	  </div>
 	  <div class="wrapper_cards">
+	  	<ul>
 		  <?php
 		  $cards = $game->get_cards();
 		  foreach($cards as $card) {
 	  	?>
-	  	<div>
-		  	<div class="cards_size"><p><?php echo $card->get_width(); ?>mm x <?php echo $card->get_height(); ?>mm</p></div>
+	  	<li>
+		  	<div class="cards_size"><p>- <?php echo $card->get_width(); ?><sub>mm</sub> x <?php echo $card->get_height(); ?><sub>mm</sub></p></div>
 		  	<div class="cards_number"><p><?php echo $card->get_nb_cards(); ?></p></div>
-		  </div>
+		  </li>
 	  	<?php
 		  }
 		  ?>
+			</ul>
 	  </div>
 	</div>
   <?php
