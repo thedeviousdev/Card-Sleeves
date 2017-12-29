@@ -161,17 +161,22 @@ table {
     border-collapse: collapse;
 }
 
-h1, h2, h3, h4, h5, h6 {
-font-family: 'Montserrat', sans-serif;
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
 }
 /*************************************|
 |*******        GLOBAL       *********|
 **************************************/
 body {
-    background-color: #efefef;
-    color: #392d44;
     font-family: 'Hind', sans-serif;
+
+    color: #392d44;
+    background-color: #efefef;
 }
 /*.current_games {
      overflow-y: scroll; 
@@ -251,8 +256,8 @@ aside {
     width: 25%;
     height: 100vh;
 
-background-color: #bfd4d8;
-    border-left: 1px solid #392d44;
+    border-left: 3px solid #392d44;
+    background-color: #bfd4d8;
 }
 .total sub {
     padding-left: 15px;
@@ -289,72 +294,90 @@ background-color: #bfd4d8;
     justify-content: left;
 }
 .search_result > div {
+    position: relative;
+
+    margin: 10px;
+    padding: 15px;
+
+    background-color: #fff;
     /*height: 300px;*/
+
     flex-basis: 200px;
     flex-grow: 1;
     flex-shrink: 1;
-    position: relative;
-    margin: 10px;
-    background-color: #fff;
-    padding: 15px;
 }
 .wrapper_img {
-    height: 200px;
-    width: 100%;
     display: flex;
-    align-items: flex-end;
+
+    width: 100%;
+    height: 200px;
     padding: 15px 0;
+
+    align-items: flex-end;
     justify-content: center;
 }
-.wrapper_text {
 
-}
 .search_result img {
     width: auto;
-    max-height: 100%;
     max-width: 100%;
     height: auto;
+    max-height: 100%;
 }
 .btn_add {
+    font-size: 40px;
+
     position: absolute;
     top: 5px;
     right: 5px;
-    font-size: 40px;
-    background-color: #fff;
-    border-radius: 50%;
-    height: 42px;
-    width: 42px;
+
     display: flex;
-    align-items: center;
-    color: #55abb9;
-    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
     transition: .4s all;
+
+    color: #55abb9;
+    border-radius: 50%;
+    background-color: #fff;
+
+    align-items: center;
+    justify-content: center;
 }
 .btn_add:hover {
     color: #5b7e84;
 }
 .btn_remove {
     font-size: 20px;
+
     position: absolute;
     right: 0;
+
     padding: 15px;
-    opacity: .4;
+
     transition: .4s all;
+
+    opacity: .4;
     color: #364c50;
 }
 .btn_remove:hover {
     opacity: 1;
 }
 h3 {
-    padding: 15px;
     font-size: 24px;
     font-weight: bold;
+
+    padding: 15px;
+
+    flex-basis: 100%;
 }
 h4 {
-    display: block;
-    padding: 15px 15px 0;
     font-size: 20px;
     font-weight: bold;
+
+    display: block;
+
+    padding: 15px 15px 0;
 }
 .wrapper_detail {
     display: -webkit-flex;
@@ -376,10 +399,11 @@ h4 {
     display:     -ms-flex;
     display:      -o-flex;
     display:         flex;
-
 }
-.current_games > div, .total_cards {
+.current_games > div,
+.total_cards {
     position: relative;
+
     padding: 0 15px 5px;
 }
 li {
@@ -387,20 +411,24 @@ li {
 }
 li div {
     font-size: 16px;
+
     letter-spacing: .04em;
 }
 .cards_size {
     display: inline-block;
-    width: 40%;
+
+    width: 60%;
 }
 .cards_number {
     display: inline-block;
-    width: 60%;
+
+    width: 40%;
 }
 h2 {
     font-size: 14px;
     /*line-height: 2em;*/
     font-weight: bold;
+
     margin: 15px 0 5px;
 }
 sub {
@@ -416,48 +444,60 @@ sub {
 .total {
     /*position: absolute;*/
     bottom: 0;
-    background-color: white;
+
     width: 100%;
+
+    background-color: white;
 }
-.easy-autocomplete input, input {
-    border-radius: 0;
-    border: none;
-    padding: 10px;
+.easy-autocomplete input,
+input {
     font-size: 18px;
-    background-color: #5b7e84;
-    color: #fff;
+
     width: 300px;
+    padding: 10px;
+
     transition: .4s all;
+
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    background-color: #5b7e84;
 }
 input:focus {
     width: 100%;
+
+    outline-width: 2px;
     outline-style: solid;
     outline-color: #55abb9;
-    outline-width: 2px;
 }
 .form_search {
     font-size: 0;
 }
-button[type="submit"] {
-    background: #55abb9;
-    border: none;
-    padding: 10px 15px;
+button[type='submit'] {
     font-size: 18px;
-    color: #fff;
+
+    padding: 10px 15px;
+
     cursor: pointer;
     transition: .4s all;
+
+    color: #fff;
+    border: none;
+    background: #55abb9;
 }
-button[type="submit"]:hover {
-        background: #364c50;
+button[type='submit']:hover {
+    background: #364c50;
 }
 button:focus {
     outline: none;
 }
 .search_result a {
-    color: #55abb9;
     font-size: 14px;
+
     transition: .4s all;
-     /*padding: 0 5px; */
+
+    color: #55abb9;
+    /*padding: 0 5px; */
 }
 .search_result a:hover {
     /*background-color: #55abb9;*/
@@ -465,10 +505,12 @@ button:focus {
 }
 .current_games a {
     font-size: 14px;
-    color: #000;
     /*display: inline-block;*/
     /*padding: 5px;*/
+
     transition: .4s all;
+
+    color: #000;
 }
 .current_games a:hover {
     /*background-color: #55abb9;*/
@@ -476,37 +518,43 @@ button:focus {
 }
 
 input::-webkit-input-placeholder {
-  color: #eaeaea;
-  font-size: 16px;
+    font-size: 16px;
+
+    color: #eaeaea;
 }
 input::-moz-placeholder {
-  color: #fff;
+    color: #fff;
 }
 input:-ms-input-placeholder {
-  color: #fff;
+    color: #fff;
 }
 input:-moz-placeholder {
-  color: #fff;
+    color: #fff;
 }
 .contribute {
-    line-height: 0;
     font-size: 300px;
+    line-height: 0;
+
     display: flex;
-    height: 100%;
+
     width: 100%;
+    height: 100%;
+
+    text-align: center;
+
     align-items: center;
     justify-content: center;
-    text-align: center;
 }
 .contribute span {
     font-size: 32px;
     font-weight: bold;
 }
 .contribute a {
-    color: #bfd4d8;
-    text-decoration: none;
     transition: .4s all;
+    text-decoration: none;
+
+    color: #bfd4d8;
 }
 .contribute a:hover {
-    color: #392d44;    
+    color: #392d44;
 }

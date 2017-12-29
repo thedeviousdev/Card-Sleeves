@@ -15,7 +15,7 @@ function game_search($g){
 	  ?>
 
 		<div class="search_result">
-		<h3>Search results:</h3>
+		<h3>Search results:</h3><br />
 		<?php
 	  foreach($result as $row) {
   	?>
