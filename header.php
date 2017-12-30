@@ -8,7 +8,7 @@
       <meta content="name" name="author">
       <meta content="description here" name="description">
       <meta content="keywords, here" name="keywords">
-      <link href="favicon.ico" rel="shortcut icon" type="img/fav.ico">
+      <link href="img/fav.ico" rel="shortcut icon" type="img/fav.ico">
 
       <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Montserrat:400,600,700" rel="stylesheet">
       <link rel="stylesheet" href="assets/EasyAutocomplete-1.3.5/easy-autocomplete.min.css">
