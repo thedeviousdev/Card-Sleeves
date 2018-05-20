@@ -20,7 +20,6 @@ function game_search($g){
 	  foreach($result as $row) {
   	?>
   	<div class="<?php echo $row['Id']; ?>">
-	  	<span data-game_id="<?php echo $row['Id']; ?>" class="btn_add"><i class="fas fa-plus-circle"></i></span>
   		<div class="wrapper_img">
 		  	<img src="img/<?php echo $row['Image']; ?>" />
 	  	</div>
@@ -29,6 +28,7 @@ function game_search($g){
 		  	<sub><?php echo $row['Edition']; ?></sub>
 
 		  	<p><a href="<?php echo $row['URL']; ?>">BoardGameGeek</a></p>
+		  	<span data-game_id="<?php echo $row['Id']; ?>" class="btn_add"><i class="fas fa-plus-circle"></i></span>
 	  	</div>
   	</div>
 	  <?php
