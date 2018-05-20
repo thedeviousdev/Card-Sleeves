@@ -558,3 +558,51 @@ input:-moz-placeholder {
 .contribute a:hover {
     color: #392d44;
 }
+
+/*************************************|
+|*******         EDIT        *********|
+**************************************/
+
+.edit header {
+    width: 100%;
+}
+.edit .search {
+    width: 50%;
+}
+
+.edit .search_result {
+    display: table;
+}
+.edit .search_result > div {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.edit .row {
+    display: table-row;
+}
+.edit .image, .edit .year, .edit .view {
+    text-align: center;
+}
+.edit .image img {
+    width: auto;
+    height: 50px;
+}
+.edit .row div {
+    padding: 10px;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+}
+.btn_view {
+    cursor: pointer;
+}
+.edit aside {
+    width: 50%;
+    top: 83px;
+    padding: 15px;
+}
+.edit h3 {
+    padding: 0 15px 15px;
+}

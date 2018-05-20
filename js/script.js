@@ -39,6 +39,20 @@ $(document).ready(function() {
 	  });
 	});
 
+	$( ".form_search_edit" ).submit(function( event ) {
+	  event.preventDefault();
+    var data = $(this).serialize();
+
+	 	$.ajax({
+		  method: "GET",
+		  url: "game_search_edit.php",
+		  data: data
+		})
+	  .done(function( msg ) {
+	  	$(".search").html(msg);
+	  });
+	});
+
 });
 
 $(document).on('click', '.btn_add', function() {
