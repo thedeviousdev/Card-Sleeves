@@ -220,7 +220,7 @@ header .logo {
 }
 .search {
     position: fixed;
-    top: 83px;
+    top: 81px;
 
     overflow-y: scroll;
 
@@ -569,6 +569,15 @@ input:-moz-placeholder {
 .edit .search {
     width: 50%;
 }
+.edit .view {
+    cursor: pointer;
+    font-weight: bold;
+    font-variant: all-small-caps;
+}
+.edit .view:hover {
+    background-color: #55abb9;
+    color: #fff;
+}
 
 .edit .search_result {
     display: table;
@@ -595,12 +604,9 @@ input:-moz-placeholder {
     background-color: #fff;
     border: 1px solid #eaeaea;
 }
-.btn_view {
-    cursor: pointer;
-}
 .edit aside {
     width: 50%;
-    top: 83px;
+    top: 81px;
     padding: 15px;
 }
 .edit h3 {

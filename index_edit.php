@@ -9,6 +9,7 @@ include_once("game_total.php");
 </div>
 <aside>
 	<h3>Game Name:</h3>
+	<div class="detail"></div>
 </aside>
 <?php
 include("footer.php");

@@ -24,7 +24,7 @@ function game_search($g){
   		<div class="image"><img src="img/<?php echo $row['Image']; ?>" /></div>
   		<div class="title"><?php echo $row['Name']; ?></div>
   		<div class="year"><?php if($row['Year'] !== '') { echo $row['Year']; } else { echo '--';}?></div>
-  		<div class="view"><span data-game_id="<?php echo $row['Id']; ?>" class="btn_view">View</i></span></div>
+  		<div class="view" data-game_id="<?php echo $row['Id']; ?>"><span class="btn_view">View</i></span></div>
   	</div>
 	  <?php
 	  }
