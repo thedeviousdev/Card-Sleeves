@@ -28,7 +28,7 @@
 <div class="wrapper edit">
   <header>
     <div class="logo">
-      <img src="img/sleeved_logo.svg" />
+      <a href="https://sleeved.io"><img src="img/sleeved_logo.svg" /></a>
     </div>
     <div class="form">
       <form action="" class="form_search_edit" method="get">
