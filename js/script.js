@@ -81,6 +81,22 @@ $(document).on('click', '.btn_add', function() {
   });
 });
 
+$(document).on('click', '.view', function() {
+
+		var game_id = $(this).data( "game_id" );
+
+			$.ajax({
+		  method: "GET",
+		  url: "game_detail_edit.php",
+		  data: { 'game' : game_id}
+			})
+			.done(function( msg ) {
+				console.log(msg);
+				$(".detail").html(msg);
+				update_total();
+			});
+});
+
 $(document).on('click', '.btn_remove', function() {
 
 		var game_id = $(this).data( "game_id" );
