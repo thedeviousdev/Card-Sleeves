@@ -13,7 +13,7 @@ function game_detail($game){
 	?>
 	<form action="">
 		<img src="img/<?php echo $game->get_image(); ?>" alt="">
-		<input type="hidden" value="<?php echo $game->get_id(); ?>" name="id">
+		<input type="hidden" value="<?php echo $game->get_id(); ?>" name="game_id">
 		<h2><?php echo $game->get_name(); ?></h2>
 		<h3><?php if($game->get_year() !== '') { echo $game->get_year(); } else { echo '--';}?></h3>
 		<!-- <input type="text" name="title" disabled value="<?php echo $game->get_name(); ?>">
@@ -33,7 +33,7 @@ function game_detail($game){
 				<div class="table-cell"><input type="number" name="quantity" value="<?php echo $card->get_nb_cards(); ?>"></div>
 				<div class="table-cell"><input type="number" name="width" value="<?php echo $card->get_width(); ?>"></div>
 				<div class="table-cell"><input type="number" name="height" value="<?php echo $card->get_height(); ?>"></div>
-				<div class="table-cell"><span class="remove">-</span></div>
+				<div class="table-cell"><span class="remove" data-card_id="<?php echo $row['Id']; ?>">-</span></div>
 			</div>
 	  	<?php
 		  }
