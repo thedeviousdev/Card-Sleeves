@@ -53,6 +53,35 @@ $(document).ready(function() {
 	  });
 	});
 
+	$( ".game_detail_form" ).submit(function( event ) {
+	  event.preventDefault();
+    var data = $(this).serialize();
+
+	 	$.ajax({
+		  method: "GET",
+		  url: "game_update.php",
+		  data: data
+		})
+	  .done(function( msg ) {
+	  	$(".detail").html(msg);
+	  });
+	});
+
+});
+
+
+$(document).on('submit', '.game_detail_form', function( event ) {
+  event.preventDefault();
+  var data = $(this).serialize();
+
+ 	$.ajax({
+	  method: "GET",
+	  url: "game_update.php",
+	  data: data
+	})
+  .done(function( msg ) {
+  	$(".detail").html(msg);
+  });
 });
 
 $(document).on('click', '.btn_add', function() {

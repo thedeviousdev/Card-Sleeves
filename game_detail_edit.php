@@ -11,7 +11,7 @@ if(isset($_GET['game'])) {
 
 function game_detail($game){
 	?>
-	<form action="">
+	<form action="" class="game_detail_form">
 		<img src="img/<?php echo $game->get_image(); ?>" alt="">
 		<input type="hidden" value="<?php echo $game->get_id(); ?>" name="game_id">
 		<h2><?php echo $game->get_name(); ?></h2>
@@ -30,18 +30,18 @@ function game_detail($game){
 		  foreach($cards as $card) {
 	  	?>
 			<div class="row">
-				<div class="table-cell"><input type="number" name="quantity" value="<?php echo $card->get_nb_cards(); ?>"></div>
-				<div class="table-cell"><input type="number" name="width" value="<?php echo $card->get_width(); ?>"></div>
-				<div class="table-cell"><input type="number" name="height" value="<?php echo $card->get_height(); ?>"></div>
+				<div class="table-cell"><input type="number" name="quantity[]" value="<?php echo $card->get_nb_cards(); ?>"></div>
+				<div class="table-cell"><input type="number" name="width[]" value="<?php echo $card->get_width(); ?>"></div>
+				<div class="table-cell"><input type="number" name="height[]" value="<?php echo $card->get_height(); ?>"></div>
 				<div class="table-cell"><span class="remove" data-card_id="<?php echo $row['Id']; ?>">-</span></div>
 			</div>
 	  	<?php
 		  }
 		  ?>
 			<div class="row">
-				<div class="table-cell"><input type="number" name="quantity" value="0"></div>
-				<div class="table-cell"><input type="number" name="width" value="0"></div>
-				<div class="table-cell"><input type="number" name="height" value="0"></div>
+				<div class="table-cell"><input type="number" name="quantity[]" value="0"></div>
+				<div class="table-cell"><input type="number" name="width[]" value="0"></div>
+				<div class="table-cell"><input type="number" name="height[]" value="0"></div>
 				<div class="table-cell"><span class="add">+</span></div>
 			</div>
 		</div>

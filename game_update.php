@@ -2,33 +2,47 @@
 if(isset($_GET['game_id'])) {
   
   $game_ID = $_GET['game_id'];
-  game_search($game_ID);
-
+  $quantity = $_GET['quantity'];
+  $width = $_GET['width'];
+  $height = $_GET['height'];
+  $card_array = count($quantity); 
+  for($i=0; $i<$card_array; $i++) {
+    if($quantity[$i] != '0' && $width[$i] != '0' && $height[$i] != '0')
+      card_update($game_ID, $quantity[$i], $width[$i], $height[$i]);
+  }
 }
 
 function card_update($g, $quantity, $width, $height){
+  // echo 'g: ' . $g . '<br/>';
+  // echo 'quantity: ' .  $quantity . '<br/>';
+  // echo 'width: ' .  $width . '<br/>';
+  // echo 'height: ' .  $height . '<br/>';
 
   try {
     $db = new PDO('sqlite:data/game-list_test.sqlite');
-    $result = $db->query("SELECT * FROM Card WHERE GameID ='" . $g ."', Width ='" . $width . "', Height ='" . $height . "';");
-    if ($result->fetchColumn() > 0) {
-      // If there are results, check if any exist with the current width & height, if so, adjust quantity if it's different
+    // Check for results first
+    $check = $db->query("SELECT * FROM GameCards WHERE GameID ='" . $g ."' AND Width ='" . $width . "' AND Height ='" . $height . "';");
+
+    // If there already exists a card, update its quantity
+    if ($check->fetchColumn() > 0) {
+      $result = $db->query("SELECT * FROM GameCards WHERE GameID ='" . $g ."' AND Width ='" . $width . "' AND Height ='" . $height . "';");
 
       foreach($result as $row) {
         $id = $row['Id'];
-        $old_qty = $row['quantity'];
+        $old_qty = $row['CardNumber'];
+
         if($old_qty != $quantity)
-          $db->exec("UPDATE Card SET CardNumber = '" . $quantity  . "' WHERE Id = '" . $id . "';");
+          $db->exec("UPDATE GameCards SET CardNumber = '" . $quantity  . "' WHERE Id = '" . $id . "';");
       }
     }
+    // Otherwise, add a new card size & quantity
     else {
-      // Otherwise, create a new card row
-      $db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $g . "', '" . $quantity . "', '" . $width . "', '" . $height . "');");
+      if($quantity !== 0 && $width !== 0 && $height !== 0)
+        $db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $g . "', '" . $quantity . "', '" . $width . "', '" . $height . "');");
     }
   }
   catch(PDOException $e)  {
     print 'Exception : '. $e->getMessage();
   }
-
 }
 ?>

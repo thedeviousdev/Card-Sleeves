@@ -605,8 +605,11 @@ input:-moz-placeholder {
 }
 .edit aside {
     width: 50%;
-    top: 81px;
     padding: 15px;
+    position: fixed;
+    top: 81px;
+    overflow-y: scroll;
+    height: calc(100% - 83px);
 }
 .detail input[type="text"], .detail input[type="number"] {
     max-width: 450px;
