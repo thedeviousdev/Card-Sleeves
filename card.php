@@ -1,16 +1,21 @@
 <?php
 class card {
+	var $id = NULL;
 	var $nb_of_cards = 0;
 	var $height = 0;
 	var $width = 0;
 
-	function __construct($cards, $width, $height) {
+	function __construct($cards = NULL, $width = NULL, $height = NULL, $id = NULL) {
+		$this->id = $id;
 		$this->nb_of_cards = $cards;
 		$this->height = $height;
 		$this->width = $width;
 	}
 
 	// Setters
+	function set_id($id) {
+		$this->id = $id;
+	}
 	function set_nb_cards($cards) {
 		$this->nb_of_cards = $cards;
 	}
@@ -22,6 +27,9 @@ class card {
 	}
 
 	// Getters
+	function get_id() {
+		return $this->id;
+	}
 	function get_nb_cards() {
 		return $this->nb_of_cards;
 	}
