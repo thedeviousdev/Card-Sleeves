@@ -15,7 +15,7 @@ function game_add($g){
 		  $cards_arr = array();
 
 		  foreach($cards as $card) {
-		  	$new_card = new card($card['CardNumber'], $card['Width'], $card['Height']);
+		  	$new_card = new card($card['CardNumber'], $card['Width'], $card['Height'], $card['Id']);
 		  	$cards_arr[] = $new_card;
 		  }
 

@@ -449,7 +449,8 @@ sub {
 
     background-color: white;
 }
-.easy-autocomplete input, header input {
+.easy-autocomplete input,
+header input {
     font-size: 18px;
 
     width: 300px;
@@ -569,13 +570,14 @@ input:-moz-placeholder {
     width: 50%;
 }
 .edit .view {
-    cursor: pointer;
     font-weight: bold;
     font-variant: all-small-caps;
+
+    cursor: pointer;
 }
 .edit .view:hover {
-    background-color: #55abb9;
     color: #fff;
+    background-color: #55abb9;
 }
 
 .edit .search_result {
@@ -589,7 +591,9 @@ input:-moz-placeholder {
 .edit .row {
     display: table-row;
 }
-.edit .image, .edit .year, .edit .view {
+.edit .image,
+.edit .year,
+.edit .view {
     text-align: center;
 }
 .edit .image img {
@@ -597,84 +601,140 @@ input:-moz-placeholder {
     height: 50px;
 }
 .edit .row div {
-    padding: 10px;
     display: table-cell;
+
+    padding: 10px;
+
     vertical-align: middle;
-    background-color: #fff;
+
     border: 1px solid #eaeaea;
+    background-color: #fff;
 }
 .edit aside {
-    width: 50%;
-    padding: 15px;
     position: fixed;
     top: 81px;
+
     overflow-y: scroll;
+
+    width: 50%;
     height: calc(100% - 83px);
+    padding: 15px;
 }
-.detail input[type="text"], .detail input[type="number"] {
-    max-width: 450px;
-    width: 100%;
-    padding: 10px;
-    border: none;
-    display: block;
+.detail input[type='text'],
+.detail input[type='number'] {
     font-size: 18px;
+
+    display: block;
+
+    width: 100%;
+    max-width: 450px;
     margin: 5px auto;
-    border: 1px solid #392d44;
+    padding: 10px;
+
     text-align: center;
+
+    border: none;
+    border: 1px solid #392d44;
 }
 .table {
-    width: 100%;
     display: table;
+
+    width: 100%;
+
     text-align: center;
 }
 .edit .detail .row div {
-    background-color: transparent;
     border: none;
+    background-color: transparent;
 }
-.edit .add, .edit .remove {
-    background-color: #55abb9;
-    color: #fff;
-    display: inline-block;
-    padding: 5px 15px 5px;
-    cursor: pointer;
+.edit .add,
+.edit .remove {
     font-size: 30px;
     line-height: 30px;
-    height: 43px;
+
+    display: inline-block;
+
     width: 43px;
+    height: 43px;
+    padding: 5px 15px 5px;
+
+    cursor: pointer;
     transition: .4s all;
+
+    color: #fff;
+    background-color: #55abb9;
 }
-.edit .add:hover, .edit .remove:hover {
+.edit .add:hover,
+.edit .remove:hover {
     background-color: #364c50;
 }
 .detail {
-    text-align: center;
-    max-width: 450px;
     width: 100%;
+    max-width: 450px;
     margin: 0 auto;
+
+    text-align: center;
 }
 .detail .submit {
     font-family: 'Montserrat', sans-serif;
-    background-color: #392d44;
-    border: none;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    color: #fff;
+    font-size: 16px;
     font-weight: bold;
-    font-size: 20px;
-    letter-spacing: 1px;
+
     max-width: 200px;
     margin-top: 20px;
+    padding: 10px 20px;
+
     cursor: pointer;
+    transition: .4s all;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: #fff;
+    border: none;
+    background-color: #392d44;
 }
 .detail .submit:hover {
-    
+    background-color: #806f90;
 }
 .edit h2 {
     font-size: 30px;
 }
-.edit h3 {
+.edit aside h3 {
     font-size: 18px;
-    border-bottom: 1px dashed #392d44;
-    padding: 10px;
+
     margin-bottom: 15px;
+    padding: 10px;
+
+    border-bottom: 1px dashed #392d44;
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, .3);
+}
+.flex {
+    display: flex;
+
+    width: 100%;
+    padding: 25px;
+
+    align-items: center;
+    justify-content: center;
+}
+.flex div {
+    position: relative;
+
+    width: 100%;
+    max-width: 300px;
+    padding: 50px;
+
+    background-color: #fff;
 }

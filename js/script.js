@@ -53,19 +53,19 @@ $(document).ready(function() {
 	  });
 	});
 
-	$( ".game_detail_form" ).submit(function( event ) {
-	  event.preventDefault();
-    var data = $(this).serialize();
+	// $( ".game_detail_form" ).submit(function( event ) {
+	//   event.preventDefault();
+ //    var data = $(this).serialize();
 
-	 	$.ajax({
-		  method: "GET",
-		  url: "game_update.php",
-		  data: data
-		})
-	  .done(function( msg ) {
-	  	$(".detail").html(msg);
-	  });
-	});
+	//  	$.ajax({
+	// 	  method: "GET",
+	// 	  url: "game_update.php",
+	// 	  data: data
+	// 	})
+	//   .done(function( msg ) {
+	//   	$(".detail").html(msg);
+	//   });
+	// });
 
 });
 
@@ -73,6 +73,7 @@ $(document).ready(function() {
 $(document).on('submit', '.game_detail_form', function( event ) {
   event.preventDefault();
   var data = $(this).serialize();
+	var game_id = $(this).find('input[name="game_id"]').val();
 
  	$.ajax({
 	  method: "GET",
@@ -80,9 +81,57 @@ $(document).on('submit', '.game_detail_form', function( event ) {
 	  data: data
 	})
   .done(function( msg ) {
-  	$(".detail").html(msg);
+
+		$.ajax({
+		method: "GET",
+		url: "game_detail_edit.php",
+		data: { 'game' : game_id}
+		})
+		.done(function( msg ) {
+			console.log(msg);
+			$(".detail").html(msg);
+			$(".detail").find('.popup').css('display','flex');
+		});
   });
 });
+
+$(document).on('click', '.add', function() {
+	var game = '<div class="row"><div class="table-cell"><input type="number" name="quantity[]" value="0" step=".25"></div><div class="table-cell"><input type="number" name="width[]" value="0" step=".25"></div><div class="table-cell"><input type="number" name="height[]" value="0" step=".25"></div><div class="table-cell"><span class="add">+</span></div></div>';
+	$(".table").append(game);
+	$(this).removeClass('add').addClass('remove');
+	$(this).html('-');
+	$(this).attr('data-card_id','NULL');
+});
+
+$(document).on('click', '.popup', function() {
+	$(this).fadeOut();
+});
+
+$(document).on('click', '.remove', function() {
+	var card_id = $(this).data('card_id');
+	console.log(card_id);
+
+	if(card_id == 'NULL') {
+		console.log('if');
+		$(this).closest('.row').remove();
+	}
+	else {
+		console.log('else');
+		$.ajax({
+			method: "GET",
+			url: "card_delete.php",
+			data: { 'card_id' : card_id}
+		})
+		.done(function( msg ) {
+	  	console.log(msg);
+	  	// This isn't removing the element
+	  	// $("ul").find("[data-slide='" + current + "']"); 
+			$("[data-card_id='" + card_id + "']").closest('.row').remove();
+		});
+	}
+
+});
+
 
 $(document).on('click', '.btn_add', function() {
 
@@ -111,19 +160,17 @@ $(document).on('click', '.btn_add', function() {
 });
 
 $(document).on('click', '.view', function() {
-
 		var game_id = $(this).data( "game_id" );
 
-			$.ajax({
-		  method: "GET",
-		  url: "game_detail_edit.php",
-		  data: { 'game' : game_id}
-			})
-			.done(function( msg ) {
-				console.log(msg);
-				$(".detail").html(msg);
-				update_total();
-			});
+		$.ajax({
+		method: "GET",
+		url: "game_detail_edit.php",
+		data: { 'game' : game_id}
+		})
+		.done(function( msg ) {
+			// console.log(msg);
+			$(".detail").html(msg);
+		});
 });
 
 $(document).on('click', '.btn_remove', function() {
