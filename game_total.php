@@ -2,7 +2,7 @@
 include_once('game.php');
 include_once('card.php');
 include_once('sleeve.php');
-include_once('game_add.php');
+include_once('new_game_object.php');
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();

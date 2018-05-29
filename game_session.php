@@ -1,5 +1,5 @@
 <?php 
-include_once("game_add.php");
+include_once("new_game_object.php");
 include_once('game.php');
 include_once('card.php');
 
@@ -25,13 +25,13 @@ function is_game_in_array($game_arr, $new_game){
 function add_game_to_session($game_ID) {
 
 	if($game_ID != NULL && !isset($_SESSION['add_games'])) {
-		$add_game_arr[] = game_add($game_ID);
+		$add_game_arr[] = new_game_object($game_ID);
 		$_SESSION['add_games'] = $add_game_arr;
 		echo 'Game added';
 	}
 	else if($game_ID != NULL && !is_game_in_array($_SESSION['add_games'], $game_ID)) {
 		$add_game_arr = $_SESSION['add_games'];
-		$add_game_arr[] = game_add($game_ID);
+		$add_game_arr[] = new_game_object($game_ID);
 		$_SESSION['add_games'] = $add_game_arr;
 		echo 'Game added';
 	}

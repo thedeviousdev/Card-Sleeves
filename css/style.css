@@ -738,3 +738,19 @@ input:-moz-placeholder {
 
     background-color: #fff;
 }
+.add_game span, .edit_game a {
+    font-size: 18px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: .4s all;
+    display: inline-block;
+    color: #fff;
+    border: none;
+    background-color: #80629c;
+}
+.edit_game a {
+    background-color: #ffc800;
+}
+.add_game span:hover, .edit_game a:hover {
+    background: #364c50;
+}

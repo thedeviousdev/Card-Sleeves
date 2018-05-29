@@ -2,7 +2,7 @@
 include_once('game.php');
 include_once('card.php');
 
-function game_add($g){
+function new_game_object($g){
 
 	try {
 		$db = new PDO('sqlite:data/game-list_test.sqlite');

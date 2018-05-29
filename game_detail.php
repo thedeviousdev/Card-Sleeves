@@ -1,11 +1,11 @@
 <?php 
 include_once('game.php');
 include_once('card.php');
-include_once('game_add.php');
+include_once('new_game_object.php');
 if(isset($_GET['game'])) {
 	
 	$game_ID = $_GET['game'];
-	game_detail(game_add($game_ID));
+	game_detail(new_game_object($game_ID));
 
 }
 
