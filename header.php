@@ -31,16 +31,13 @@
       <a href="https://sleeved.io"><img src="img/sleeved_logo.svg" /></a>
     </div>
     <div class="form">
-      <form action="" class="form_search_edit" method="get">
+      <form action="" class="form_search" method="get">
         <input type="text" class="game-select" name="game" placeholder="Search..." />
         <button type="submit" /><i class="far fa-search"></i></button>
       </form>
     </div>
     <div class="edit_game">
       <a href="index_edit.php"><i class="far fa-pen"></i></a>
-    </div>
-    <div class="add_game">
-      <span><i class="far fa-plus-square"></i></span>
     </div>
   </header>
   <div class="search">
