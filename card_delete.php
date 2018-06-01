@@ -7,7 +7,6 @@ if(isset($_GET['card_id'])) {
 
 function card_delete($id){
 
-  // This isn't deleting
   try {
     $db = new PDO('sqlite:data/game-list_test.sqlite');
     $db->exec("DELETE FROM GameCards WHERE Id = '" . $id . "';");
