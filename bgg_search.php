@@ -29,4 +29,8 @@ function bgg_search($id){
 
 	// Before adding this into the DB, check to see if it exists already
 }
+
+function check_db($id) {
+	
+}
 ?>
