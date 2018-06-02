@@ -21,7 +21,7 @@ function new_game_object($g){
 		  	$cards_arr[] = $new_card;
 		  }
 
-	  	$new_game = new game($g, $game['Name'], $game['Language'], $game['Year'], $game['Edition'], $game['Image'], $game['URL'], $cards_arr);
+	  	$new_game = new game($g, $game['Name'], $game['Year'], $game['Image'], $game['URL'], $cards_arr);
 		  return $new_game;
 	  }
 	}
