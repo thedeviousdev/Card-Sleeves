@@ -1,4 +1,6 @@
 <?php 
+// Update a card's details or add a new card
+
 if(isset($_GET['game_id'])) {
   
   $game_ID = $_GET['game_id'];
@@ -13,10 +15,6 @@ if(isset($_GET['game_id'])) {
 }
 
 function card_update($g, $quantity, $width, $height){
-  // echo 'g: ' . $g . '<br/>';
-  // echo 'quantity: ' .  $quantity . '<br/>';
-  // echo 'width: ' .  $width . '<br/>';
-  // echo 'height: ' .  $height . '<br/>';
 
   try {
     $db = new PDO('sqlite:data/game-list_test.sqlite');

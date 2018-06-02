@@ -1,4 +1,6 @@
 <?php 
+// Tally cards in cart
+
 include_once('game.php');
 include_once('card.php');
 include_once('sleeve.php');
