@@ -1,12 +1,14 @@
 <?php 
+// Query DB for game names from search input
+// Display game details for the Home page
+
 if(isset($_GET['game'])) {
-	
 	$game_ID = $_GET['game'];
 	game_search($game_ID);
-
 }
 
 function game_search($g){
+	$g = trim($g);
 
 	try {
 		$db = new PDO('sqlite:data/game-list_test.sqlite');

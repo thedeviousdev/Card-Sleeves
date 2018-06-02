@@ -1,4 +1,7 @@
 <?php
+// Populates Game & Card DB for the first time from CSV file
+// Populates Sleeve sizes
+// TODO: Add more company alternatives
 $file = 'data/game-list_test.sqlite';
 if (!file_exists($file)) {
 

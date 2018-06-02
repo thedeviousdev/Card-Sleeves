@@ -1,4 +1,6 @@
 <?php
+// Update games.json game names, used for search bar
+
 try {
   $db = new PDO('sqlite:data/game-list_test.sqlite');
   $result = $db->query("SELECT * FROM Game");

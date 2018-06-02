@@ -1,4 +1,7 @@
 <?php 
+// Query DB for game names from search input
+// Display game details for the Edit page
+
 if(isset($_GET['game'])) {
 	
 	$game_ID = $_GET['game'];
@@ -7,6 +10,7 @@ if(isset($_GET['game'])) {
 }
 
 function game_search($g){
+	$g = trim($g);
 
 	try {
 		$db = new PDO('sqlite:data/game-list_test.sqlite');

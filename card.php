@@ -1,4 +1,6 @@
 <?php
+// Card object
+
 class card {
 	var $id = NULL;
 	var $nb_of_cards = 0;

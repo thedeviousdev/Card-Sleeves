@@ -1,19 +1,14 @@
 <?php
+// Home page layout
 
 include_once("game_session.php");
 include_once("header.php");
-include_once("game_detail.php");
+include_once("cart_item.php");
 include_once("game_total.php");
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
-// echo '<pre>';
-// print_r($_SESSION); 
-// echo '</pre>';
-
-// session_destroy();
 
 ?>
 		<div class="contribute">
@@ -31,7 +26,7 @@ if (session_status() == PHP_SESSION_NONE) {
 				$games_arr = $_SESSION['add_games'];
 
 				foreach($games_arr as $game) {
-					echo game_detail($game);
+					echo cart_item($game);
 				}
 			}
 			?>

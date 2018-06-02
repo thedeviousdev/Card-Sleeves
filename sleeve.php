@@ -1,4 +1,6 @@
 <?php
+// Sleeve object
+
 class sleeve {
 	var $sleeve_name = 0;
 	var $height = 0;

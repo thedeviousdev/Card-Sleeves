@@ -1,4 +1,6 @@
 <?php
+// Game object 
+
 include_once('card.php');
 
 class game {

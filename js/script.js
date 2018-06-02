@@ -53,7 +53,7 @@ $(document).ready(function() {
 	  });
 	});
 
-	// $( ".game_detail_form" ).submit(function( event ) {
+	// $( ".cart_item_form" ).submit(function( event ) {
 	//   event.preventDefault();
  //    var data = $(this).serialize();
 
@@ -85,7 +85,7 @@ $(document).on('submit', '.bgg_search_form', function( event ) {
   });
 });
 
-$(document).on('submit', '.game_detail_form', function( event ) {
+$(document).on('submit', '.cart_item_form', function( event ) {
   event.preventDefault();
   var data = $(this).serialize();
 	var game_id = $(this).find('input[name="game_id"]').val();
@@ -162,7 +162,7 @@ $(document).on('click', '.btn_add', function() {
 	  	if(msg == 'Game added') {
 			 	$.ajax({
 				  method: "GET",
-				  url: "game_detail.php",
+				  url: "cart_item.php",
 				  data: { 'game' : game_id}
 				})
 			  .done(function( msg ) {

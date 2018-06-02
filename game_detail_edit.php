@@ -1,4 +1,5 @@
 <?php 
+// Display card details for edit page
 include_once('game.php');
 include_once('card.php');
 include_once('new_game_object.php');
@@ -12,13 +13,11 @@ if(isset($_GET['game'])) {
 function game_detail($game){
 	?>
 	<div class="popup"><div class="flex"><div>Success!</div></div></div>
-	<form action="" class="game_detail_form">
+	<form action="" class="cart_item_form">
 		<img src="img/<?php echo $game->get_image(); ?>" alt="">
 		<input type="hidden" value="<?php echo $game->get_id(); ?>" name="game_id">
 		<h2><?php echo $game->get_name(); ?></h2>
 		<h3><?php if($game->get_year() !== '') { echo $game->get_year(); } else { echo '--';}?></h3>
-		<!-- <input type="text" name="title" disabled value="<?php echo $game->get_name(); ?>">
-		<input type="text" name="year" disabled value="<?php echo $game->get_year(); ?>"> -->
 		<div class="table">
 			<div class="row">
 				<div class="table-cell"><span>Quantity</span></div>

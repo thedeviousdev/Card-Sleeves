@@ -1,8 +1,9 @@
 <?php
+// Edit page layout
 
 include_once("game_session.php");
 include_once("header_edit.php");
-include_once("game_detail.php");
+include_once("cart_item.php");
 include_once("game_total.php");
 
 ?>

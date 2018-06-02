@@ -1,4 +1,5 @@
 <?php 
+// Adding games to cart and save to session
 include_once("new_game_object.php");
 include_once('game.php');
 include_once('card.php');

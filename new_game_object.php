@@ -1,4 +1,6 @@
 <?php 
+// Create Game object w/ Cards
+
 include_once('game.php');
 include_once('card.php');
 
