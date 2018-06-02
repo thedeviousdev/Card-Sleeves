@@ -3,10 +3,8 @@
 // Display game details for the Edit page
 
 if(isset($_GET['game'])) {
-	
-	$game_ID = $_GET['game'];
-	game_search($game_ID);
-
+	$game_name = $_GET['game'];
+	game_search($game_name);
 }
 
 function game_search($g){
