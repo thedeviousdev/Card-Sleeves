@@ -81,7 +81,7 @@ $(document).on('submit', '.bgg_search_form', function( event ) {
 	})
   .done(function( msg ) {
   	console.log(msg);
-		$(".detail").html(msg);
+		$(".detail").append(msg);
   });
 });
 
@@ -178,7 +178,7 @@ $(document).on('click', '.add_game span', function() {
 
  	$.ajax({
 	  method: "GET",
-	  url: "game_add.php"
+	  url: "bgg_search_form.php"
 	})
   .done(function( msg ) {
   	console.log('click');
