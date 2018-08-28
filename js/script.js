@@ -27,7 +27,11 @@ $(document).ready(function() {
 
 	$( ".form_search" ).submit(function( event ) {
 	  event.preventDefault();
-    var data = $(this).serialize();
+    var game = $('.form_search .game-select').val();
+
+    var data = {
+    	game : game
+    }
 
 	 	$.ajax({
 		  method: "GET",
@@ -69,6 +73,45 @@ $(document).ready(function() {
 
 });
 
+$(document).on('click', 'footer span', function() {
+	console.log('next');
+	var page = $(this).data('page');
+	var game_name = $('.search_result').data('game_name');
+
+  var data = {
+  	game : game_name,
+  	page : page
+  }
+  console.log(data);
+  
+ 	$.ajax({
+	  method: "GET",
+	  url: "game_search.php",
+	  data: data
+	})
+  .done(function( msg ) {
+  	$(".search").html(msg);
+  });
+});
+
+// $(document).on('click', '#previous', function() {
+// 	var page = $(this).data('page');
+// 	var game_name = $('.search_result').data('game_name');
+
+//   var data = {
+//   	game : game_name,
+//   	page : page
+//   }
+
+//  	$.ajax({
+// 	  method: "GET",
+// 	  url: "game_search.php",
+// 	  data: data
+// 	})
+//   .done(function( msg ) {
+//   	$(".search").html(msg);
+//   });
+// });
 
 $(document).on('submit', '.bgg_search_form', function( event ) {
   event.preventDefault();

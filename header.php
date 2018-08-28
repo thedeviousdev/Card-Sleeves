@@ -34,10 +34,10 @@
       <form action="" class="form_search" method="get">
         <input type="text" class="game-select" name="game" placeholder="Search..." />
         <button type="submit" /><i class="far fa-search"></i></button>
+        <div class="edit_game">
+          <a href="index_edit.php"><i class="far fa-pen"></i></a>
+        </div>
       </form>
-    </div>
-    <div class="edit_game">
-      <a href="index_edit.php"><i class="far fa-pen"></i></a>
     </div>
   </header>
   <div class="search">
