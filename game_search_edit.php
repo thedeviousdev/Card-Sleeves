@@ -13,7 +13,7 @@ function game_search($g){
 	try {
 		$db = new PDO('sqlite:data/game-list_test.sqlite');
 
-	  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%'");
+	  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%' ORDER BY Name ASC");
 	  ?>
 
 		<h3>Search results:</h3>

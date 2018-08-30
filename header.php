@@ -25,7 +25,7 @@
   </head>
   <body>
     
-<div class="wrapper">
+<div class="wrapper index">
   <header>
     <div class="logo">
       <a href="https://sleeved.io"><img src="img/sleeved_logo.svg" /></a>

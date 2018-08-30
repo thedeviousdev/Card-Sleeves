@@ -23,9 +23,9 @@ function game_search($g, $page){
 	  $limit = $page*50;
 
 	  if($page != 1)
-		  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%' ORDER BY Name LIMIT 50 OFFSET " . $limit . ";");
+		  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%' ORDER BY Name ASC LIMIT 50 OFFSET " . $limit . ";");
 		else
-		  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%' ORDER BY Name LIMIT 50;");
+		  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%' ORDER BY Name ASC LIMIT 50;");
 
 
 	  ?>

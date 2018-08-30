@@ -10,6 +10,12 @@ function update_total() {
 
 }
 
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
+
 $(document).ready(function() {
 
 	var options = {
@@ -19,6 +25,10 @@ $(document).ready(function() {
 			match: {
 				enabled: true
 			}
+		},
+		getValue: function(element) {
+			console.log(decodeHtml(element));
+			return decodeHtml(element);
 		}
 		// data: json_data
 	};

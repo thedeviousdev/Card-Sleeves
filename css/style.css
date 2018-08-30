@@ -776,7 +776,7 @@ input:-moz-placeholder {
 
 
 @media (max-width: 1100px) {
-    aside {
+    .index aside {
         top: unset;
         bottom: 0;
         right: 0;
@@ -795,7 +795,7 @@ input:-moz-placeholder {
         top: 131px;
         height: calc(100% - 185px);
     }
-    aside h3::after {
+    .index aside h3::after {
         content: "^";
         position: absolute;
         right: 10px;
@@ -805,7 +805,7 @@ input:-moz-placeholder {
     }
 }
 @media (max-width: 780px) {
-    .search_result > div {
+    .index .search_result > div {
         flex-grow: 1; 
     }
     header .logo {      

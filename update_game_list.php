@@ -12,7 +12,7 @@ try {
   	echo $row['Name'];
 	}
 
-  $encoded_rows = array_map('utf8_encode', $game_arr);
+  $encoded_rows = array_map('htmlentities', $game_arr);
 	$json_data = json_encode($encoded_rows);
 	file_put_contents("data/games.json",$json_data);
 
