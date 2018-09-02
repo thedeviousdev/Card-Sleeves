@@ -7,7 +7,7 @@ if (!file_exists($file)) {
 
 	try {
 	  $db = new PDO('sqlite:data/game-list_test.sqlite');
-	  $db->exec("CREATE TABLE Game (Id INTEGER PRIMARY KEY, Name TEXT, Language TEXT, Year INTEGER, Edition TEXT, URL TEXT, Image TEXT)");
+	  $db->exec("CREATE TABLE Game (Id INTEGER PRIMARY KEY, Name TEXT, Language TEXT, Year INTEGER, Edition TEXT, URL TEXT, Image TEXT, BGGID INTEGER, Verified INTEGER DEFAULT 0)");
 
 	  $db->exec("CREATE TABLE GameCards (Id INTEGER PRIMARY KEY, GameID INTEGER, CardNumber TEXT, Width INTEGER, Height INTEGER);");
 

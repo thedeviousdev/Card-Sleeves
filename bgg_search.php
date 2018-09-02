@@ -3,6 +3,9 @@
 include_once('game.php');
 include_once('card.php');
 include_once('new_game_object.php');
+include_once('game_search_edit.php');
+include_once('update_game_list.php');
+include_once('game_detail_edit.php');
 
 if(isset($_GET['url'])) {
 	
@@ -39,10 +42,7 @@ function bgg_search($id){
 
 	// Before adding this into the DB, check to see if it exists already
 	if(!game_exists($id)) {
-		game_search();
-		?>
-		<div class="popup" style="display: flex;"><div class="flex"><div>Game successfully added!</div></div></div>
-		<?php
+		// game_search($id);
 		add_game($id, $name, $year, $thumbnail);
 	}
 	else {
@@ -75,11 +75,15 @@ function add_game($bgg, $name, $year, $image) {
 	if($image_path != false) {
 		try {
 			$db = new PDO('sqlite:data/game-list_test.sqlite');
+			$db->exec('INSERT INTO Game (Name, Year, URL, Image, BGGID, Verified) VALUES ("' . $name . '", "' . $year . '", "' . $url . '", "' . $image_path . '", "' . $bgg . '", 0);');
 
-			$db->exec("INSERT INTO Game (Name, Year, URL, Image, BGGID) VALUES ('" . $name . "', '" . $year . "', '" . $url . "', '" . $image_path . "', '" . $bgg . "');");
 		  $game_id = $db->lastInsertId();
+		  ?>
 
-			return $game_id;
+			<div class="popup" style="display: flex;"><div class="flex"><div>Game successfully added!</div></div></div>
+			<?php
+
+			update_json();
 		}
 		catch(PDOException $e) 	{
 		  print 'Exception : '. $e->getMessage();
@@ -89,26 +93,23 @@ function add_game($bgg, $name, $year, $image) {
 
 function download_image($name, $image_url){
 
-	echo 'download_image()';
 	$extension = pathinfo($image_url, PATHINFO_EXTENSION);
 	$clean_name = strtolower(preg_replace("/[^a-zA-Z0-9]+/", "", $name));
 
-	$path = 'img/' . $clean_name . "." . $extension;
+	$path = $clean_name . "." . $extension;
 
 	if (!file_exists($path)) {
-		echo 'file does not exist';
 		$download = file_get_contents($image_url);
 
 		if($download === false){
 			return false;
 		}
 		else {
-		  file_put_contents($path, $download);
+		  file_put_contents('img/' . $path, $download);
 		  return $path;
 		}
 	}
 	else {
-			echo 'file exists';
 		return $path;
 	}
 }

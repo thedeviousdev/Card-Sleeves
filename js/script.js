@@ -27,7 +27,7 @@ $(document).ready(function() {
 			}
 		},
 		getValue: function(element) {
-			console.log(decodeHtml(element));
+			// console.log(decodeHtml(element));
 			return decodeHtml(element);
 		}
 		// data: json_data
@@ -163,8 +163,50 @@ $(document).on('submit', '.cart_item_form', function( event ) {
   });
 });
 
+$(document).on('click', '#verify', function() {
+
+  var id = $(this).data('id');
+  var value = $(this).data('value');
+
+  var data = {
+  	id : id,
+  	verify : value
+  }
+
+ 	$.ajax({
+	  method: "GET",
+	  url: "game_verify.php",
+	  data: data
+	})
+  .done(function( msg ) {
+		console.log(msg);
+		$(".detail").html(msg);
+		$(".detail").find('.popup').css('display','flex');
+  });
+});
+
+$(document).on('click', '#delete', function() {
+
+  var id = $(this).data('id');
+
+  var data = {
+  	id : id
+  }
+
+ 	$.ajax({
+	  method: "GET",
+	  url: "game_delete.php",
+	  data: data
+	})
+  .done(function( msg ) {
+		console.log(msg);
+		$(".detail").html(msg);
+		$(".detail").find('.popup').css('display','flex');
+  });
+});
+
 $(document).on('click', '.add', function() {
-	var game = '<div class="row"><div class="table-cell"><input type="number" name="quantity[]" value="0" step=".25"></div><div class="table-cell"><input type="number" name="width[]" value="0" step=".25"></div><div class="table-cell"><input type="number" name="height[]" value="0" step=".25"></div><div class="table-cell"><span class="add">+</span></div></div>';
+	var game = '<div class="row"><div class="table-cell"><input type="number" name="quantity[]" value="0" step="1"></div><div class="table-cell"><input type="number" name="width[]" value="0" step=".1"></div><div class="table-cell"><input type="number" name="height[]" value="0" step=".1"></div><div class="table-cell"><span class="add">+</span></div></div>';
 	$(".table").append(game);
 	$(this).removeClass('add').addClass('remove');
 	$(this).html('-');
@@ -234,7 +276,6 @@ $(document).on('click', '.add_game span', function() {
 	  url: "bgg_search_form.php"
 	})
   .done(function( msg ) {
-  	console.log('click');
 		$(".detail").html(msg);
   });
 });

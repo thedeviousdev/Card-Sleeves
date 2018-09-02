@@ -601,6 +601,7 @@ input:-moz-placeholder {
 .edit .image img {
     width: auto;
     height: 50px;
+    max-width: 50px;
 }
 .edit .row div {
     display: table-cell;
