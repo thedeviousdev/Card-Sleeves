@@ -70,7 +70,7 @@ function game_exists($id) {
 
 function add_game($bgg, $name, $year, $image) {
 	$url = 'https://boardgamegeek.com/boardgame/' . $bgg;
-	$image_path = download_image($name, $image);
+	$image_path = download_image($name, $image, $year);
 
 	if($image_path != false) {
 		try {
@@ -91,12 +91,12 @@ function add_game($bgg, $name, $year, $image) {
 	}
 }
 
-function download_image($name, $image_url){
+function download_image($name, $image_url, $year){
 
 	$extension = pathinfo($image_url, PATHINFO_EXTENSION);
 	$clean_name = strtolower(preg_replace("/[^a-zA-Z0-9]+/", "", $name));
 
-	$path = $clean_name . "." . $extension;
+	$path = $clean_name . $year . "." . $extension;
 
 	if (!file_exists($path)) {
 		$download = file_get_contents($image_url);

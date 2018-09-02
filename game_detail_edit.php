@@ -40,18 +40,18 @@ function game_detail($game){
 		  foreach($cards as $card) {
 	  	?>
 			<div class="row">
-				<div class="table-cell"><input type="number" name="quantity[]" value="<?php echo $card->get_nb_cards(); ?>" step=".25"></div>
-				<div class="table-cell"><input type="number" name="width[]" value="<?php echo $card->get_width(); ?>" step=".25"></div>
-				<div class="table-cell"><input type="number" name="height[]" value="<?php echo $card->get_height(); ?>" step=".25"></div>
+				<div class="table-cell"><input type="number" name="quantity[]" value="<?php echo $card->get_nb_cards(); ?>" step="1"></div>
+				<div class="table-cell"><input type="number" name="width[]" value="<?php echo $card->get_width(); ?>" step=".05"></div>
+				<div class="table-cell"><input type="number" name="height[]" value="<?php echo $card->get_height(); ?>" step=".05"></div>
 				<div class="table-cell"><span class="remove" data-card_id="<?php echo $card->get_id(); ?>">-</span></div>
 			</div>
 	  	<?php
 		  }
 		  ?>
 			<div class="row">
-				<div class="table-cell"><input type="number" name="quantity[]" value="0" step=".25"></div>
-				<div class="table-cell"><input type="number" name="width[]" value="0" step=".25"></div>
-				<div class="table-cell"><input type="number" name="height[]" value="0" step=".25"></div>
+				<div class="table-cell"><input type="number" name="quantity[]" value="0" step="1"></div>
+				<div class="table-cell"><input type="number" name="width[]" value="0" step=".05"></div>
+				<div class="table-cell"><input type="number" name="height[]" value="0" step=".05"></div>
 				<div class="table-cell"><span class="add">+</span></div>
 			</div>
 		</div>

@@ -40,7 +40,7 @@ function game_search($g, $page){
 			  	<img src="img/<?php echo $row['Image']; ?>" />
 		  	</div>
 		  	<div class="wrapper_text">
-			  	<h2><?php echo $row['Name']; ?></h2>
+			  	<h2><?php if($row['Verified']) { echo '<i class="fas fa-check-square"></i>'; }; echo $row['Name']; ?></h2>
 
 			  	<p><a href="<?php echo $row['URL']; ?>">BoardGameGeek</a></p>
 			  	<span data-game_id="<?php echo $row['Id']; ?>" class="btn_add"><i class="fas fa-plus-circle"></i></span>

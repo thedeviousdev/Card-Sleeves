@@ -94,7 +94,7 @@ function get_total_sleeves() {
 		foreach($sleeve_arr as $key => $sleeve) {
 			?>
 		  	<li>
-			  	<div class="cards_size"><p>- <?php echo $key; ?> Sleeves</p></div>
+			  	<div class="cards_size"><p><?php echo $key; ?> Sleeves</p></div>
 			  	<div class="cards_number"><p><strong><?php echo $sleeve; ?></strong></p></div>
 		  	</li>
 		  <?php

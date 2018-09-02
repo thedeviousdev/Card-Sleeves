@@ -206,7 +206,7 @@ $(document).on('click', '#delete', function() {
 });
 
 $(document).on('click', '.add', function() {
-	var game = '<div class="row"><div class="table-cell"><input type="number" name="quantity[]" value="0" step="1"></div><div class="table-cell"><input type="number" name="width[]" value="0" step=".1"></div><div class="table-cell"><input type="number" name="height[]" value="0" step=".1"></div><div class="table-cell"><span class="add">+</span></div></div>';
+	var game = '<div class="row"><div class="table-cell"><input type="number" name="quantity[]" value="0" step="1"></div><div class="table-cell"><input type="number" name="width[]" value="0" step=".05"></div><div class="table-cell"><input type="number" name="height[]" value="0" step=".05"></div><div class="table-cell"><span class="add">+</span></div></div>';
 	$(".table").append(game);
 	$(this).removeClass('add').addClass('remove');
 	$(this).html('-');

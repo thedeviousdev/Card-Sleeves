@@ -419,12 +419,13 @@ li div {
 .cards_size {
     display: inline-block;
 
-    width: 60%;
+    width: 80%;
 }
 .cards_number {
     display: inline-block;
 
-    width: 40%;
+    width: 20%;
+    min-width: 50px;
 }
 h2 {
     font-size: 14px;
@@ -432,6 +433,9 @@ h2 {
     font-weight: bold;
 
     margin: 15px 0 5px;
+}
+h2 .fa-check-square {
+    margin-right: 5px;
 }
 sub {
     font-size: 12px;

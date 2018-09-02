@@ -17,7 +17,6 @@ function cart_item($game){
 		<div class="wrapper_detail">
 			<div>
 				<h2><a href="<?php echo $game->get_URL(); ?>"target="_blank"><?php echo $game->get_name(); ?> </a></h2>
-		  	<sub>Details</sub>
 		  </div>
 	  </div>
 	  <div class="wrapper_cards">
@@ -27,7 +26,7 @@ function cart_item($game){
 		  foreach($cards as $card) {
 	  	?>
 	  	<li>
-		  	<div class="cards_size"><p>- <?php echo $card->get_width(); ?><sub>mm</sub> x <?php echo $card->get_height(); ?><sub>mm</sub></p></div>
+		  	<div class="cards_size"><p><?php echo $card->get_width(); ?><sub>mm</sub> x <?php echo $card->get_height(); ?><sub>mm</sub></p></div>
 		  	<div class="cards_number"><p><?php echo $card->get_nb_cards(); ?></p></div>
 		  </li>
 	  	<?php
