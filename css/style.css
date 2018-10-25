@@ -258,6 +258,7 @@ aside {
 
     border-left: 3px solid #392d44;
     background-color: #bfd4d8;
+    transition: .4s all;
 }
 .total sub {
     padding-left: 15px;
@@ -345,6 +346,10 @@ aside {
 
     align-items: center;
     justify-content: center;
+}
+.btn_add.rotate {
+    transform: rotate(45deg);
+    color: #c1c1c1;
 }
 .btn_add:hover {
     color: #5b7e84;
@@ -604,8 +609,19 @@ input:-moz-placeholder {
 }
 .edit .image img {
     width: auto;
-    height: 50px;
+    max-height: 50px;
     max-width: 50px;
+}
+.controls {
+    /*border-bottom: 1px dashed #392d44;*/
+    padding: 10px 0;
+    background-color: rgba(91, 126, 132, .25);
+}
+#verify, #delete {
+    font-size: 14px;
+    margin: 5px 0;
+    display: inline-block;
+    padding: 10px 15px;    
 }
 .edit .row div {
     display: table-cell;
@@ -711,10 +727,11 @@ input:-moz-placeholder {
 
     margin-bottom: 15px;
     padding: 10px;
-
-    border-bottom: 1px dashed #392d44;
+    /*border-bottom: 1px dashed #392d44;*/
 }
-
+aside h3 {
+    position: relative;
+}
 .popup {
     position: absolute;
     top: 0;
@@ -778,7 +795,10 @@ input:-moz-placeholder {
 .navigation span:hover {
     background-color: rgba(91, 126, 132, 1);
 }
-
+aside h3 span {
+    display: none;
+    transition: .4s all;
+}
 
 @media (max-width: 1100px) {
     .index aside {
@@ -792,24 +812,38 @@ input:-moz-placeholder {
         border-top: 3px solid #392d44;
         overflow-y: hidden;
     }
+    aside h3 {
+        cursor: pointer;
+    }
+    aside h3 span {
+        display: block;
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+    }
+    .open {
+        height: 100% !important;
+        z-index: 1;
+    }
+    .open h3 span {
+        transform: rotate(180deg);
+    }
     header {
         width: 100%;
     }
     .search {
         width: 100%;
-        top: 131px;
+        top: 81px;
         height: calc(100% - 185px);
-    }
-    .index aside h3::after {
-        content: "^";
-        position: absolute;
-        right: 10px;
     }
     .contribute {
         height: 95%;
     }
 }
 @media (max-width: 780px) {
+    .search {
+        top: 131px;
+    }
     .index .search_result > div {
         flex-grow: 1; 
     }

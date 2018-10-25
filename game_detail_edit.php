@@ -18,7 +18,7 @@ function game_detail($game){
 		<input type="hidden" value="<?php echo $game->get_id(); ?>" name="game_id">
 		<h2><?php echo $game->get_name(); ?></h2>
 		<h3><?php if($game->get_year() !== '') { echo $game->get_year(); } else { echo '--';}?></h3>
-		<div>
+		<div class="controls">
 			<?php if($game->get_verified()) {
 				echo '<span class="submit" id="verify" data-id="' . $game->get_id() . '" data-value="0">Unverify</span>';
 			}

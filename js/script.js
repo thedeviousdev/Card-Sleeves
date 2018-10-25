@@ -104,6 +104,10 @@ $(document).on('click', 'footer span', function() {
   });
 });
 
+$(document).on('click', 'aside h3', function() {
+	console.log('click');
+	$('aside').toggleClass('open');
+});
 // $(document).on('click', '#previous', function() {
 // 	var page = $(this).data('page');
 // 	var game_name = $('.search_result').data('game_name');
@@ -245,15 +249,27 @@ $(document).on('click', '.remove', function() {
 
 $(document).on('click', '.btn_add', function() {
 
-		var game_id = $(this).data( "game_id" );
+	var game_id = $(this).data( "game_id" );
 
+	if($(this).hasClass('rotate')) { 
+	 	$.ajax({
+		  method: "GET",
+		  url: "game_session.php",
+		  data: { 'remove_game' : game_id}
+		})
+	  .done(function( msg ) {
+	  	$(".current_games ." + game_id).remove();
+	  	update_total();
+	  });
+
+	}
+	else {
 	 	$.ajax({
 		  method: "GET",
 		  url: "game_session.php",
 		  data: { 'add_game' : game_id}
 		})
 	  .done(function( msg ) {
-	  	console.log(msg);
 	  	if(msg == 'Game added') {
 			 	$.ajax({
 				  method: "GET",
@@ -261,12 +277,13 @@ $(document).on('click', '.btn_add', function() {
 				  data: { 'game' : game_id}
 				})
 			  .done(function( msg ) {
-			  	console.log(msg);
 			  	$(".current_games").append(msg);
 			  	update_total();
-		  });
-		}
-  });
+			  });
+			}
+	  });
+	}
+	$(this).toggleClass('rotate');
 });
 
 $(document).on('click', '.add_game span', function() {

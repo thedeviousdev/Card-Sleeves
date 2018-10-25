@@ -20,7 +20,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	</div>
 
 	<aside>
-		<h3>Games list:</h3>
+		<h3>Games list: <span><i class="fas fa-arrow-circle-up"></i></span></h3>
 		<div class="current_games">
 			<?php if(isset($_SESSION['add_games'])){
 				$games_arr = $_SESSION['add_games'];

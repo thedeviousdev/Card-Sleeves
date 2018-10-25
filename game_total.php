@@ -88,21 +88,21 @@ function get_total_sleeves() {
 		}
 		?>
 
-		  <div class="wrapper_cards">
-		  	<ul>
-		  		<?php
-		foreach($sleeve_arr as $key => $sleeve) {
-			?>
+	  <div class="wrapper_cards">
+	  	<ul>
+	  		<?php
+				foreach($sleeve_arr as $key => $sleeve) {
+				?>
 		  	<li>
 			  	<div class="cards_size"><p><?php echo $key; ?> Sleeves</p></div>
 			  	<div class="cards_number"><p><strong><?php echo $sleeve; ?></strong></p></div>
 		  	</li>
-		  <?php
-		}
-		?>
-				</ul>
-			</div>
-			<?php
+			  <?php
+				}
+				?>
+			</ul>
+		</div>
+		<?php
 	}
 }
 ?>
