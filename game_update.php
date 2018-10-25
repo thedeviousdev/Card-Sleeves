@@ -1,12 +1,12 @@
 <?php 
 // Update a card's details or add a new card
 
-if(isset($_GET['game_id'])) {
+if(isset($_POST['game_id'])) {
   
-  $game_ID = $_GET['game_id'];
-  $quantity = $_GET['quantity'];
-  $width = $_GET['width'];
-  $height = $_GET['height'];
+  $game_ID = $_POST['game_id'];
+  $quantity = $_POST['quantity'];
+  $width = $_POST['width'];
+  $height = $_POST['height'];
   $card_array = count($quantity); 
   for($i=0; $i<$card_array; $i++) {
     if($quantity[$i] != '0' && $width[$i] != '0' && $height[$i] != '0')

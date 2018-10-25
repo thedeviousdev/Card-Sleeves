@@ -2,9 +2,9 @@
 // Deletes a Card row from the Card DB
 // Used on Game editing pages
 
-if(isset($_GET['card_id'])) {
+if(isset($_POST['card_id'])) {
 
-  $card_id = $_GET['card_id'];
+  $card_id = $_POST['card_id'];
   card_delete($card_id);
 }
 

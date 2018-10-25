@@ -3,10 +3,10 @@ include_once('game_session.php');
 // Query DB for game names from search input
 // Display game details for the Home page
 
-if(isset($_GET['game'])) {
-	$game_name = $_GET['game'];
-	if(isset($_GET['page'])) {
-		$page = $_GET['page'];
+if(isset($_POST['game'])) {
+	$game_name = $_POST['game'];
+	if(isset($_POST['page'])) {
+		$page = $_POST['page'];
 	}
 	else 
 		$page = 1;

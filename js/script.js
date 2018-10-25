@@ -1,6 +1,6 @@
 function update_total() {
  	$.ajax({
-	  method: "GET",
+	  method: "POST",
 	  url: "game_total.php",
 	  data: { 'total' : true}
 	})
@@ -44,7 +44,7 @@ $(document).ready(function() {
     }
 
 	 	$.ajax({
-		  method: "GET",
+		  method: "POST",
 		  url: "game_search.php",
 		  data: data
 		})
@@ -58,7 +58,7 @@ $(document).ready(function() {
     var data = $(this).serialize();
 
 	 	$.ajax({
-		  method: "GET",
+		  method: "POST",
 		  url: "game_search_edit.php",
 		  data: data
 		})
@@ -72,7 +72,7 @@ $(document).ready(function() {
  //    var data = $(this).serialize();
 
 	//  	$.ajax({
-	// 	  method: "GET",
+	// 	  method: "POST",
 	// 	  url: "game_update.php",
 	// 	  data: data
 	// 	})
@@ -95,7 +95,7 @@ $(document).on('click', 'footer span', function() {
   console.log(data);
   
  	$.ajax({
-	  method: "GET",
+	  method: "POST",
 	  url: "game_search.php",
 	  data: data
 	})
@@ -118,7 +118,7 @@ $(document).on('click', 'aside h3', function() {
 //   }
 
 //  	$.ajax({
-// 	  method: "GET",
+// 	  method: "POST",
 // 	  url: "game_search.php",
 // 	  data: data
 // 	})
@@ -132,7 +132,7 @@ $(document).on('submit', '.bgg_search_form', function( event ) {
   var data = $(this).serialize();
 
  	$.ajax({
-	  method: "GET",
+	  method: "POST",
 	  url: "bgg_search.php",
 	  data: data
 	})
@@ -148,14 +148,14 @@ $(document).on('submit', '.cart_item_form', function( event ) {
 	var game_id = $(this).find('input[name="game_id"]').val();
 
  	$.ajax({
-	  method: "GET",
+	  method: "POST",
 	  url: "game_update.php",
 	  data: data
 	})
   .done(function( msg ) {
 
 		$.ajax({
-		method: "GET",
+		method: "POST",
 		url: "game_detail_edit.php",
 		data: { 'game' : game_id}
 		})
@@ -178,7 +178,7 @@ $(document).on('click', '#verify', function() {
   }
 
  	$.ajax({
-	  method: "GET",
+	  method: "POST",
 	  url: "game_verify.php",
 	  data: data
 	})
@@ -198,7 +198,7 @@ $(document).on('click', '#delete', function() {
   }
 
  	$.ajax({
-	  method: "GET",
+	  method: "POST",
 	  url: "game_delete.php",
 	  data: data
 	})
@@ -232,7 +232,7 @@ $(document).on('click', '.remove', function() {
 	else {
 		console.log('else');
 		$.ajax({
-			method: "GET",
+			method: "POST",
 			url: "card_delete.php",
 			data: { 'card_id' : card_id}
 		})
@@ -253,7 +253,7 @@ $(document).on('click', '.btn_add', function() {
 
 	if($(this).hasClass('rotate')) { 
 	 	$.ajax({
-		  method: "GET",
+		  method: "POST",
 		  url: "game_session.php",
 		  data: { 'remove_game' : game_id}
 		})
@@ -265,14 +265,14 @@ $(document).on('click', '.btn_add', function() {
 	}
 	else {
 	 	$.ajax({
-		  method: "GET",
+		  method: "POST",
 		  url: "game_session.php",
 		  data: { 'add_game' : game_id}
 		})
 	  .done(function( msg ) {
 	  	if(msg == 'Game added') {
 			 	$.ajax({
-				  method: "GET",
+				  method: "POST",
 				  url: "cart_item.php",
 				  data: { 'game' : game_id}
 				})
@@ -289,7 +289,7 @@ $(document).on('click', '.btn_add', function() {
 $(document).on('click', '.add_game span', function() {
 
  	$.ajax({
-	  method: "GET",
+	  method: "POST",
 	  url: "bgg_search_form.php"
 	})
   .done(function( msg ) {
@@ -301,7 +301,7 @@ $(document).on('click', '.view', function() {
 		var game_id = $(this).data( "game_id" );
 
 		$.ajax({
-		method: "GET",
+		method: "POST",
 		url: "game_detail_edit.php",
 		data: { 'game' : game_id}
 		})
@@ -316,7 +316,7 @@ $(document).on('click', '.btn_remove', function() {
 		var game_id = $(this).data( "game_id" );
 
 	 	$.ajax({
-		  method: "GET",
+		  method: "POST",
 		  url: "game_session.php",
 		  data: { 'remove_game' : game_id}
 		})

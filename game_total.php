@@ -10,7 +10,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if(isset($_GET['total'])) {
+if(isset($_POST['total'])) {
 	get_total_sleeves();
 }
 

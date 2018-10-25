@@ -2,8 +2,8 @@
 // Query DB for game names from search input
 // Display game details for the Edit page
 
-if(isset($_GET['game'])) {
-	$game_name = $_GET['game'];
+if(isset($_POST['game'])) {
+	$game_name = $_POST['game'];
 	game_search($game_name);
 }
 

@@ -8,8 +8,8 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if(isset($_GET['add_game'])) {
-	add_game_to_session($_GET['add_game']);
+if(isset($_POST['add_game'])) {
+	add_game_to_session($_POST['add_game']);
 }
 
 // Check if game exists in the array
@@ -41,8 +41,8 @@ function add_game_to_session($game_ID) {
 	}
 }
 
-if(isset($_GET['remove_game'])) {
-	remove_game_from_session($_GET['remove_game']);
+if(isset($_POST['remove_game'])) {
+	remove_game_from_session($_POST['remove_game']);
 }
 
 function remove_game_from_session($game_ID) {

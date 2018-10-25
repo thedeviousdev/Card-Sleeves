@@ -7,9 +7,9 @@ include_once('game_search_edit.php');
 include_once('update_game_list.php');
 include_once('game_detail_edit.php');
 
-if(isset($_GET['url'])) {
+if(isset($_POST['url'])) {
 	
-	$url = $_GET['url'];
+	$url = $_POST['url'];
 	$parse = parse_url($url);
 	if($parse['host'] == 'boardgamegeek.com') {
 		$parts = explode('/', $parse['path']);

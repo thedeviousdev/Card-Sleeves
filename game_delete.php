@@ -1,9 +1,9 @@
 <?php 
 // Delete a game
 
-if(isset($_GET['id'])) {
+if(isset($_POST['id'])) {
   
-  $game_ID = $_GET['id'];
+  $game_ID = $_POST['id'];
 
   game_delete($game_ID);
 }

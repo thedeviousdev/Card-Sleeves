@@ -3,9 +3,9 @@
 include_once('game.php');
 include_once('card.php');
 include_once('new_game_object.php');
-if(isset($_GET['game'])) {
+if(isset($_POST['game'])) {
 	
-	$game_ID = $_GET['game'];
+	$game_ID = $_POST['game'];
 	cart_item(new_game_object($game_ID));
 
 }

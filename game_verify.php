@@ -3,10 +3,10 @@
 include_once('game_detail_edit.php');
 include_once('new_game_object.php');
 
-if(isset($_GET['verify'])) {
+if(isset($_POST['verify'])) {
   
-  $game_ID = $_GET['id'];
-  $verify = $_GET['verify'];
+  $game_ID = $_POST['id'];
+  $verify = $_POST['verify'];
 
   update_verify($game_ID, $verify);
 }
