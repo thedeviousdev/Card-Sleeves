@@ -7,7 +7,7 @@ include_once("cart_item.php");
 include_once("game_total.php");
 
 if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 
 ?>

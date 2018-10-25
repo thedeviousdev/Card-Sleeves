@@ -44,7 +44,7 @@ function game_search($g, $page){
 			  	<h2><?php if($row['Verified']) { echo '<i class="fas fa-check-square"></i>'; }; echo $row['Name']; ?></h2>
 
 			  	<p><a href="<?php echo $row['URL']; ?>">BoardGameGeek</a></p>
-			  	<span data-game_id="<?php echo $row['Id']; ?>" class="btn_add<?php if(is_game_in_array($_SESSION['add_games'], $row['Id'])) { echo ' rotate'; } ?>"><i class="fas fa-plus-circle"></i></span>
+			  	<span data-game_id="<?php echo $row['Id']; ?>" class="btn_add<?php if(isset($_SESSION['add_games']) && is_game_in_array($_SESSION['add_games'], $row['Id'])) { echo ' rotate'; } ?>"><i class="fas fa-plus-circle"></i></span>
 		  	</div>
 	  	</div>
 
