@@ -50,4 +50,4 @@ _Add as many sleeve sizes as necessary_
 
 ### **Thanks!**
 
-Special thanks to the sleeving community! I have imported all the sleeves from the [Mayday Sleeves list](https://www.maydaygames.com/pages/sleeves-by-game) and am working through [Adam Kranzel's list on Board Game Geek](https://boardgamegeek.com/geeklist/164572/card-sleeve-sizes-games).
+Special thanks to the sleeving community! I have imported all the sleeves from the [Mayday Sleeves list](https://www.maydaygames.com/pages/sleeves-by-game) and am working through [Adam Kranzel's list on Board Game Geek](https://boardgamegeek.com/geeklist/164572/card-sleeve-sizes-games). I also use the [Board Game Geek's API](https://boardgamegeek.com/wiki/page/BGG_XML_API2) to pull in the data for new games. 
