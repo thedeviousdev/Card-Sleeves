@@ -47,6 +47,7 @@ _Add as many sleeve sizes as necessary_
 - Style the "cart" a little better
 - Add a 'purchase' button that sends the user to Amazon
 - Allow users to change the sleeve brand
+- Create an API endpoint for peopel to export this data. 
 
 ### **Thanks!**
 
