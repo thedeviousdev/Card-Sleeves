@@ -54,7 +54,7 @@ function bgg_search($id){
 
 function game_exists($id) {
 	try {
-		$db = new PDO('sqlite:data/game-list_test.sqlite');
+		$db = new PDO('sqlite:data/games_db.sqlite');
 
 	  $result = $db->query("SELECT * FROM Game WHERE BGGID ='" . $id ."'");
 	  if($result->fetchColumn() > 0)
@@ -74,7 +74,7 @@ function add_game($bgg, $name, $year, $image) {
 
 	if($image_path != false) {
 		try {
-			$db = new PDO('sqlite:data/game-list_test.sqlite');
+			$db = new PDO('sqlite:data/games_db.sqlite');
 			$db->exec('INSERT INTO Game (Name, Year, URL, Image, BGGID, Verified) VALUES ("' . $name . '", "' . $year . '", "' . $url . '", "' . $image_path . '", "' . $bgg . '", 0);');
 
 		  $game_id = $db->lastInsertId();

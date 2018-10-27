@@ -18,7 +18,7 @@ function game_search($g, $page){
 	$g = trim($g);
 
 	try {
-		$db = new PDO('sqlite:data/game-list_test.sqlite');
+		$db = new PDO('sqlite:data/games_db.sqlite');
 
 	  $count = $db->query("SELECT COUNT(*) FROM Game WHERE Name LIKE '%" . $g . "%'")->fetchColumn();
 	  $limit = $page*50;

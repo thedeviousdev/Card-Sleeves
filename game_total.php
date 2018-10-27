@@ -16,7 +16,7 @@ if(isset($_POST['total'])) {
 
 function set_sleeve($company_ID) {
 
-	$db = new PDO('sqlite:data/game-list_test.sqlite');
+	$db = new PDO('sqlite:data/games_db.sqlite');
   $result = $db->query("SELECT * FROM Sleeve WHERE CompanyID = '" . $company_ID . "'");
 
   $sleeve_arr = array();
@@ -79,11 +79,13 @@ function get_total_sleeves() {
 				$sleeve_number = $card->get_nb_cards();
 
 				if (array_key_exists($sleeve_name, $sleeve_arr)) {
-					$sleeve_arr[$sleeve_name] += $sleeve_number;
+					$sleeve_arr[$sleeve_name]['quantity'] += $sleeve_number;
 				}
 				else {
-					$sleeve_arr[$sleeve_name] = $sleeve_number;
+					$sleeve_arr[$sleeve_name]['quantity'] = $sleeve_number;
 				}
+				$sleeve_arr[$sleeve_name]['width'] = $card->get_width();
+				$sleeve_arr[$sleeve_name]['height'] = $card->get_height();
 			}
 		}
 		?>
@@ -91,11 +93,11 @@ function get_total_sleeves() {
 	  <div class="wrapper_cards">
 	  	<ul>
 	  		<?php
-				foreach($sleeve_arr as $key => $sleeve) {
+				foreach($sleeve_arr as $sleeve_name => $sleeve) {
 				?>
 		  	<li>
-			  	<div class="cards_size"><p><?php echo $key; ?> Sleeves</p></div>
-			  	<div class="cards_number"><p><strong><?php echo $sleeve; ?></strong></p></div>
+			  	<div class="cards_size"><p><?php echo $sleeve_name; ?> Sleeves <span><?php echo $sleeve['width'] . 'mm x ' . $sleeve['height'] . 'mm';?></span></p></div>
+			  	<div class="cards_number"><p><strong><?php echo $sleeve['quantity']; ?></strong></p></div>
 		  	</li>
 			  <?php
 				}

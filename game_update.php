@@ -17,7 +17,7 @@ if(isset($_POST['game_id'])) {
 function card_update($g, $quantity, $width, $height){
 
   try {
-    $db = new PDO('sqlite:data/game-list_test.sqlite');
+    $db = new PDO('sqlite:data/games_db.sqlite');
     // Check for results first
     $check = $db->query("SELECT * FROM GameCards WHERE GameID ='" . $g ."' AND Width ='" . $width . "' AND Height ='" . $height . "';");
 

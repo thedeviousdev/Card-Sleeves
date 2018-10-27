@@ -11,7 +11,7 @@ if(isset($_POST['id'])) {
 function game_delete($id){
 
   try {
-    $db = new PDO('sqlite:data/game-list_test.sqlite');
+    $db = new PDO('sqlite:data/games_db.sqlite');
     $db->exec("DELETE FROM Game WHERE Id = '" . $id . "';");
 
     echo '<div class="popup"><div class="flex"><div>Game removed!</div></div></div>';

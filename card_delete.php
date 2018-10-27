@@ -11,7 +11,7 @@ if(isset($_POST['card_id'])) {
 function card_delete($id){
 
   try {
-    $db = new PDO('sqlite:data/game-list_test.sqlite');
+    $db = new PDO('sqlite:data/games_db.sqlite');
     $db->exec("DELETE FROM GameCards WHERE Id = '" . $id . "';");
   }
   catch(PDOException $e)  {

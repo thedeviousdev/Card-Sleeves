@@ -426,6 +426,11 @@ li div {
 
     width: 80%;
 }
+.cards_size span {
+    margin-left: 10px;
+    font-size: 12px;
+    font-style: italic;
+}
 .cards_number {
     display: inline-block;
 

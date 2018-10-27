@@ -14,7 +14,7 @@ if(isset($_POST['verify'])) {
 function update_verify($id, $verify){
 
   try {
-    $db = new PDO('sqlite:data/game-list_test.sqlite');
+    $db = new PDO('sqlite:data/games_db.sqlite');
     $db->exec("UPDATE Game SET Verified = '" . $verify  . "' WHERE Id = '" . $id . "';");
 
     return game_detail(new_game_object($id));

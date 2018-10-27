@@ -2,11 +2,11 @@
 // Populates Game & Card DB for the first time from CSV file
 // Populates Sleeve sizes
 // TODO: Add more company alternatives
-$file = 'data/game-list_test.sqlite';
+$file = 'data/games_db.sqlite';
 if (!file_exists($file)) {
 
 	try {
-	  $db = new PDO('sqlite:data/game-list_test.sqlite');
+	  $db = new PDO('sqlite:data/games_db.sqlite');
 	  $db->exec("CREATE TABLE Game (Id INTEGER PRIMARY KEY, Name TEXT, Language TEXT, Year INTEGER, Edition TEXT, URL TEXT, Image TEXT, BGGID INTEGER, Verified INTEGER DEFAULT 0)");
 
 	  $db->exec("CREATE TABLE GameCards (Id INTEGER PRIMARY KEY, GameID INTEGER, CardNumber TEXT, Width INTEGER, Height INTEGER);");
@@ -57,7 +57,7 @@ if (!file_exists($file)) {
 	}
 
 	try {
-	  $db = new PDO('sqlite:data/game-list_test.sqlite');
+	  $db = new PDO('sqlite:data/games_db.sqlite');
 	  $db->exec("CREATE TABLE SleeveCompany (Id INTEGER PRIMARY KEY, Name TEXT)");
 	  $db->exec("INSERT INTO SleeveCompany (Name) VALUES ('Mayday Games');");
 	  $pk_sleeve_id = $db->lastInsertId();

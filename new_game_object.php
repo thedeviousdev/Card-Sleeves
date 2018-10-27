@@ -7,7 +7,7 @@ include_once('card.php');
 function new_game_object($g){
 
 	try {
-		$db = new PDO('sqlite:data/game-list_test.sqlite');
+		$db = new PDO('sqlite:data/games_db.sqlite');
 
 	  $result = $db->query("SELECT * FROM Game WHERE Id = '" . $g . "'");
 

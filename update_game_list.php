@@ -3,7 +3,7 @@
 
 function update_json() {
   try {
-    $db = new PDO('sqlite:data/game-list_test.sqlite');
+    $db = new PDO('sqlite:data/games_db.sqlite');
     $result = $db->query("SELECT * FROM Game");
 
   	$game_arr = array();
