@@ -54,11 +54,14 @@ _Add as many sleeve sizes as necessary_
 - Allow multiple of the same game to be added
 - Analytics to see what are the most commonly searched games
 - Style the "cart" a little better
-- Add a 'purchase' button that sends the user to Amazon (or other affiliates)
+- Add a "purchase" button that sends the user to Amazon (or other affiliates)
 - Allow users to change the sleeve brand
 - Create an API endpoint for people to export this data
 - Show images/videos of sleeved cards
 - Reverse search (I have "x" games, which sleeves will fit them)
+- Add sleeve colors to the names in the cart total
+- Show edition/versions
+- Empty cart/clear all button
 
 ### **Thanks!**
 
