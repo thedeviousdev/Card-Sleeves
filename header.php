@@ -10,14 +10,21 @@
 
       gtag('config', 'UA-84986821-2');
     </script>
+    
+    <meta property="og:title" content="Sleeved.io">
+    <meta property="og:image" content="https://sleeved.io/preview.jpg">
+    <meta property="og:description" content="Automagically calculates all of the sleeves you need for your board & card games.">
+    <meta property="og:url" content="https://sleeved.io/">
+
     <meta charset="UTF-8">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <title>Sleeved.io - How many sleeves do YOU need?</title>
 
     <meta content="Samara Dionne" name="name">
-    <meta content="Automagically calculate all of the sleeves you need for your board & card games." name="description">
+    <meta content="Automagically calculates all of the sleeves you need for your board & card games." name="description">
     <meta content="sleeves, board games, games, sleeve, card, card game," name="keywords">
     <link href="img/fav.ico" rel="shortcut icon" type="img/fav.ico">
+
 
     <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Montserrat:400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/EasyAutocomplete-1.3.5/easy-autocomplete.min.css">
