@@ -18,24 +18,24 @@ A select few number of games have a checkmark (☑) next to their name. These ga
 
  If you'd like a game to be added, post a new issue in the [Issues forum](https://github.com/thedeviousdev/Card-Sleeves/issues) with a title of `[Request] Game Name`
  
- ### **Wrong information?**
+ ### **Wrong/New information?**
  
- Most of the games have information provided by the gaming community, but it's possible it is incorrect (sorry)! If you have the game in question, please help out and post a new issue in the [Issues forum](https://github.com/thedeviousdev/Card-Sleeves/issues). Follow the following format:
+ Most of the games have information provided by the gaming community, but it's possible it is incorrect or has not been added yet (sorry)! If you have the game in question, please help out and post a new issue in the [Issues forum](https://github.com/thedeviousdev/Card-Sleeves/issues). Follow the following format:
  
 Set the post title to `[Update] Game Name`
 ```
-**Game Name: ** 
-**Year: ** (if possible)
+**Game Name:** 
+**Year:** (if possible)
 
 **Sleeve Size #1**
-**Width (mm): **
-**Height (mm): **
-**Quantity: **
+**Width (mm):**
+**Height (mm):**
+**Quantity:**
 
-**Sleeve Size #2 **
-**Width (mm): **
-**Height (mm): **
-**Quantity: **
+**Sleeve Size #2**
+**Width (mm):**
+**Height (mm):**
+**Quantity:**
 ```
 _Add as many sleeve sizes as necessary_
 
