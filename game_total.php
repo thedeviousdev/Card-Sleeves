@@ -34,6 +34,7 @@ function get_sleeve_name($card) {
 
 	$sleeve_arr = set_sleeve('1');
 
+	$best_sleeve = NULL;
 	$best_sleeve_name = NULL;
 	$best_difference = -1;
 	$temp_difference = -1;
@@ -50,19 +51,19 @@ function get_sleeve_name($card) {
 		}
 
 		if($temp_difference == 0) {
-			$best_sleeve_name = $sleeve_name;
+			$best_sleeve = $sleeve;
 			$best_difference = $temp_difference;
 			break;
 
 		}
 		if($best_difference == -1 || $temp_difference < $best_difference) {
-			$best_sleeve_name = $sleeve_name;
+			$best_sleeve = $sleeve;
 			$best_difference = $temp_difference;
 		}
 
 	}
 
-	return $best_sleeve_name;	
+	return $best_sleeve;	
 }
 
 function get_total_sleeves() {
@@ -75,7 +76,8 @@ function get_total_sleeves() {
 			$card_arr = $game->get_cards();
 
 			foreach($card_arr as $key => $card) {
-				$sleeve_name = get_sleeve_name($card);
+				$sleeve = get_sleeve_name($card);
+				$sleeve_name = $sleeve->get_name();
 				$sleeve_number = $card->get_nb_cards();
 
 				if (array_key_exists($sleeve_name, $sleeve_arr)) {
@@ -84,8 +86,8 @@ function get_total_sleeves() {
 				else {
 					$sleeve_arr[$sleeve_name]['quantity'] = $sleeve_number;
 				}
-				$sleeve_arr[$sleeve_name]['width'] = $card->get_width();
-				$sleeve_arr[$sleeve_name]['height'] = $card->get_height();
+				$sleeve_arr[$sleeve_name]['width'] = $sleeve->get_width();
+				$sleeve_arr[$sleeve_name]['height'] = $sleeve->get_height();
 			}
 		}
 		?>
