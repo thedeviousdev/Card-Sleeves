@@ -36,14 +36,14 @@ Set the post title to `[Update] Game Name`
 **Yea/Edition:** (if possible)
 
 **Sleeve Size #1**
+**Quantity:**
 **Width (mm):**
 **Height (mm):**
-**Quantity:**
 
 **Sleeve Size #2**
+**Quantity:**
 **Width (mm):**
 **Height (mm):**
-**Quantity:**
 ```
 _Add as many sleeve sizes as necessary_
 
