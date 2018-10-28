@@ -1,4 +1,5 @@
 <?php
+include_once("login_session.php");
 // Update games.json game names, used for search bar
 
 function update_json() {

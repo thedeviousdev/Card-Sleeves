@@ -1,3 +1,6 @@
+<?php 
+include_once("login_session.php");
+?>
 <!-- Form to add a game from BGG -->
 <form action="" class="bgg_search_form">
 	<h3>Enter a Board Game Geek URL</h3>

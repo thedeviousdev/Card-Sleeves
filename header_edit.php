@@ -1,3 +1,7 @@
+<?php 
+include_once("login_session.php");
+?>
+
 <!DOCTYPE html>
 <html>
   <head>

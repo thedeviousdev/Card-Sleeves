@@ -1,4 +1,5 @@
 <?php 
+include_once("login_session.php");
 // Display card details for edit page
 include_once('game.php');
 include_once('card.php');

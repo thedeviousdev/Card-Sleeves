@@ -1,4 +1,5 @@
 <?php
+include_once("login_session.php");
 // To update games that were added before I saved the BGG ID
 
 try {

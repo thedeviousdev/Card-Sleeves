@@ -6,6 +6,7 @@ include_once('new_game_object.php');
 include_once('game_search_edit.php');
 include_once('update_game_list.php');
 include_once('game_detail_edit.php');
+include_once("login_session.php");
 
 if(isset($_POST['url'])) {
 	

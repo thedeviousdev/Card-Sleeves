@@ -1,4 +1,5 @@
 <?php
+include_once("login_session.php");
 // Populates Game & Card DB for the first time from CSV file
 // Populates Sleeve sizes
 // TODO: Add more company alternatives

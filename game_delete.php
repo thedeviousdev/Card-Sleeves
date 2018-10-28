@@ -1,4 +1,5 @@
 <?php 
+include_once("login_session.php");
 // Delete a game
 
 if(isset($_POST['id'])) {

@@ -1,4 +1,5 @@
 <?php 
+include_once("login_session.php");
 // Deletes a Card row from the Card DB
 // Used on Game editing pages
 

@@ -1,4 +1,5 @@
 <?php 
+include_once("login_session.php");
 // Query DB for game names from search input
 // Display game details for the Edit page
 
