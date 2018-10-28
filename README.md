@@ -50,6 +50,7 @@ _Add as many sleeve sizes as necessary_
 - Allow users to change the sleeve brand
 - Create an API endpoint for people to export this data
 - Show images/videos of sleeved cards
+- Reverse search (I have "x" games, which sleeves will fit them)
 
 ### **Thanks!**
 
