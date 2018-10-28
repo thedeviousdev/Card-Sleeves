@@ -42,12 +42,14 @@ _Add as many sleeve sizes as necessary_
 ### **Future Updates**
 - Eventually I'd like to allow a select community to update and add games themselves (Call out for contributors!)
 - Lock down the edit pages by login
+- Allow community to update, and only allow a select view to 'verify'
 - Allow multiple of the same game to be added
 - Analytics to see what are the most commonly searched games
 - Style the "cart" a little better
-- Add a 'purchase' button that sends the user to Amazon
+- Add a 'purchase' button that sends the user to Amazon (or other affiliates)
 - Allow users to change the sleeve brand
-- Create an API endpoint for peopel to export this data. 
+- Create an API endpoint for people to export this data
+- Show images/videos of sleeved cards
 
 ### **Thanks!**
 
