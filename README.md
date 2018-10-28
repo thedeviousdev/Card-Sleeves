@@ -1,4 +1,4 @@
-# Sleeved. io
+# Sleeved.io
 
 The purpose of this site is to help the all of the board game geeks out there sleeve their precious games! The suggested sleeves are only Mayday sleeves, however I have also listed the card size for manual calculations. 
 
@@ -6,9 +6,9 @@ The purpose of this site is to help the all of the board game geeks out there sl
 - Type in the name of a game into the search bar
 - Click the magnifying glass
 _Results should appear wit that game name (if they exist)_ 
-- Press the plus (+) icon to add the game to your "cart"
+- Press the plus (➕) icon to add the game to your "cart"
 - Add all the games you need sleeved
-- Cick the (x) icon to remove a game from the "cart"
+- Cick the (❌) icon to remove a game from the "cart"
 
 ### **Verified Games**
 
