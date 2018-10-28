@@ -16,7 +16,14 @@ A select few number of games have a checkmark (☑) next to their name. These ga
 
 ### **Game missing?**
 
- If you'd like a game to be added, post a new issue in the [Issues forum](https://github.com/thedeviousdev/Card-Sleeves/issues) with a title of `[Request] Game Name`
+ If you'd like a game to be added, post a new issue in the [Issues forum](https://github.com/thedeviousdev/Card-Sleeves/issues).
+ 
+Set the post title to `[Request] Game Name`
+ ```
+**Game Name:** 
+**Board Game Geek URL:** 
+**Year/Edition:** (if possible)
+```
  
  ### **Wrong/New information?**
  
@@ -25,7 +32,8 @@ A select few number of games have a checkmark (☑) next to their name. These ga
 Set the post title to `[Update] Game Name`
 ```
 **Game Name:** 
-**Year:** (if possible)
+**Board Game Geek URL:** 
+**Yea/Edition:** (if possible)
 
 **Sleeve Size #1**
 **Width (mm):**
