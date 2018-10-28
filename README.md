@@ -1,4 +1,4 @@
-# Sleeved. io
+# Sleeved.io
 
 The purpose of this site is to help the all of the board game geeks out there sleeve their precious games! The suggested sleeves are only Mayday sleeves, however I have also listed the card size for manual calculations. 
 
@@ -6,9 +6,9 @@ The purpose of this site is to help the all of the board game geeks out there sl
 - Type in the name of a game into the search bar
 - Click the magnifying glass
 _Results should appear wit that game name (if they exist)_ 
-- Press the plus (+) icon to add the game to your "cart"
+- Press the plus (➕) icon to add the game to your "cart"
 - Add all the games you need sleeved
-- Cick the (x) icon to remove a game from the "cart"
+- Cick the (❌) icon to remove a game from the "cart"
 
 ### **Verified Games**
 
@@ -42,12 +42,15 @@ _Add as many sleeve sizes as necessary_
 ### **Future Updates**
 - Eventually I'd like to allow a select community to update and add games themselves (Call out for contributors!)
 - Lock down the edit pages by login
+- Allow community to update, and only allow a select view to 'verify'
 - Allow multiple of the same game to be added
 - Analytics to see what are the most commonly searched games
 - Style the "cart" a little better
-- Add a 'purchase' button that sends the user to Amazon
+- Add a 'purchase' button that sends the user to Amazon (or other affiliates)
 - Allow users to change the sleeve brand
-- Create an API endpoint for peopel to export this data. 
+- Create an API endpoint for people to export this data
+- Show images/videos of sleeved cards
+- Reverse search (I have "x" games, which sleeves will fit them)
 
 ### **Thanks!**
 
