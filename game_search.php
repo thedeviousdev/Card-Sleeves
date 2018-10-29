@@ -51,6 +51,11 @@ function game_search($g, $page){
 
 		  <?php
 		  }
+		  if(!$count) {
+		  	?>
+		  	<div class="no_results">Game has not been added yet. <br /><a href="https://github.com/thedeviousdev/Card-Sleeves" target="_blank">Want to help by adding it? :)</a></div>
+			<?php
+		  }
 		  // Navigation
 		  if($count > 50) {
 		  	echo '<footer class="navigation">';

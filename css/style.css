@@ -245,6 +245,19 @@ header .form {
     width: 75%;
     padding: 15px;
 }
+.search_result > div.no_results {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 80%;
+    display: block;
+    flex: unset;
+    padding: 50px;
+    text-align: center;
+}
+.search_result > div.no_results a {
+    margin-top: 10px;
+    font-size: 16px;
+    display: block;
+}
 aside {
     /*padding: 15px;*/
     position: fixed;
