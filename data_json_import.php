@@ -20,28 +20,64 @@ if (file_exists($file)) {
 
 		  $count = $db->query("SELECT * FROM Game WHERE BGGID = '" . $bggid . "'")->fetchColumn();
 		  if($count == 0) {
+		  	echo 'New game';
 		    $db->exec("INSERT INTO Game (Name, Year, URL, Image, BGGID, Verified) VALUES ('" . $game['game_name'] . "', '0', '" . $game['game_url'] . "', '0', '" . $bggid . "', '0');");
-		    $pk_id = $db->lastInsertId();
+				$result = $db->query("SELECT * FROM Game WHERE BGGID = '" . $bggid . "'");
+			  foreach($result as $row) {
+			  	$id = $row['Id'];
 
-        foreach ($game['card_nb'] as $key => $sleeve) {
-        	if (strpos($sleeve, '@') !== false) {
-	        	$sleeve_data = explode("@", $sleeve);
+	        foreach ($game['card_nb'] as $key => $sleeve) {
+	        	if (strpos($sleeve, '@') !== false) {
+		        	$sleeve_data = explode("@", $sleeve);
 
-		        $card_number = trim($sleeve_data[0]);
-	        	$sleeve_size = explode("x", $sleeve_data[1]);
-		        $width = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[0]));
-		        $height = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[1]));
+			        $card_number = trim($sleeve_data[0]);
+		        	$sleeve_size = explode("x", $sleeve_data[1]);
+			        $width = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[0]));
+			        $height = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[1]));
 
-		    		$db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $pk_id . "', '" . $card_number . "', '" . $width . "', '" . $height . "');");
-		      }
-		      else {
-		      	$sleeve_size = explode("x", $game['sleeve_size'][$key]);
-		        $width = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[0]));
-		        $height = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[1]));
+			    		$db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $id . "', '" . $card_number . "', '" . $width . "', '" . $height . "');");
+			      }
+			      else {
+			      	$sleeve_size = explode("x", $game['sleeve_size'][$key]);
+			        $width = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[0]));
+			        $height = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[1]));
 
-		    		$db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $pk_id . "', '" . trim($sleeve) . "', '" . $width . "', '" . $height . "');");
-		      }
-			  }
+			    		$db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $id . "', '" . trim($sleeve) . "', '" . $width . "', '" . $height . "');");
+			      }
+				  }
+				}
+			}
+			else {
+		  	echo 'Update game';
+				$result = $db->query("SELECT * FROM Game WHERE BGGID = '" . $bggid . "'");
+			  foreach($result as $row) {
+			  	$id = $row['Id'];
+
+			  	if($row['Verified'] !== 1) {
+		    		$db->exec("DELETE FROM GameCards WHERE GameID = '" . $id . "';");
+
+		        foreach ($game['card_nb'] as $key => $sleeve) {
+		        	if (strpos($sleeve, '@') !== false) {
+			        	$sleeve_data = explode("@", $sleeve);
+
+				        $card_number = trim($sleeve_data[0]);
+			        	$sleeve_size = explode("x", $sleeve_data[1]);
+				        $width = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[0]));
+				        $height = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[1]));
+
+				    		$db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $id . "', '" . $card_number . "', '" . $width . "', '" . $height . "');");
+				      }
+				      else {
+				      	$sleeve_size = explode("x", $game['sleeve_size'][$key]);
+				        $width = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[0]));
+				        $height = trim(preg_replace("/[^0-9.]/", "", $sleeve_size[1]));
+
+				    		$db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $id . "', '" . trim($sleeve) . "', '" . $width . "', '" . $height . "');");
+				      }
+					  }
+
+				  }
+				}
 			}
 		}
 		echo '</pre>';
