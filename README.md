@@ -33,7 +33,7 @@ Set the post title to `[Update] Game Name`
 ```
 **Game Name:** 
 **Board Game Geek URL:** 
-**Yea/Edition:** (if possible)
+**Year/Edition:** (if possible)
 
 **Sleeve Size 1**
 **Quantity:**
@@ -64,7 +64,7 @@ _Add as many sleeve sizes as necessary_
 - Empty cart/clear all button
 - ~~Show 'no results' response when searching~~
 - Pop-up/lightbox to explain what the site is/how it works
-
+- Link to expansions from base game
 
 ### **Thanks!**
 
