@@ -35,12 +35,12 @@ Set the post title to `[Update] Game Name`
 **Board Game Geek URL:** 
 **Yea/Edition:** (if possible)
 
-**Sleeve Size #1**
+**Sleeve Size 1**
 **Quantity:**
 **Width (mm):**
 **Height (mm):**
 
-**Sleeve Size #2**
+**Sleeve Size 2**
 **Quantity:**
 **Width (mm):**
 **Height (mm):**
@@ -54,11 +54,17 @@ _Add as many sleeve sizes as necessary_
 - Allow multiple of the same game to be added
 - Analytics to see what are the most commonly searched games
 - Style the "cart" a little better
-- Add a 'purchase' button that sends the user to Amazon (or other affiliates)
+- Add a "purchase" button that sends the user to Amazon (or other affiliates)
 - Allow users to change the sleeve brand
 - Create an API endpoint for people to export this data
 - Show images/videos of sleeved cards
 - Reverse search (I have "x" games, which sleeves will fit them)
+- Add sleeve colors to the names in the cart total
+- Show edition/versions
+- Empty cart/clear all button
+- ~~Show 'no results' response when searching~~
+- Pop-up/lightbox to explain what the site is/how it works
+
 
 ### **Thanks!**
 
