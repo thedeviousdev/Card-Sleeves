@@ -1,4 +1,5 @@
 <?php
+include_once("login_session.php");
 
 $string = file_get_contents("data/bgg_list.json");
 $json = json_decode($string, true);

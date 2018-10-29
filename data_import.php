@@ -1,4 +1,5 @@
 <?php
+include_once("login_session.php");
 if (($handle = fopen("data/run_results.csv", "r")) !== FALSE) {
 	$game_arr = array();
 	echo '10';
