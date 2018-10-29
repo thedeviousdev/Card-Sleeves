@@ -16,6 +16,7 @@ if(isset($_POST['game'])) {
 
 function game_search($g, $page){
 	$g = trim($g);
+	$g = str_replace("'", "''", $g);
 
 	try {
 		$db = new PDO('sqlite:data/games_db.sqlite');
