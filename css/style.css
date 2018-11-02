@@ -246,17 +246,23 @@ header .form {
     padding: 15px;
 }
 .search_result > div.no_results {
-    background-color: rgba(255, 255, 255, 0.5);
-    width: 80%;
     display: block;
-    flex: unset;
+
+    width: 80%;
     padding: 50px;
+
     text-align: center;
+
+    background-color: rgba(255, 255, 255, .5);
+
+    flex: unset;
 }
 .search_result > div.no_results a {
-    margin-top: 10px;
     font-size: 16px;
+
     display: block;
+
+    margin-top: 10px;
 }
 aside {
     /*padding: 15px;*/
@@ -269,9 +275,10 @@ aside {
     width: 25%;
     height: 100vh;
 
+    transition: .4s all;
+
     border-left: 3px solid #392d44;
     background-color: #bfd4d8;
-    transition: .4s all;
 }
 .total sub {
     padding-left: 15px;
@@ -330,7 +337,8 @@ aside {
     align-items: flex-end;
     justify-content: center;
 }
-.edit_game {
+.edit_game,
+.import {
     display: inline-block;
 }
 .search_result img {
@@ -362,6 +370,7 @@ aside {
 }
 .btn_add.rotate {
     transform: rotate(45deg);
+
     color: #c1c1c1;
 }
 .btn_add:hover {
@@ -440,9 +449,10 @@ li div {
     width: 80%;
 }
 .cards_size span {
-    margin-left: 10px;
     font-size: 12px;
     font-style: italic;
+
+    margin-left: 10px;
 }
 .cards_number {
     display: inline-block;
@@ -494,7 +504,6 @@ header input {
 }
 header input:focus {
     /*width: 100%;*/
-
     outline-width: 2px;
     outline-style: solid;
     outline-color: #55abb9;
@@ -627,19 +636,23 @@ input:-moz-placeholder {
 }
 .edit .image img {
     width: auto;
-    max-height: 50px;
     max-width: 50px;
+    max-height: 50px;
 }
 .controls {
     /*border-bottom: 1px dashed #392d44;*/
     padding: 10px 0;
+
     background-color: rgba(91, 126, 132, .25);
 }
-#verify, #delete {
+#verify,
+#delete {
     font-size: 14px;
-    margin: 5px 0;
+
     display: inline-block;
-    padding: 10px 15px;    
+
+    margin: 5px 0;
+    padding: 10px 15px;
 }
 .edit .row div {
     display: table-cell;
@@ -662,7 +675,8 @@ input:-moz-placeholder {
     padding: 15px;
 }
 .detail input[type='text'],
-.detail input[type='number'] {
+.detail input[type='number'],
+.user_import input[type='text'] {
     font-size: 18px;
 
     display: block;
@@ -716,7 +730,7 @@ input:-moz-placeholder {
 
     text-align: center;
 }
-.detail .submit {
+.submit {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: bold;
@@ -734,7 +748,7 @@ input:-moz-placeholder {
     border: none;
     background-color: #392d44;
 }
-.detail .submit:hover {
+.submit:hover {
     background-color: #806f90;
 }
 .edit h2 {
@@ -749,6 +763,12 @@ input:-moz-placeholder {
 }
 aside h3 {
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+aside h3 .submit {
+    margin-top: 0;
 }
 .popup {
     position: absolute;
@@ -761,6 +781,22 @@ aside h3 {
     height: 100%;
 
     background-color: rgba(0, 0, 0, .3);
+}
+.popup.user_import {
+    position: fixed;
+    right: 0;
+    left: initial;
+
+    width: 25%;
+    height: 100vh;
+}
+.popup h3 {
+    line-height: initial;
+}
+.search .popup .flex div {
+    max-width: 500px;
+
+    text-align: center;
 }
 .flex {
     display: flex;
@@ -780,79 +816,115 @@ aside h3 {
 
     background-color: #fff;
 }
-.add_game span, .edit_game a {
+.user_import .flex div {
+    text-align: center;
+    padding: 25px;
+}
+.user_import .flex div h3 {
+    padding: 0 0 15px;
+    font-size: 20px;
+}
+.add_game span,
+.edit_game a,
+.import a {
     font-size: 18px;
+
+    display: inline-block;
+
     padding: 10px 15px;
+
     cursor: pointer;
     transition: .4s all;
-    display: inline-block;
+
     color: #fff;
     border: none;
     background-color: #80629c;
 }
-.edit_game a {
+.edit_game a,
+.import a {
     background-color: #ffc800;
 }
-.add_game span:hover, .edit_game a:hover {
+.add_game span:hover,
+.edit_game a:hover,
+.import a:hover {
     background: #364c50;
 }
 .navigation {
     width: 100%;
-    text-align: center;
     margin: 10px 0;
+
+    text-align: center;
 }
 .navigation span {
-    padding: 10px 15px;
-    background-color: rgba(91, 126, 132, 0.5);
     display: inline-block;
-    color: #fff;
+
+    margin: 0 10px;
+    padding: 10px 15px;
+
     cursor: pointer;
     transition: .2s all;
-    margin: 0 10px;
+
+    color: #fff;
+    background-color: rgba(91, 126, 132, .5);
 }
 .navigation span:hover {
     background-color: rgba(91, 126, 132, 1);
 }
-aside h3 span {
+aside h3 .reveal {
     display: none;
+
     transition: .4s all;
 }
-
+#clear {
+    padding: 5px 10px;
+    font-size: 14px;
+}
 @media (max-width: 1100px) {
     .index aside {
         top: auto;
-        bottom: 0;
         right: 0;
+        bottom: 0;
         left: 0;
+
+        overflow-y: hidden;
+
         width: 100%;
         height: 57px;
+
         border: 0;
         border-top: 3px solid #392d44;
-        overflow-y: hidden;
     }
     aside h3 {
-        cursor: pointer;
+        justify-content: unset;
     }
-    aside h3 span {
-        display: block;
+    aside h3 #clear {
+        margin-left: 20px;
+    }
+    aside h3 .reveal {
+        cursor: pointer;
         position: absolute;
         right: 15px;
         bottom: 15px;
+
+        display: block;
     }
     aside.open {
-        height: 100%;
         z-index: 1;
+
         overflow-y: auto;
+
+        height: 100%;
     }
-    aside.open h3 span {
+    aside.open h3 .reveal {
         transform: rotate(180deg);
     }
     header {
         width: 100%;
     }
     .search {
-        width: 100%;
         top: 81px;
+
+        width: 100%;
         height: calc(100% - 135px);
     }
     .contribute {
@@ -861,15 +933,18 @@ aside h3 span {
 }
 @media (max-width: 780px) {
     .index .search_result > div {
-        flex-grow: 1; 
+        flex-grow: 1;
     }
-    header .logo {      
+    header .logo {
         display: block;
+
         width: 100%;
+
         text-align: center;
     }
     header .form {
         width: 100%;
+
         text-align: center;
     }
     .form_search {
@@ -878,11 +953,13 @@ aside h3 span {
     .easy-autocomplete {
         width: calc(100% - 96px);
     }
-    .easy-autocomplete input, header input {
+    .easy-autocomplete input,
+    header input {
         width: 100%;
     }
     .search {
         top: 131px;
+
         height: calc(100% - 185px);
     }
 }

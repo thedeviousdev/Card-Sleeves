@@ -1,13 +1,23 @@
+function update_cart_contents() {
+ 	$.ajax({
+	  method: "POST",
+	  url: "cart_total.php",
+	  data: { 'total' : true }
+	})
+  .done(function( msg ) {
+  	$(".current_games").html(msg);
+  });
+}
+
 function update_total() {
  	$.ajax({
 	  method: "POST",
 	  url: "game_total.php",
-	  data: { 'total' : true}
+	  data: { 'total' : true }
 	})
   .done(function( msg ) {
   	$(".total_cards").html(msg);
   });
-
 }
 
 function decodeHtml(html) {
@@ -75,6 +85,22 @@ $(document).ready(function() {
 
 });
 
+$(document).on('click', '#clear', function() {
+
+ 	$.ajax({
+	  method: "POST",
+	  url: "cart_empty.php"
+	})
+  .done(function( msg ) {
+  	update_cart_contents();
+  	update_total();
+  });
+});
+$(document).on('click', '.import', function(e) {
+	e.preventDefault();
+	$('.popup').css('display', 'flex');
+});
+
 $(document).on('click', 'footer span', function() {
 	var page = $(this).data('page');
 	var game_name = $('.search_result').data('game_name');
@@ -95,7 +121,7 @@ $(document).on('click', 'footer span', function() {
   });
 });
 
-$(document).on('click', 'aside h3', function() {
+$(document).on('click', '.reveal', function() {
 	$('aside').toggleClass('open');
 });
 
@@ -185,7 +211,7 @@ $(document).on('click', '.add', function() {
 	$(this).attr('data-card_id','NULL');
 });
 
-$(document).on('click', '.popup', function() {
+$(document).on('click', '.detail .popup', function() {
 	$(this).fadeOut();
 });
 
@@ -284,5 +310,21 @@ $(document).on('click', '.btn_remove', function() {
 	  .done(function( msg ) {
 	  	$(".current_games ." + game_id).remove();
 	  	update_total();
+  });
+});
+
+$(document).on('submit', '.bgg_user_import', function( event ) {
+  event.preventDefault();
+  var data = $(this).serialize();
+
+ 	$.ajax({
+	  method: "POST",
+	  url: "bgg_user_owned_search.php",
+	  data: data
+	})
+  .done(function( msg ) {
+  	update_cart_contents();
+  	update_total();
+  	$('.user_import').fadeOut();
   });
 });

@@ -3,7 +3,7 @@
 
 include_once("game_session.php");
 include_once("header.php");
-include_once("cart_item.php");
+include_once("cart_total.php");
 include_once("game_total.php");
 
 if (session_status() == PHP_SESSION_NONE) {
@@ -20,15 +20,10 @@ if (session_status() == PHP_SESSION_NONE) {
 	</div>
 
 	<aside>
-		<h3>Games list: <span><i class="fas fa-arrow-circle-up"></i></span></h3>
+		<h3><span>Games list: </span><span class="reveal"><i class="fas fa-arrow-circle-up"></i></span><button id="clear" class="submit">Reset</button></h3>
 		<div class="current_games">
-			<?php if(isset($_SESSION['add_games'])){
-				$games_arr = $_SESSION['add_games'];
-
-				foreach($games_arr as $game) {
-					echo cart_item($game);
-				}
-			}
+			<?php
+			update_cart_contents();
 			?>
 		</div>
 		<div class="total">
@@ -41,6 +36,19 @@ if (session_status() == PHP_SESSION_NONE) {
 				?>
 			</div>
 		</div>
+		<div class="popup user_import">
+			<div class="flex">
+				<div>
+					<form action="" class="bgg_user_import">
+						<h3>Enter Board Game Geek username</h3>
+						<input type="text" name="username" value="errazib" placeholder="" id="username">
+						
+						<input type="submit" value="Update" class="submit">
+					</form>
+				</div>
+			</div>
+		</div>
+
 	</aside>
 </div>
 <?php
