@@ -58,14 +58,14 @@ _Add as many sleeve sizes as necessary_
 - Allow users to change the sleeve brand
 - Style the "cart" a little better
 - Show edition/versions
-- Pop-up/lightbox to explain what the site is/how it works
 - Link to expansions from base game
 - Create an API endpoint for people to export this data
 - Reverse search (I have "x" games, which sleeves will fit them)
 - Show images/videos of sleeved cards
 - Analytics to see what are the most commonly searched games
-~~- Import user list from BGG~~
-~~- Empty cart/clear all button~~
+- ~~Pop-up/lightbox to explain what the site is/how it works~~
+- ~~Import user list from BGG~~
+- ~~Empty cart/clear all button~~
 - ~~Show 'no results' response when searching~~
 - ~~Add ALL of the games from BGG list~~
 - ~~Lock down the edit pages by login~~
