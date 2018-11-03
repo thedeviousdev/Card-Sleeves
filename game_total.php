@@ -98,7 +98,7 @@ function get_total_sleeves() {
 				foreach($sleeve_arr as $sleeve_name => $sleeve) {
 				?>
 		  	<li>
-			  	<div class="cards_size"><p><?php echo $sleeve_name; ?> Sleeves <span><?php echo $sleeve['width'] . 'mm x ' . $sleeve['height'] . 'mm';?></span></p></div>
+			  	<div class="cards_size"><!-- <div class="color_box" style="background-color: green;"></div> --><p><?php echo $sleeve_name; ?> Sleeves</p> <span><?php echo $sleeve['width'] . 'mm x ' . $sleeve['height'] . 'mm';?></span></div>
 			  	<div class="cards_number"><p><strong><?php echo $sleeve['quantity']; ?></strong></p></div>
 		  	</li>
 			  <?php

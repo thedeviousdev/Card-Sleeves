@@ -334,3 +334,7 @@ $(document).on('submit', '.bgg_user_import', function( event ) {
 
   });
 });
+
+$(document).on('click', '.close', function( event ) {
+	$('.user_import').fadeOut();
+});

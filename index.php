@@ -12,6 +12,10 @@ if (session_status() == PHP_SESSION_NONE) {
 
 ?>
 		<div class="contribute">
+			<div class="how">
+				Using the search bar or import button, add the games from your collection to the cart.<br />
+				Once all the games have been added, refer to the Total's section to purchase all the sleeves you need!
+			</div>
 			<a href="https://github.com/thedeviousdev/Card-Sleeves" target="_blank">
 				<i class="fab fa-github"></i><br />
 				<span>Contribute?</span>
@@ -39,6 +43,7 @@ if (session_status() == PHP_SESSION_NONE) {
 		<div class="popup user_import">
 			<div class="flex">
 				<div>
+					<span class="close"><i class="fas fa-times-square"></i></span>
 					<form action="" class="bgg_user_import">
 						<h3>Enter Board Game Geek Username</h3>
 						<span class="error">Invalid Username</span>

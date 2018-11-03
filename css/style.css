@@ -67,7 +67,6 @@ s,
 samp,
 small,
 strike,
-strong,
 sub,
 sup,
 tt,
@@ -245,10 +244,16 @@ header .form {
     width: 75%;
     padding: 15px;
 }
-.search_result > div.no_results {
+.how {
+    line-height: initial;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+.search_result > div.no_results, .how {
     display: block;
 
-    width: 80%;
+    width: 90%;
+    max-width: 1000px;
     padding: 50px;
 
     text-align: center;
@@ -448,6 +453,29 @@ li div {
 
     width: 80%;
 }
+.cards_size p {
+    display: inline-block;
+}
+.total_cards .cards_size {
+    width: 90%;
+}
+.total_cards .cards_size p {
+    font-weight: bold;
+}
+.total_cards .cards_number {
+    width: 10%;
+    min-width: initial;
+    text-align: right;
+}
+.total_cards li {
+    border-bottom: 1px solid #efefef;
+    padding: 5px 0;
+}
+.color_box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
 .cards_size span {
     font-size: 12px;
     font-style: italic;
@@ -510,6 +538,8 @@ header input:focus {
 }
 .form_search {
     font-size: 0;
+    display: flex;
+    justify-content: flex-end;
 }
 button[type='submit'] {
     font-size: 18px;
@@ -582,6 +612,7 @@ input:-moz-placeholder {
 
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 .contribute span {
     font-size: 26px;
@@ -790,13 +821,23 @@ aside h3 .submit {
     width: 25%;
     height: 100vh;
 }
+.popup.user_import div {
+    position: relative;
+}
+.popup.user_import div .close {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    display: block;
+    font-size: 20px;
+    color: #392d44;
+    opacity: .6;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
 .popup h3 {
     line-height: initial;
-}
-.search .popup .flex div {
-    max-width: 500px;
-
-    text-align: center;
 }
 .flex {
     display: flex;
@@ -884,6 +925,9 @@ aside h3 .reveal {
     font-size: 14px;
 }
 @media (max-width: 1100px) {
+    .popup.user_import {
+        width: 100%;
+    }
     .index aside {
         top: auto;
         right: 0;

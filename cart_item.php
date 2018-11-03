@@ -27,7 +27,7 @@ function cart_item($game){
 	  	?>
 	  	<li>
 		  	<div class="cards_size"><p><?php echo $card->get_width(); ?><sub>mm</sub> x <?php echo $card->get_height(); ?><sub>mm</sub></p></div>
-		  	<div class="cards_number"><p><?php echo $card->get_nb_cards(); ?></p></div>
+		  	<div class="cards_number"><p><strong><?php echo $card->get_nb_cards(); ?></strong></p></div>
 		  </li>
 	  	<?php
 		  }
