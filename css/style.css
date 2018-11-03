@@ -980,6 +980,12 @@ aside h3 .reveal {
     }
 }
 @media (max-width: 780px) {
+    .contribute {
+        display: block;
+    }
+    .contribute div {
+        width: 100%;
+    }
     .index .search_result > div {
         flex-grow: 1;
     }
