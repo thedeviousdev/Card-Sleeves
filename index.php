@@ -47,7 +47,7 @@ if (session_status() == PHP_SESSION_NONE) {
 					<form action="" class="bgg_user_import">
 						<h3>Enter Board Game Geek Username</h3>
 						<span class="error">Invalid Username</span>
-						<input type="text" name="username" value="errazib" placeholder="" id="username">
+						<input type="text" name="username" value="" placeholder="" id="username">
 						
 						<input type="submit" value="Search" class="submit">
 					</form>
