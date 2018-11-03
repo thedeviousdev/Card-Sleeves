@@ -816,6 +816,10 @@ aside h3 .submit {
 
     background-color: #fff;
 }
+.error {
+    color: red;
+    display: none;
+}
 .user_import .flex div {
     text-align: center;
     padding: 25px;

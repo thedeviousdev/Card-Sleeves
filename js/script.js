@@ -323,8 +323,14 @@ $(document).on('submit', '.bgg_user_import', function( event ) {
 	  data: data
 	})
   .done(function( msg ) {
-  	update_cart_contents();
-  	update_total();
-  	$('.user_import').fadeOut();
+  	if(msg != 'Invalid') {
+	  	update_cart_contents();
+	  	update_total();
+	  	$('.user_import').fadeOut();
+	  	$('.error').hide();
+	  }
+	  else 
+	  	$('.error').show();
+
   });
 });

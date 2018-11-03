@@ -39,27 +39,24 @@ function bgg_search($username){
 	// print_r($array);
 	// echo '</pre>';
 
-	foreach($array['item'] as &$game) {
-		// print_r($game);
-		if($game['status']['@attributes']['own'] == 1) {
-			// echo $game['@attributes']['objectid'] . '<br>';
-			$games_added = add_game_to_array($game['@attributes']['objectid']);
-			if($games_added == 'Game added')
-				$show_result = 'Game added';
+	if($array['@attributes']['totalitems'] != 0) {
+		foreach($array['item'] as &$game) {
+			if($game['status']['@attributes']['own'] == 1) {
+				$games_added = add_game_to_array($game['@attributes']['objectid']);
+				if($games_added == 'Game added')
+					$show_result = 'Game added';
+			}
 		}
+		echo $show_result;
 	}
-	echo $show_result;
+	else 
+		echo 'Invalid';
 
-	// print_r($game_array);
 }
 
 function add_game_to_array($game_ID) {
-	// echo $game_ID;
 	$id = convert_bgg_to_id($game_ID);
-	// echo $id;
 	if($id !== false) {
-		// echo 'id not false';
-		// var_dump(new_game_object($id));
 
 		if(!isset($_SESSION['add_games'])) {
 			$add_game_arr[] = new_game_object($id);
@@ -73,7 +70,6 @@ function add_game_to_array($game_ID) {
 			return 'Game added';
 		}
 		else {
-			// echo 'Duplicate game found';
 			return 'Duplicate game found';
 		}
 	}

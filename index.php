@@ -40,10 +40,11 @@ if (session_status() == PHP_SESSION_NONE) {
 			<div class="flex">
 				<div>
 					<form action="" class="bgg_user_import">
-						<h3>Enter Board Game Geek username</h3>
+						<h3>Enter Board Game Geek Username</h3>
+						<span class="error">Invalid Username</span>
 						<input type="text" name="username" value="errazib" placeholder="" id="username">
 						
-						<input type="submit" value="Update" class="submit">
+						<input type="submit" value="Search" class="submit">
 					</form>
 				</div>
 			</div>
