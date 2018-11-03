@@ -28,7 +28,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Montserrat:400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/EasyAutocomplete-1.3.5/easy-autocomplete.min.css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css?v=2.0.1" rel="stylesheet" type="text/css">
 
 
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
@@ -36,7 +36,7 @@
     <script src="assets/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js"></script> 
     <script src="assets/fontawesome/svg-with-js/js/fontawesome-all.min.js" type="text/javascript"></script>
 
-    <script src="js/script.js"></script>     
+    <script src="js/script.js?v=2.0.1"></script>     
   </head>
   <body>
   <div class="wrapper index">
