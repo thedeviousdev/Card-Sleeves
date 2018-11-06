@@ -309,6 +309,7 @@ $(document).on('click', '.btn_remove', function() {
 		})
 	  .done(function( msg ) {
 	  	$(".current_games ." + game_id).remove();
+	  	$(".search_result").find("[data-game_id='" + game_id + "']").removeClass('rotate');
 	  	update_total();
   });
 });
