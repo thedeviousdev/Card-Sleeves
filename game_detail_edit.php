@@ -11,6 +11,19 @@ if(isset($_POST['game'])) {
 
 }
 
+
+function convert_bgg_to_id($bggid) {
+	$id = false;
+	$db = new PDO('sqlite:data/games_db.sqlite');
+
+  $result = $db->query("SELECT * FROM Game WHERE BGGID ='" . $bggid ."'");
+  foreach($result as $row) {
+  	$id = $row['Id'];
+  }
+
+  return $id;
+}
+
 function game_detail($game){
 	?>
 	<div class="popup"><div class="flex"><div>Success!</div></div></div>
@@ -28,6 +41,24 @@ function game_detail($game){
 			}
 			?>
 			<span class="submit" id="delete" data-id="<?php echo $game->get_id(); ?>">Delete</span>
+			<?php
+			if($game->get_base() != NULL) {
+				?>
+				<h3>Base Game: <br /><?php
+				$base_game = new_game_object(convert_bgg_to_id($game->get_base()));
+				echo $base_game->get_name();
+				?>
+				</h3>
+				<input type="text" value="<?php echo $base_game->get_URL(); ?>" name="base_id">
+				<?php
+			}
+			else {
+			?>
+				<h3>Base Game: </h3>
+				<input type="text" value="" name="base_id">
+			<?php
+			}
+			?>
 		</div>
 		<div class="table">
 			<div class="row">

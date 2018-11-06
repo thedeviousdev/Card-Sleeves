@@ -1,5 +1,6 @@
 <?php 
 include_once("login_session.php");
+include_once('game_update_base.php');
 // Update a card's details or add a new card
 
 if(isset($_POST['game_id'])) {
@@ -13,9 +14,17 @@ if(isset($_POST['game_id'])) {
     if($quantity[$i] != '0' && $width[$i] != '0' && $height[$i] != '0')
       card_update($game_ID, $quantity[$i], $width[$i], $height[$i]);
   }
+
+  if(isset($_POST['base_id'])) {
+    $base_ID = $_POST['base_id'];
+
+    update_base($game_ID, $base_ID);
+  }
+
 }
 
-function card_update($g, $quantity, $width, $height){
+
+function card_update($g, $quantity, $width, $height, $base_id = NULL){
 
   try {
     $db = new PDO('sqlite:data/games_db.sqlite');

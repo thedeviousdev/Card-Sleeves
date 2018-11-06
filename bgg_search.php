@@ -12,9 +12,20 @@ if(isset($_POST['url'])) {
 	
 	$url = $_POST['url'];
 	$parse = parse_url($url);
-	if($parse['host'] == 'boardgamegeek.com') {
+
+	if(isset($_POST['base'])) {
+		$base = $_POST['base'];
+		$parse_base = parse_url($base);
+	}
+
+	if($parse['host'] == 'boardgamegeek.com' && !isset($_POST['base'])) {
 		$parts = explode('/', $parse['path']);
 		bgg_search($parts[2]);
+	}
+	else if ($parse_base['host'] == 'boardgamegeek.com') {
+		$parts = explode('/', $parse['path']);
+		$parts_base = explode('/', $parse_base['path']);
+		bgg_search($parts[2], $parts_base[2]);
 	}
 	else {
 		?>
@@ -23,7 +34,7 @@ if(isset($_POST['url'])) {
 	}
 }
 
-function bgg_search($id){
+function bgg_search($id, $base_id = NULL){
 	$uri = 'https://www.boardgamegeek.com/xmlapi2/thing?id='  . $id;
 	$response = file_get_contents($uri);
 	$xml = simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA);
@@ -43,8 +54,10 @@ function bgg_search($id){
 
 	// Before adding this into the DB, check to see if it exists already
 	if(!game_exists($id)) {
-		// game_search($id);
-		add_game($id, $name, $year, $thumbnail);
+		if($base_id != NULL)
+			add_game($id, $name, $year, $thumbnail, $base_id);
+		else
+			add_game($id, $name, $year, $thumbnail);
 	}
 	else {
 		?>
@@ -69,14 +82,17 @@ function game_exists($id) {
 
 }
 
-function add_game($bgg, $name, $year, $image) {
+function add_game($bgg, $name, $year, $image, $base_id = NULL) {
 	$url = 'https://boardgamegeek.com/boardgame/' . $bgg;
 	$image_path = download_image($name, $image, $year);
 
 	if($image_path != false) {
 		try {
 			$db = new PDO('sqlite:data/games_db.sqlite');
-			$db->exec('INSERT INTO Game (Name, Year, URL, Image, BGGID, Verified) VALUES ("' . $name . '", "' . $year . '", "' . $url . '", "' . $image_path . '", "' . $bgg . '", 0);');
+			if($base_id != NULL)
+				$db->exec('INSERT INTO Game (Name, Year, URL, Image, BGGID, Verified, BaseGame) VALUES ("' . $name . '", "' . $year . '", "' . $url . '", "' . $image_path . '", "' . $bgg . '", 0, "' . $base_id . '");');
+			else
+				$db->exec('INSERT INTO Game (Name, Year, URL, Image, BGGID, Verified, BaseGame) VALUES ("' . $name . '", "' . $year . '", "' . $url . '", "' . $image_path . '", "' . $bgg . '", 0, 0);');
 
 		  $game_id = $db->lastInsertId();
 		  ?>

@@ -10,9 +10,10 @@ class game {
 	var $image = 'placeholder.png';
 	var $URL = 'https://boardgamegeek.com/';
 	var $verified = 0;
+	var $base = 0;
 	var $cards = array();
 
-	function __construct($id, $name, $year, $img, $URL, $card_arr, $verified) {
+	function __construct($id, $name, $year, $img, $URL, $card_arr, $verified, $base = NULL) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->year = $year;
@@ -20,6 +21,7 @@ class game {
 		$this->URL = $URL;
 		$this->cards = $card_arr;
 		$this->verified = $verified;
+		$this->base = $base;
 	}
 
 	// Setters
@@ -44,6 +46,9 @@ class game {
 	function set_verified($verified){
 		$this->verified = $verified;
 	}
+	function set_base($base){
+		$this->base = $base;
+	}
 
 	// Getters
 	function get_id(){
@@ -66,6 +71,9 @@ class game {
 	}
 	function get_verified(){
 		return $this->verified;
+	}
+	function get_base(){
+		return $this->base;
 	}
 
 }

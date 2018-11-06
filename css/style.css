@@ -790,6 +790,7 @@ input:-moz-placeholder {
 
     margin-bottom: 15px;
     padding: 10px;
+    display: block;
     /*border-bottom: 1px dashed #392d44;*/
 }
 aside h3 {
