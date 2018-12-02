@@ -70,6 +70,52 @@ _Add as many sleeve sizes as necessary_
 - ~~Add ALL of the games from BGG list~~
 - ~~Lock down the edit pages by login~~
 
+### Re-structuring the application
+
+1. Allow users to register & login
+ - Save game list
+ - Suggest new games
+ - Suggest changes to games
+ - Comment on all games
+ - Link account to BGG
+ - Upvote users
+2. Show game details
+ - Image
+ - Year
+ - Edition
+ - Number of players
+ - Number of cards
+ - Size of cards
+ - Comments on game
+ - Number of upvotes
+ - Link to BGG
+ - Affiliate links to buy games
+ - Expansions
+ - Select sleeve brand to add to cart
+3. Search for games
+ - By name
+ - By player count
+4. Add to cart
+ - Select sleeve brand
+ - Tally all sleeves
+ - Affiliate purchase link
+5. Update game
+ - Update card values
+ - Update edition
+ - Update BGG link
+ - Add/remove expansion
+ - Update year
+ - Update name
+ - Update # of players
+ - Delete game
+ - Delete cards
+6. Sleeve brands
+ - Add brand name
+ - Update brand name
+ - Add sleeve size
+ - Update sleeve size
+ 
+
 ### **Thanks!**
 
 Special thanks to the sleeving community! I have imported all the sleeves from the [Mayday Sleeves list](https://www.maydaygames.com/pages/sleeves-by-game) and am working through [Adam Kranzel's list on Board Game Geek](https://boardgamegeek.com/geeklist/164572/card-sleeve-sizes-games). I also use the [Board Game Geek's API](https://boardgamegeek.com/wiki/page/BGG_XML_API2) to pull in the data for new games. 
