@@ -4,6 +4,7 @@ include_once("login_session.php");
 include_once('game.php');
 include_once('card.php');
 include_once('new_game_object.php');
+
 if(isset($_POST['game'])) {
 	
 	$game_ID = $_POST['game'];
@@ -54,7 +55,7 @@ function game_detail($game){
 			}
 			else {
 			?>
-				<h3>Base Game: </h3>
+				<h3>Base Game: </h3> 
 				<input type="text" value="" name="base_id">
 			<?php
 			}

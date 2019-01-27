@@ -33,6 +33,9 @@ function game_search($g, $page){
 	  ?>
 
 		<div class="search_result" data-current_page="<?php echo $page; ?>" data-game_name="<?php echo $g; ?>">
+      <div class="popup">
+        <div class="flex"><div></div></div>        
+      </div>
 			<h3>Search results:</h3><br />
 			<?php
 		  foreach($result as $row) {

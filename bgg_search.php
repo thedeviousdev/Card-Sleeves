@@ -7,6 +7,7 @@ include_once('new_game_object.php');
 include_once('game_search_edit.php');
 include_once('update_game_list.php');
 include_once('game_detail_edit.php');
+include_once('game_exists.php');
 
 if(isset($_POST['url'])) {
 	
@@ -64,22 +65,6 @@ function bgg_search($id, $base_id = NULL){
 		<div class="popup" style="display: flex;"><div class="flex"><div>That game already exists!</div></div></div>
 		<?php
 	}
-}
-
-function game_exists($id) {
-	try {
-		$db = new PDO('sqlite:data/games_db.sqlite');
-
-	  $result = $db->query("SELECT * FROM Game WHERE BGGID ='" . $id ."'");
-	  if($result->fetchColumn() > 0)
-	  	return true;
-	  else
-	  	return false;
-	}
-	catch(PDOException $e) 	{
-	  print 'Exception : '. $e->getMessage();
-	}
-
 }
 
 function add_game($bgg, $name, $year, $image, $base_id = NULL) {
