@@ -2,36 +2,35 @@
 // Sleeve object
 
 class sleeve {
-	var $sleeve_name = 0;
-	var $height = 0;
-	var $width = 0;
+	var $id = NULL;
+	var $sleeve_name = NULL;
+	var $brand = NULL;
 
-	function __construct($name, $width, $height) {
-		$this->sleeve_name = $name;
-		$this->height = $height;
-		$this->width = $width;
+	function __construct($sleeve_name, $brand, $id = NULL) {
+		$this->sleeve_name = $sleeve_name;
+		$this->brand = $brand;
+		$this->id = $id;
 	}
 
 	// Setters
+	function set_id($id) {
+		$this->id = $id;
+	}
 	function set_name($name) {
 		$this->sleeve_name = $name;
 	}
-	function set_height($height) {
-		$this->height = $height;		
-	}
-	function set_width($width) {
-		$this->width = $width;		
+	function set_brand($brand) {
+		$this->brand = $brand;
 	}
 
 	// Getters
+	function get_id() {
+		return $this->id;
+	}
 	function get_name() {
 		return $this->sleeve_name;
 	}
-	function get_height() {
-		return $this->height;	
-	}
-	function get_width() {
-		return $this->width;
+	function get_brand() {
+		return $this->brand;
 	}
 }
-?>

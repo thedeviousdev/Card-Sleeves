@@ -8,8 +8,20 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if(isset($_POST['add_game'])) {
-	add_game_to_session($_POST['add_game']);
+if(isset($_POST['game_id'])) {
+	// add_game_to_session($_POST['game_id']);
+
+	$game_ID = $_POST['game_id'];
+	$sleeve_array = array();
+	$game = new_game_object($game_ID);
+
+	foreach ($_POST as $key => $value) {
+		if($key !== 'game_id') {
+			$sleeve_array[] = $value;
+		}
+	}
+	$game->set_cart_sleeve($sleeve_array);
+	add_game_to_session($game);
 }
 
 // Check if game exists in the array
@@ -23,20 +35,27 @@ function is_game_in_array($game_arr, $new_game){
 	return false;
 }
 
-function add_game_to_session($game_ID) {
+function add_game_to_session($game) {
+
+	$game_ID = $game->get_id();
 
 	if($game_ID != NULL && !isset($_SESSION['add_games'])) {
-		$add_game_arr[] = new_game_object($game_ID);
+		$add_game_arr[] = $game;
 		$_SESSION['add_games'] = $add_game_arr;
 		echo 'Game added';
 	}
 	else if($game_ID != NULL && !is_game_in_array($_SESSION['add_games'], $game_ID)) {
 		$add_game_arr = $_SESSION['add_games'];
-		$add_game_arr[] = new_game_object($game_ID);
+		$add_game_arr[] = $game;
 		$_SESSION['add_games'] = $add_game_arr;
 		echo 'Game added';
 	}
 	else {
+		remove_game_from_session($game_ID);
+		
+		$add_game_arr = $_SESSION['add_games'];
+		$add_game_arr[] = $game;
+		$_SESSION['add_games'] = $add_game_arr;
 		echo 'Duplicate game found';
 	}
 }

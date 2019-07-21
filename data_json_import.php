@@ -1,7 +1,7 @@
 <?php
 include_once("login_session.php");
 
-$string = file_get_contents("data/new_2.json");
+$string = file_get_contents("data/new_3.json");
 $json = json_decode($string, true);
 
 $file = 'data/games_db.sqlite';
@@ -62,6 +62,7 @@ if (file_exists($file)) {
 	        	$brand_key = array_search($sleeve['sleeve_brand'], $sleeve_brands);
 	        	$nb_cards = $sleeve['card_total'];
 	        	$sleeve_size = $sleeve['sleeve_size'];
+	        	$card_nb = $sleeve['card_nb'];
 
 	        	// Don't insert 0 totals
 	        	if($nb_cards != 0 && $nb_cards !== '?') {
@@ -76,7 +77,7 @@ if (file_exists($file)) {
 								$pos = strpos($sleeve_size, $sleeve_name);
 
 								if ($pos !== false) {
-				    			$db->exec("INSERT INTO Cards (GameID, SleeveId, Quantity) VALUES ('" . $game_id . "', '" . $sleeve_id . "', '" . $nb_cards . "');");
+				    			$db->exec("INSERT INTO Cards (GameId, SleeveId, CardNb, Quantity) VALUES ('" . $game_id . "', '" . $sleeve_id . "', '" . $card_nb . "', '" . $nb_cards . "');");
 				    			break;
 								}
 						  }
@@ -95,6 +96,7 @@ if (file_exists($file)) {
 	        	$brand_key = array_search($sleeve['sleeve_brand'], $sleeve_brands);
 	        	$nb_cards = $sleeve['card_total'];
 	        	$sleeve_size = $sleeve['sleeve_size'];
+	        	$card_nb = $sleeve['card_nb'];
 
 	        	// Don't insert 0 totals
 	        	if($nb_cards != 0 && $nb_cards !== '?') {
@@ -109,8 +111,7 @@ if (file_exists($file)) {
 								$pos = strpos($sleeve_size, $sleeve_name);
 
 								if ($pos !== false) {
-				    			$db->exec("INSERT INTO Cards (GameID, SleeveId, Quantity) VALUES ('" . $game_id . "', '" . $sleeve_id . "', '" . $nb_cards . "');");
-				    			break;
+				    			$db->exec("INSERT INTO Cards (GameId, SleeveId, CardNb, Quantity) VALUES ('" . $game_id . "', '" . $sleeve_id . "', '" . $card_nb . "', '" . $nb_cards . "');");
 								}
 						  }
 						}

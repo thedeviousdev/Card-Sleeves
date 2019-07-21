@@ -32,7 +32,7 @@ if (session_status() == PHP_SESSION_NONE) {
 		</div>
 		<div class="total">
 			<h4>Total:</h4>
-			<sub>(Mayday Sleeves)</sub>
+			<!-- <sub>(Mayday Sleeves)</sub> -->
 
 			<div class="total_cards">
 				<?php 
@@ -40,7 +40,7 @@ if (session_status() == PHP_SESSION_NONE) {
 				?>
 			</div>
 		</div>
-		<div class="popup user_import">
+		<div class="popup-cart user_import">
 			<div class="flex">
 				<div>
 					<span class="close"><i class="fas fa-times-square"></i></span>

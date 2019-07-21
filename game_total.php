@@ -71,23 +71,35 @@ function get_total_sleeves() {
 		$game_arr = $_SESSION['add_games'];
 		$sleeve_arr = array();
 
-		foreach($game_arr as $key => $game) {
 
+		foreach($game_arr as $key => $game) {
+			$cart_sleeves = $game->get_cart_sleeve();
 			$card_arr = $game->get_cards();
 
 			foreach($card_arr as $key => $card) {
-				$sleeve = get_sleeve_name($card);
-				$sleeve_name = $sleeve->get_name();
-				$sleeve_number = $card->get_nb_cards();
+				$sleeves = $card->get_sleeves();
+				$card_number = $card->get_nb_cards();
 
-				if (array_key_exists($sleeve_name, $sleeve_arr)) {
-					$sleeve_arr[$sleeve_name]['quantity'] += $sleeve_number;
+				foreach($cart_sleeves as $sleeve_id) {
+					foreach($sleeves as $key => $sleeve) {
+
+				  	if($sleeve->get_id() === $sleeve_id) {
+							// $sleeve_brand = $sleeve->get_brand();
+							$sleeve_name = $sleeve->get_name();
+							$sleeve_id = $sleeve->get_id();
+
+							if (array_key_exists($sleeve_id, $sleeve_arr)) {
+								$sleeve_arr[$sleeve_id]['quantity'] += $card_number;
+							}
+							else {
+								$sleeve_arr[$sleeve_id]['quantity'] = $card_number;
+							}
+
+							$sleeve_arr[$sleeve_id]['name'] = $sleeve->get_name();
+							$sleeve_arr[$sleeve_id]['brand'] = $sleeve->get_brand();
+						}
+					}
 				}
-				else {
-					$sleeve_arr[$sleeve_name]['quantity'] = $sleeve_number;
-				}
-				$sleeve_arr[$sleeve_name]['width'] = $sleeve->get_width();
-				$sleeve_arr[$sleeve_name]['height'] = $sleeve->get_height();
 			}
 		}
 		?>
@@ -98,7 +110,7 @@ function get_total_sleeves() {
 				foreach($sleeve_arr as $sleeve_name => $sleeve) {
 				?>
 		  	<li>
-			  	<div class="cards_size"><!-- <div class="color_box" style="background-color: green;"></div> --><p><?php echo $sleeve_name; ?> Sleeves</p> <span><?php echo $sleeve['width'] . 'mm x ' . $sleeve['height'] . 'mm';?></span></div>
+			  	<div class="cards_size"><!-- <div class="color_box" style="background-color: green;"></div> --><p><?php echo $sleeve['brand'] . " - " . $sleeve['name']; ?></p></div>
 			  	<div class="cards_number"><p><strong><?php echo $sleeve['quantity']; ?></strong></p></div>
 		  	</li>
 			  <?php

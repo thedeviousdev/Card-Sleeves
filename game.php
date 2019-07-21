@@ -7,16 +7,19 @@ class game {
 	var $id = NULL;
 	var $name = NULL;
 	var $year = NULL;
+	var $edition = NULL;
 	var $image = 'placeholder.png';
 	var $URL = 'https://boardgamegeek.com/';
 	var $verified = 0;
 	var $base = 0;
 	var $cards = array();
+	var $sleeves = array();
 
-	function __construct($id, $name, $year, $img, $URL, $card_arr, $verified, $base = NULL) {
+	function __construct($id, $name, $year, $img, $URL, $card_arr, $verified, $base = NULL, $edition = NULL) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->year = $year;
+		$this->edition = $edition;
 		$this->image = $img;
 		$this->URL = $URL;
 		$this->cards = $card_arr;
@@ -34,6 +37,9 @@ class game {
 	function set_year($year){
 		$this->year = $year;
 	}
+	function set_edition($edition){
+		$this->edition = $edition;
+	}
 	function set_image($img){
 		$this->image = $img;
 	}
@@ -49,22 +55,28 @@ class game {
 	function set_base($base){
 		$this->base = $base;
 	}
+	function set_cart_sleeve($sleeves){
+		$this->sleeves = $sleeves;
+	}
 
 	// Getters
 	function get_id(){
-		 	 return $this->id;
+		return $this->id;
 	}
 	function get_name(){
-		 	 return $this->name;
+		return $this->name;
 	}
 	function get_year(){
-		 	 return $this->year;
+		return $this->year;
+	}
+	function get_edition(){
+		return $this->edition;
 	}
 	function get_image(){
-		 	 return $this->image;
+		return $this->image;
 	}
 	function get_URL(){
-		 	 return $this->URL;
+		return $this->URL;
 	}
 	function get_cards(){
 		return $this->cards;
@@ -74,6 +86,13 @@ class game {
 	}
 	function get_base(){
 		return $this->base;
+	}
+	function get_cart_sleeve(){
+		return $this->sleeves;
+	}
+
+	function reset_sleeves() {
+		$this->$sleeves = array();
 	}
 
 }

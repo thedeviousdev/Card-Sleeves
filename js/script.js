@@ -98,7 +98,7 @@ $(document).on('click', '#clear', function() {
 });
 $(document).on('click', '.import', function(e) {
 	e.preventDefault();
-	$('.popup').css('display', 'flex');
+	$('.popup-cart').css('display', 'flex');
 });
 
 $(document).on('click', 'footer span', function() {
@@ -158,7 +158,7 @@ $(document).on('submit', '.cart_item_form', function( event ) {
 		})
 		.done(function( msg ) {
 			$(".detail").html(msg);
-			$(".detail").find('.popup').css('display','flex');
+			$(".detail").find('.popup-cart').css('display','flex');
 		});
   });
 });
@@ -180,7 +180,7 @@ $(document).on('click', '#verify', function() {
 	})
   .done(function( msg ) {
 		$(".detail").html(msg);
-		$(".detail").find('.popup').css('display','flex');
+		$(".detail").find('.popup-cart').css('display','flex');
   });
 });
 
@@ -199,80 +199,102 @@ $(document).on('click', '#delete', function() {
 	})
   .done(function( msg ) {
 		$(".detail").html(msg);
-		$(".detail").find('.popup').css('display','flex');
+		$(".detail").find('.popup-cart').css('display','flex');
   });
 });
 
 $(document).on('click', '.add', function() {
-	var game = '<div class="row"><div class="table-cell"><input type="number" name="quantity[]" value="0" step="1"></div><div class="table-cell"><input type="number" name="width[]" value="0" step=".05"></div><div class="table-cell"><input type="number" name="height[]" value="0" step=".05"></div><div class="table-cell"><span class="add">+</span></div></div>';
-	$(".table").append(game);
+
+  var data = {
+  	sleeve_list : true
+  }
+
+ 	$.ajax({
+	  method: "POST",
+	  url: "sleeve_empty.php",
+	  data: data,
+    success: function(data) {
+	  	// new_sleeve_row(data);
+			$(".table").append(data);
+    },
+	});
+
+	// var game = '<div class="row"><div class="table-cell"><input type="number" name="quantity[]" value="0" step="1"></div><div class="table-cell"><input type="number" name="width[]" value="0" step=".05"></div><div class="table-cell"><input type="number" name="height[]" value="0" step=".05"></div><div class="table-cell"><span class="add">+</span></div></div>';
+	// console.log(new_sleeve_row);
+
 	$(this).removeClass('add').addClass('remove');
 	$(this).html('-');
-	$(this).attr('data-card_id','NULL');
+	$(this).attr('data-sleeve_id','NULL');
 });
 
-$(document).on('click', '.detail .popup', function() {
+$(document).on('click', '.detail .popup-cart', function() {
 	$(this).fadeOut();
 });
 
 $(document).on('click', '.remove', function() {
-	var card_id = $(this).data('card_id');
+	var sleeve_id = $(this).data('sleeve_id');
+	var card_nb = $(this).data('card_nb');
+	var game_id = $(this).data('game_id');
 
-	if(card_id == 'NULL') {
+	if(sleeve_id == 'NULL') {
 		$(this).closest('.row').remove();
 	}
 	else {
 		$.ajax({
 			method: "POST",
 			url: "card_delete.php",
-			data: { 'card_id' : card_id}
+			data: { 
+				'sleeve_id' : sleeve_id,
+				'card_nb' : card_nb,
+				'game_id' : game_id 
+			}
 		})
 		.done(function( msg ) {
-			$("[data-card_id='" + card_id + "']").closest('.row').remove();
+			$("[data-sleeve_id='" + sleeve_id + "']").closest('.row').remove();
 		});
 	}
 
 });
 
 
-$(document).on('click', '.btn_add', function() {
+// $(document).on('click', '.btn_add', function() {
 
-	var game_id = $(this).data( "game_id" );
+// 	var game_id = $(this).data( "game_id" );
 
-	if($(this).hasClass('rotate')) { 
-	 	$.ajax({
-		  method: "POST",
-		  url: "game_session.php",
-		  data: { 'remove_game' : game_id}
-		})
-	  .done(function( msg ) {
-	  	$(".current_games ." + game_id).remove();
-	  	update_total();
-	  });
+// 	if($(this).hasClass('rotate')) { 
+// 	 	$.ajax({
+// 		  method: "POST",
+// 		  url: "game_session.php",
+// 		  data: { 'remove_game' : game_id}
+// 		})
+// 	  .done(function( msg ) {
+// 	  	$(".current_games ." + game_id).remove();
+// 	  	update_total();
+// 	  });
 
-	}
-	else {
-	 	$.ajax({
-		  method: "POST",
-		  url: "game_session.php",
-		  data: { 'add_game' : game_id}
-		})
-	  .done(function( msg ) {
-	  	if(msg == 'Game added') {
-			 	$.ajax({
-				  method: "POST",
-				  url: "cart_item.php",
-				  data: { 'game' : game_id}
-				})
-			  .done(function( msg ) {
-			  	$(".current_games").append(msg);
-			  	update_total();
-			  });
-			}
-	  });
-	}
-	$(this).toggleClass('rotate');
-});
+// 	}
+// 	else {
+// 	 	$.ajax({
+// 		  method: "POST",
+// 		  url: "game_session.php",
+// 		  data: { 'add_game' : game_id}
+// 		})
+// 	  .done(function( msg ) {
+// 	  	if(msg == 'Game added') {
+// 			 	$.ajax({
+// 				  method: "POST",
+// 				  url: "cart_item.php",
+// 				  data: { 'game' : game_id}
+// 				})
+// 			  .done(function( msg ) {
+// 			  	$(".current_games").append(msg);
+// 			  	update_total();
+// 			  });
+// 			}
+// 	  });
+// 	}
+// 	$(this).toggleClass('rotate');
+// });
 
 $(document).on('click', '.add_game span', function() {
 
@@ -314,6 +336,32 @@ $(document).on('click', '.btn_remove', function() {
   });
 });
 
+
+$(document).on('submit', '.card-expander-game-cards-form', function( event ) {
+  event.preventDefault();
+  var data = $(this).serialize();
+
+ 	$.ajax({
+	  method: "POST",
+	  url: "game_session.php",
+	  data: data
+	})
+  .done(function( msg ) {
+  	// if(msg == 'Game added') {
+		 	$.ajax({
+			  method: "POST",
+			  url: "cart_item.php",
+			  data: data
+			})
+		  .done(function( msg ) {
+		  	// $(".current_games").append(msg);
+		  	update_cart_contents();
+		  	update_total();
+		  });
+		// }
+  });
+});
+
 $(document).on('submit', '.bgg_user_import', function( event ) {
   event.preventDefault();
   var data = $(this).serialize();
@@ -338,4 +386,36 @@ $(document).on('submit', '.bgg_user_import', function( event ) {
 
 $(document).on('click', '.close', function( event ) {
 	$('.user_import').fadeOut();
+});
+
+
+$(document).on('click', '.card.is-collapsed', function() {
+
+	$(this).removeClass('is-inactive');
+
+
+  if ($(this).closest('.card').hasClass('is-collapsed')) {
+    $('.card').not($(this).closest('.card')).removeClass('is-expanded').addClass('is-collapsed').addClass('is-inactive');
+
+    $(this).closest('.card').removeClass('is-collapsed').addClass('is-expanded');
+    
+    if ($('.card').not($(this).closest('.card')).hasClass('is-inactive')) {
+      //do nothing
+    } else {
+      $('.card').not($(this).closest('.card')).addClass('is-inactive');
+    }
+
+  } else {
+    $(this).closest('.card').removeClass('is-expanded').addClass('is-collapsed');
+    $('.card').not($(this).closest('.card')).removeClass('is-inactive');
+  }
+});
+
+//close card when click on cross
+$(document).on('click', '.card-expander-close', function() {
+
+  $('.card').removeClass('is-expanded').addClass('is-collapsed');
+  $('.card').removeClass('is-inactive');
+  // $('.card').not($(this).closest('.card')).removeClass('is-inactive');
+
 });

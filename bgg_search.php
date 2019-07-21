@@ -30,7 +30,7 @@ if(isset($_POST['url'])) {
 	}
 	else {
 		?>
-		<div class="popup" style="display: flex;"><div class="flex"><div>Please enter a valid Board Game Geek URL</div></div></div>
+		<div class="popup-cart" style="display: flex;"><div class="flex"><div>Please enter a valid Board Game Geek URL</div></div></div>
 		<?php
 	}
 }
@@ -62,7 +62,7 @@ function bgg_search($id, $base_id = NULL){
 	}
 	else {
 		?>
-		<div class="popup" style="display: flex;"><div class="flex"><div>That game already exists!</div></div></div>
+		<div class="popup-cart" style="display: flex;"><div class="flex"><div>That game already exists!</div></div></div>
 		<?php
 	}
 }
@@ -82,7 +82,7 @@ function add_game($bgg, $name, $year, $image, $base_id = NULL) {
 		  $game_id = $db->lastInsertId();
 		  ?>
 
-			<div class="popup" style="display: flex;"><div class="flex"><div>Game successfully added!</div></div></div>
+			<div class="popup-cart" style="display: flex;"><div class="flex"><div>Game successfully added!</div></div></div>
 			<?php
 
 			update_json();

@@ -6,47 +6,113 @@ include_once('game_update_base.php');
 if(isset($_POST['game_id'])) {
   
   $game_ID = $_POST['game_id'];
+  $year = $_POST['year'];
+
+  $sleeve = $_POST['sleeve'];
   $quantity = $_POST['quantity'];
-  $width = $_POST['width'];
-  $height = $_POST['height'];
-  $card_array = count($quantity); 
+  $card_nb = $_POST['nb'];
+
+  $card_array = count($quantity);
+
   for($i=0; $i<$card_array; $i++) {
-    if($quantity[$i] != '0' && $width[$i] != '0' && $height[$i] != '0')
-      card_update($game_ID, $quantity[$i], $width[$i], $height[$i]);
+    if($quantity[$i] != '0')
+      card_update($game_ID, $quantity[$i], $card_nb[$i], $sleeve[$i]);
   }
 
-  if(isset($_POST['base_id'])) {
+  if(isset($_POST['base_id']) && $_POST['base_id'] !== NULL && $_POST['base_id'] !== "") {
     $base_ID = $_POST['base_id'];
 
     update_base($game_ID, $base_ID);
   }
 
+  if(isset($_POST['image']) && $_POST['image'] !== NULL && $_POST['image'] !== "") {
+    $image = $_POST['image'];
+
+    update_image($game_ID, $image);
+  }
+
+  if(isset($_POST['year']) && $_POST['year'] !== NULL && $_POST['year'] !== "") {
+    $year = $_POST['year'];
+
+    update_year($game_ID, $year);
+  }
+
 }
 
+function update_image($g, $image){
+  echo 'update_image';
+  try {
+    $db = new PDO('sqlite:data/games_db.sqlite');
 
-function card_update($g, $quantity, $width, $height, $base_id = NULL){
+    $check = $db->query("SELECT * FROM Game WHERE Id ='" . $g ."';");
+    if ($check->fetchColumn() > 0) {
+
+      $result = $db->query("SELECT * FROM Game WHERE Id ='" . $g ."';");
+      foreach($result as $row) {
+        $old_image = $row['Image'];
+
+        if($old_image != $image)
+          $db->exec("UPDATE Game SET Image = '" . $image  . "' WHERE Id = '" . $g . "';");
+      }
+    }
+    return game_detail(new_game_object($g));
+  }
+  catch(PDOException $e)  {
+    print 'Exception : '. $e->getMessage();
+  }
+}
+
+function update_year($g, $year){
+  echo 'update_year';
+  try {
+    $db = new PDO('sqlite:data/games_db.sqlite');
+
+    $check = $db->query("SELECT * FROM Game WHERE Id ='" . $g ."';");
+    if ($check->fetchColumn() > 0) {
+
+      $result = $db->query("SELECT * FROM Game WHERE Id ='" . $g ."';");
+      foreach($result as $row) {
+        $old_year = $row['Year'];
+
+        if($old_year != $year)
+          $db->exec("UPDATE Game SET Year = '" . $year  . "' WHERE Id = '" . $g . "';");
+      }
+    }
+    return game_detail(new_game_object($g));
+  }
+  catch(PDOException $e)  {
+    print 'Exception : '. $e->getMessage();
+  }
+}
+
+function card_update($g, $quantity, $card_nb, $sleeve_id, $base_id = NULL){
 
   try {
     $db = new PDO('sqlite:data/games_db.sqlite');
     // Check for results first
-    $check = $db->query("SELECT * FROM GameCards WHERE GameID ='" . $g ."' AND Width ='" . $width . "' AND Height ='" . $height . "';");
+    $check = $db->query("SELECT * FROM Cards WHERE GameID ='" . $g ."' AND SleeveId ='" . $sleeve_id . "' AND CardNb ='" . $card_nb . "';");
 
     // If there already exists a card, update its quantity
     if ($check->fetchColumn() > 0) {
-      $result = $db->query("SELECT * FROM GameCards WHERE GameID ='" . $g ."' AND Width ='" . $width . "' AND Height ='" . $height . "';");
+      $result = $db->query("SELECT * FROM Cards WHERE GameID ='" . $g ."' AND SleeveId ='" . $sleeve_id . "' AND CardNb ='" . $card_nb . "';");
 
       foreach($result as $row) {
         $id = $row['Id'];
-        $old_qty = $row['CardNumber'];
+        $old_qty = $row['Quantity'];
+        $old_card_nb = $row['CardNb'];
+        $old_sleeve_id = $row['SleeveId'];
 
-        if($old_qty != $quantity)
-          $db->exec("UPDATE GameCards SET CardNumber = '" . $quantity  . "' WHERE Id = '" . $id . "';");
+        // echo "UPDATE Cards SET Quantity = '" . $quantity . "' WHERE GameId = '" . $g . "' AND CardNb = '" . $card_nb  . "';";
+
+        if($old_qty != $quantity || $old_card_nb != $card_nb || $old_sleeve_id != $sleeve_id ) {
+
+          $db->exec("UPDATE Cards SET Quantity = '" . $quantity . "' WHERE GameId = '" . $g . "' AND CardNb = '" . $card_nb  . "';");
+        }
       }
     }
     // Otherwise, add a new card size & quantity
     else {
-      if($quantity !== 0 && $width !== 0 && $height !== 0)
-        $db->exec("INSERT INTO GameCards (GameID, CardNumber, Width, Height) VALUES ('" . $g . "', '" . $quantity . "', '" . $width . "', '" . $height . "');");
+      $db->exec("INSERT INTO Cards (GameId, SleeveId, CardNb, Quantity) VALUES ('" . $g . "', '" . $sleeve_id . "', '" . $card_nb . "', '" . $quantity . "');");
     }
   }
   catch(PDOException $e)  {

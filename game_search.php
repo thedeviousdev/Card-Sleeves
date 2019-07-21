@@ -1,5 +1,7 @@
 <?php 
 include_once('game_session.php');
+include_once('new_game_object.php');
+
 // Query DB for game names from search input
 // Display game details for the Home page
 
@@ -33,27 +35,83 @@ function game_search($g, $page){
 	  ?>
 
 		<div class="search_result" data-current_page="<?php echo $page; ?>" data-game_name="<?php echo $g; ?>">
-      <div class="popup">
+      <div class="popup-cart">
         <div class="flex"><div></div></div>        
       </div>
 			<h3>Search results:</h3><br />
+			<div class="cards">
+				
 			<?php
 		  foreach($result as $row) {
-	  	?>
-	  	<div class="<?php echo $row['Id']; ?>">
-	  		<div class="wrapper_img">
-			  	<img src="img/<?php echo $row['Image']; ?>" />
-		  	</div>
-		  	<div class="wrapper_text">
-			  	<h2><?php if($row['Verified']) { echo '<i class="fas fa-check-square"></i>'; }; echo $row['Name']; ?></h2>
 
-			  	<p><a href="<?php echo $row['URL']; ?>">BoardGameGeek</a></p>
-			  	<span data-game_id="<?php echo $row['Id']; ?>" class="btn_add<?php if(isset($_SESSION['add_games']) && is_game_in_array($_SESSION['add_games'], $row['Id'])) { echo ' rotate'; } ?>"><i class="fas fa-plus-circle"></i></span>
-		  	</div>
-	  	</div>
+		  	$game = new_game_object($row['Id']);
+	  	?>
+	    <div class="card is-collapsed" id="<?php echo $game->get_id(); ?>">
+	      <div class="card-inner  js-expander">
+		  		<div class="wrapper_img">
+				  	<img src="img/<?php echo $game->get_image(); ?>" />
+			  	</div>
+			  	<div class="wrapper_text">
+				  	<h2><?php echo $game->get_Name(); ?></h2>
+			  	</div>
+	      </div>
+	      <div class="card-expander">
+		  		<span class="card-expander-close"><i class="fas fa-times-circle"></i></span>
+		  		<div class="card-expander-game-details">
+				  	<div class="card-expander-game-details-wrapper-text">
+					  	<h2><?php echo $game->get_name(); ?></h2>
+					  	<p><?php echo $game->get_year(); ?></p>
+  						<p><?php if($game->get_edition() != '') { echo $game->get_edition(); } else { echo '--';}?></p>
+
+					  	<p><a href="<?php echo $game->get_URL(); ?>" target="_blank">BoardGameGeek</a></p>
+				  	</div>			  			
+		  		</div>
+		  		<div class="card-expander-game-cards">
+						<form action="" class="card-expander-game-cards-form">
+
+							<input type="hidden" name="game_id" value="<?php echo $game->get_id(); ?>">
+		  			<?php
+		  				$cards = $game->get_cards();
+
+		  				foreach($cards as $key => $card) {
+		  					?>
+		  					<div class="card-expander-game-cards-form-sleeve">
+									<h2>Card <?php echo ++$key; ?></h2>
+		  						<h3><?php echo $card->get_nb_cards(); ?></h3>
+
+		  						<div class="card-expander-game-cards-form-sleeve-wrapper">
+	  								
+										<select name="<?php echo $card->get_id(); ?>">
+										<?php
+										$sleeves = $card->get_sleeves();
+										foreach($sleeves as $sleeve) {
+											?>
+										  <!-- <option value="<?php echo $sleeve->get_id(); ?>"><?php echo $sleeve->get_brand() . ' - ' . $sleeve->get_name(); ?></option> -->
+										  <option value="<?php echo $sleeve->get_id(); ?>"><?php echo $sleeve->get_brand(); ?></option>
+										<?php
+										}
+										?>		
+										</select>
+		  						</div>
+		  					</div>
+		  					<?php
+		  				}
+			  			?>
+			  			<div class="card-expander-game-cards-form-submit">
+								<button type="submit" value="Submit" class="card-expander-game-cards-form-submit-button">Add Sleeves</button>			  				
+			  			</div>
+						</form>
+		  		</div>
+	      </div>
+	    </div>
+
+
 
 		  <?php
-		  }
+		  } 
+		  ?>
+			</div>
+			<?php
 		  if(!$count) {
 		  	?>
 		  	<div class="no_results">Game has not been added yet. <br /><a href="https://github.com/thedeviousdev/Card-Sleeves" target="_blank">Want to help by adding it? :)</a></div>

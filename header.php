@@ -48,13 +48,13 @@
         <form action="" class="form_search" method="get">
           <input type="text" class="game-select" name="game" placeholder="Search..." />
           <button type="submit" /><i class="far fa-search"></i></button>
-          <div class="import">
+<!--           <div class="import">
             <a href="index_edit.php"><i class="fas fa-cloud-upload"></i></a>
-          </div>          
+          </div>     -->      
         </form>
       </div>
     </header>
     <div class="search">
-      <div class="popup">
+      <div class="popup-cart">
         <div class="flex"><div></div></div>        
       </div>

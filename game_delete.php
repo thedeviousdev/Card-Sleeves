@@ -15,7 +15,7 @@ function game_delete($id){
     $db = new PDO('sqlite:data/games_db.sqlite');
     $db->exec("DELETE FROM Game WHERE Id = '" . $id . "';");
 
-    echo '<div class="popup"><div class="flex"><div>Game removed!</div></div></div>';
+    echo '<div class="popup-cart"><div class="flex"><div>Game removed!</div></div></div>';
   }
   catch(PDOException $e)  {
     print 'Exception : '. $e->getMessage();
