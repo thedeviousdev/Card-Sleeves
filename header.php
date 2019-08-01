@@ -23,7 +23,7 @@
     <meta content="Samara Dionne" name="name">
     <meta content="Automagically calculates all of the sleeves you need for your board & card games." name="description">
     <meta content="sleeves, board games, games, sleeve, card, card game," name="keywords">
-    <link href="img/fav.ico" rel="shortcut icon" type="img/fav.ico">
+    <link href="assets/fav.ico" rel="shortcut icon">
 
 
     <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Montserrat:400,600,700" rel="stylesheet">
@@ -31,8 +31,9 @@
     <link href="css/style.css?v=2.1.0" rel="stylesheet" type="text/css">
 
 
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+    <!-- <script src="js/jquery-3.1.1.min.js"></script> -->
     <script src="assets/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js"></script> 
     <script src="assets/fontawesome/svg-with-js/js/fontawesome-all.min.js" type="text/javascript"></script>
 
@@ -42,7 +43,7 @@
   <div class="wrapper index">
     <header>
       <div class="logo">
-        <a href="https://sleeved.io"><img src="img/sleeved_logo.svg" /></a>
+        <a href="/"><img src="assets/sleeved_logo.svg" /></a>
       </div>
       <div class="form">
         <form action="" class="form_search" method="get">

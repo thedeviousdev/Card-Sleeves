@@ -35,12 +35,13 @@ function game_detail($game){
 		<input type="text" value="<?php echo $game->get_image(); ?>" name="image">
 
 		<input type="hidden" value="<?php echo $game->get_id(); ?>" name="game_id">
-		<input type="text" value="<?php if($game->get_year() !== '') { echo $game->get_year(); } else { echo '--';}?>" name="year">
+		<input type="text" value="<?php echo $game->get_year(); ?>" name="year">
+		<input type="text" value="<?php echo $game->get_edition(); ?>" name="edition">
 
 		<div class="controls">
 			<?php 
 			// if($game->get_verified()) {
-			// 	echo '<span class="submit" id="verify" data-id="' . $game->get_id() . '" data-value="0">Unverify</span>';
+			// 	echo '<span class="submit" id="verify" data-id="' . $gam+e->get_id() . '" data-value="0">Unverify</span>';
 			// }
 			// else {
 			// 	echo '<span class="submit" id="verify" data-id="' . $game->get_id() . '" data-value="1">Verify</span>';

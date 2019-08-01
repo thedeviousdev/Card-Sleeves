@@ -50,6 +50,13 @@ function add_game_to_session($game) {
 		$_SESSION['add_games'] = $add_game_arr;
 		echo 'Game added';
 	}
+	else if($game_ID != NULL && is_game_in_array($_SESSION['add_games'], $game_ID) && count($_SESSION['add_games']) === 1) {
+		remove_game_from_session($game_ID, false);
+
+		$add_game_arr[] = $game;
+		$_SESSION['add_games'] = $add_game_arr;
+		echo 'Game updated';
+	}
 	else {
 		remove_game_from_session($game_ID);
 		
@@ -64,7 +71,7 @@ if(isset($_POST['remove_game'])) {
 	remove_game_from_session($_POST['remove_game']);
 }
 
-function remove_game_from_session($game_ID) {
+function remove_game_from_session($game_ID, $destroy = true) {
 
 	if(isset($_SESSION['add_games']) && $game_ID != NULL) {
 		$add_game_arr = $_SESSION['add_games'];
@@ -77,7 +84,7 @@ function remove_game_from_session($game_ID) {
 		}
 		$_SESSION['add_games'] = $add_game_arr;
 
-		if(empty($add_game_arr))
+		if(empty($add_game_arr) && $destroy)
 			session_destroy();
 	}
 }

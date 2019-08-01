@@ -222,6 +222,8 @@ header .logo {
     top: 81px;
 
     overflow-y: scroll;
+    width: 75%;
+    /*padding: 15px;*/
 
     height: calc(100% - 83px);
 }
@@ -239,10 +241,6 @@ header .form {
 }
 .wrapper {
     /*display: flex;*/
-}
-.search {
-    width: 75%;
-    padding: 15px;
 }
 .how {
     line-height: initial;
@@ -353,7 +351,11 @@ aside {
 
     width: 100%;
     height: 200px;
-    padding: 15px 0;
+    /*padding: 15px 0;*/
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 
     align-items: flex-end;
     justify-content: center;
@@ -367,6 +369,9 @@ aside {
     max-width: 100%;
     height: auto;
     max-height: 100%;
+
+    border-radius: 5px;
+    box-shadow: 1px 5px 12px grey;
 }
 .btn_add {
     font-size: 40px;
@@ -417,7 +422,7 @@ h3 {
     font-size: 24px;
     font-weight: bold;
 
-    padding: 15px;
+    padding: 30px 30px 0;
 
     flex-basis: 100%;
 }
@@ -814,6 +819,11 @@ aside h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px;
+    flex-basis: 100%;
 }
 aside h3 .submit {
     margin-top: 0;
@@ -1065,11 +1075,11 @@ aside h3 .reveal {
     width: calc((100% / 2) - 30px);
   }
 }
-@media screen and (max-width: 767px) {
+/*@media screen and (max-width: 767px) {
   .card {
     width: 100%;
   }
-}
+}*/
 .card:hover .card-inner {
   /*background-color: #1abc9c;*/
   -webkit-transform: scale(1.05);
@@ -1079,17 +1089,34 @@ aside h3 .reveal {
     cursor: pointer;
 }
 .card-inner {
+    /*height: 100%;*/
+    min-height: 330px;
     width: 100%;
-    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /*padding: 30px;*/
+    padding: 30px 30px 20px;
     position: relative;
     cursor: pointer;
-    background-color: #fff;
+    /*background-color: #fff;*/
     /*color: #eceef1;*/
     /*font-size: 1.5em;*/
     /*text-transform: uppercase;*/
     /*text-align: center;*/
     transition: all 0.2s ease-in-out;
+
+/*    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 24%,rgba(255,255,255,1) 99%);
+    padding: 20px 20px 10px;
+    z-index: 1;*/
+
+    background: linear-gradient(177deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 60%,rgba(255,255,255,1) 52%,rgba(255,255,255,1) 100%);
 }
+/*.wrapper_text {
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 24%,rgba(255,255,255,1) 99%);
+    padding: 20px 20px 10px;
+    z-index: 1;
+}*/
 .card-inner:after {
   transition: all 0.3s ease-in-out;
 }
@@ -1103,6 +1130,7 @@ aside h3 .reveal {
   width: 100%;
   position: relative;
   display: flex;
+    flex-wrap: wrap;
 /*  justify-content: center;
   align-items: center;
   text-transform: uppercase;*/
@@ -1130,6 +1158,15 @@ aside h3 .reveal {
     max-width: 450px;
     padding-bottom: 10px;
 }
+.card-expander-game-details-wrapper-text li {
+    list-style: disc;
+    line-height: 1;
+    margin-left: 20px;
+    font-size: 17px;
+}
+.card-expander-game-details-wrapper-text ul {
+    margin-left: 20px;
+}
 .card.is-collapsed .card-inner:after {
   content: "";
   opacity: 0;
@@ -1141,9 +1178,9 @@ aside h3 .reveal {
   margin-top: 0;
   opacity: 0;
 }
-.card.is-expanded .card-inner {
+/*.card.is-expanded .card-inner {
     background-color: #949fb0;
-}
+}*/
 .card.is-expanded .card-inner:after {
   content: "";
   opacity: 1;
@@ -1166,7 +1203,7 @@ aside h3 .reveal {
   overflow: visible;
   margin-top: 30px;
   opacity: 1;
-  padding: 15px 15px 0;
+  padding: 15px 30px 0 15px;
 }
 .card.is-expanded:hover .card-inner {
   -webkit-transform: scale(1);
@@ -1244,10 +1281,10 @@ aside h3 .reveal {
   }
 
   .card-expander {
-    width: calc(600% - 120px);
+    width: calc(600% - 130px);
   }
 }
-@media screen and (min-width: 768px) and (max-width: 991px) {
+@media screen and (max-width: 991px) {
   .card:nth-of-type(2n+2) .card-expander {
     margin-left: calc(-100% - 30px);
   }
@@ -1260,14 +1297,22 @@ aside h3 .reveal {
     width: calc(200% + 30px);
   }
 }
+/*.card-expander-game-details-wrapper-text {
+    line-height: 1.25;
+}*/
 .card-expander-game-details-wrapper-text h2 {
     margin: 0 0 15px;
     background: rgba(255, 255, 255, 0.1);
     padding: 10px;
+    font-size: 16px;
 }
 .card-expander-game-details-wrapper-text p {
     padding: 0 10px;
-    font-size: 18px;
+    font-size: 16px;
+    margin-top: 8px;
+}
+.card-expander-game-details-wrapper-text a {
+    font-size: 16px;
 }
 .card-expander-close {
     position: absolute;
@@ -1321,4 +1366,12 @@ aside h3 .reveal {
 
 .card-expander-game-details-wrapper-img img {
     width: 100%;
+}
+.card-expander-no-cards {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 15px 15px 30px;
 }

@@ -11,7 +11,7 @@ if (file_exists($file)) {
 	  $db = new PDO('sqlite:data/games_db.sqlite');
 
 
-		$result = $db->query("SELECT * FROM Game WHERE Image = '0'");
+		$result = $db->query("SELECT * FROM Game WHERE Image = '0' LIMIT 100");
 		$id_string = '';
 	  foreach($result as $row) {
 	  	$id = $row['BGGID'];
@@ -38,7 +38,7 @@ function bgg_search($id){
 	echo 'bgg_search <br/>';
 
 	foreach ($array['item'] as $game) {
-		$thumbnail = $game['thumbnail'];
+		$thumbnail = $game['image'];
 
 		if (array_key_exists(0, $game['name']))
 			$name = $game['name'][0]['@attributes']['value'];

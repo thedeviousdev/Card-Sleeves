@@ -13,13 +13,14 @@ if(isset($_POST['url'])) {
 	
 	$url = $_POST['url'];
 	$parse = parse_url($url);
+	$parse_base = NULL;
 
-	if(isset($_POST['base'])) {
+	if($_POST['base'] !== "") {
 		$base = $_POST['base'];
 		$parse_base = parse_url($base);
 	}
 
-	if($parse['host'] == 'boardgamegeek.com' && !isset($_POST['base'])) {
+	if($parse['host'] == 'boardgamegeek.com' && $parse_base !== "") {
 		$parts = explode('/', $parse['path']);
 		bgg_search($parts[2]);
 	}
@@ -30,7 +31,7 @@ if(isset($_POST['url'])) {
 	}
 	else {
 		?>
-		<div class="popup-cart" style="display: flex;"><div class="flex"><div>Please enter a valid Board Game Geek URL</div></div></div>
+		<div class="popup-cart" style="display: flex;"><div class="flex"><div>werwerewPlease enter a valid Board Game Geek URL</div></div></div>
 		<?php
 	}
 }
@@ -44,7 +45,7 @@ function bgg_search($id, $base_id = NULL){
 	// echo '<pre>';
 	// print_r($array);
 	// echo '</pre>';
-	$thumbnail = $array['item']['thumbnail'];
+	$thumbnail = $array['item']['image'];
 
 	if (array_key_exists(0, $array['item']['name']))
 		$name = $array['item']['name'][0]['@attributes']['value'];

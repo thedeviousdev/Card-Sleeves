@@ -26,6 +26,26 @@ function decodeHtml(html) {
     return txt.value;
 }
 
+function search(game_id = null) {
+  var game = $('.form_search .game-select').val();
+
+  if(game_id !== null)
+  	game = game_id;
+
+  var data = {
+  	game : game
+  }
+
+ 	$.ajax({
+	  method: "POST",
+	  url: "game_search.php",
+	  data: data
+	})
+  .done(function( msg ) {
+  	$(".search").html(msg);
+  });		
+}
+
 $(document).ready(function() {
 
 	var options = {
@@ -46,23 +66,6 @@ $(document).ready(function() {
 	};
 
 	$(".game-select").easyAutocomplete(options);
-
-	function search() {
-    var game = $('.form_search .game-select').val();
-
-    var data = {
-    	game : game
-    }
-
-	 	$.ajax({
-		  method: "POST",
-		  url: "game_search.php",
-		  data: data
-		})
-	  .done(function( msg ) {
-	  	$(".search").html(msg);
-	  });		
-	}
 
 	$( ".form_search" ).submit(function( event ) {
 	  event.preventDefault();
@@ -99,6 +102,11 @@ $(document).on('click', '#clear', function() {
 $(document).on('click', '.import', function(e) {
 	e.preventDefault();
 	$('.popup-cart').css('display', 'flex');
+});
+$(document).on('click', '.open_game', function(e) {
+  e.preventDefault();
+	var game_id = $(this).text();
+	search(game_id);
 });
 
 $(document).on('click', 'footer span', function() {

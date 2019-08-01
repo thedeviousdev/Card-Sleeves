@@ -12,7 +12,7 @@ include_once("login_session.php");
       <meta content="name" name="author">
       <meta content="description here" name="description">
       <meta content="keywords, here" name="keywords">
-      <link href="img/fav.ico" rel="shortcut icon" type="img/fav.ico">
+      <link href="assets/fav.ico" rel="shortcut icon">
 
       <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Montserrat:400,600,700" rel="stylesheet">
       <link rel="stylesheet" href="assets/EasyAutocomplete-1.3.5/easy-autocomplete.min.css">
@@ -32,7 +32,7 @@ include_once("login_session.php");
 <div class="wrapper edit">
   <header>
     <div class="logo">
-      <a href="https://sleeved.io"><img src="img/sleeved_logo.svg" /></a>
+      <a href="/"><img src="assets/sleeved_logo.svg" /></a>
     </div>
     <div class="form">
       <form action="" class="form_search_edit" method="get">

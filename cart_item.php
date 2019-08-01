@@ -26,7 +26,7 @@ function cart_item($game){
 		<span data-game_id="<?php echo $game->get_id(); ?>" class="btn_remove"><i class="fas fa-times-square"></i></span>
 		<div class="wrapper_detail">
 			<div>
-				<h2><a href="<?php echo $game->get_URL(); ?>"target="_blank"><?php echo $game->get_name(); ?> </a></h2>
+				<h2><a href="#" data-game_id="<?php echo $game->get_id(); ?>" class="open_game"><?php echo $game->get_name(); ?> </a></h2>
 		  </div>
 	  </div>
 	  <div class="wrapper_cards">

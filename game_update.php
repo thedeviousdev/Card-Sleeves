@@ -6,8 +6,7 @@ include_once('game_update_base.php');
 if(isset($_POST['game_id'])) {
   
   $game_ID = $_POST['game_id'];
-  $year = $_POST['year'];
-
+  
   $sleeve = $_POST['sleeve'];
   $quantity = $_POST['quantity'];
   $card_nb = $_POST['nb'];
@@ -29,6 +28,12 @@ if(isset($_POST['game_id'])) {
     $image = $_POST['image'];
 
     update_image($game_ID, $image);
+  }
+
+  if(isset($_POST['edition']) && $_POST['edition'] !== NULL && $_POST['edition'] !== "") {
+    $edition = $_POST['edition'];
+
+    update_edition($game_ID, $edition);
   }
 
   if(isset($_POST['year']) && $_POST['year'] !== NULL && $_POST['year'] !== "") {
@@ -53,6 +58,30 @@ function update_image($g, $image){
 
         if($old_image != $image)
           $db->exec("UPDATE Game SET Image = '" . $image  . "' WHERE Id = '" . $g . "';");
+      }
+    }
+    return game_detail(new_game_object($g));
+  }
+  catch(PDOException $e)  {
+    print 'Exception : '. $e->getMessage();
+  }
+}
+
+
+function update_edition($g, $edition){
+  echo 'update_edition';
+  try {
+    $db = new PDO('sqlite:data/games_db.sqlite');
+
+    $check = $db->query("SELECT * FROM Game WHERE Id ='" . $g ."';");
+    if ($check->fetchColumn() > 0) {
+
+      $result = $db->query("SELECT * FROM Game WHERE Id ='" . $g ."';");
+      foreach($result as $row) {
+        $old_edition = $row['Edition'];
+
+        if($old_edition != $edition)
+          $db->exec("UPDATE Game SET Edition = '" . $edition  . "' WHERE Id = '" . $g . "';");
       }
     }
     return game_detail(new_game_object($g));
