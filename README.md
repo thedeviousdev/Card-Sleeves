@@ -1,18 +1,16 @@
 # Sleeved.io
 
-The purpose of this site is to help the all of the board game geeks out there sleeve their precious games! The suggested sleeves are only Mayday sleeves, however I have also listed the card size for manual calculations. 
+The purpose of this site is to help the all of the board game geeks out there sleeve their precious games!
 
 ##### **How to use it:**
 - Type in the name of a game into the search bar
 - Click the magnifying glass
-_Results should appear wit that game name (if they exist)_ 
-- Press the plus (➕) icon to add the game to your "cart"
+_Results should appear with that game name (if they exist)_ 
+- Click the image of the board game
+- Select the brand of each sleeve 
+- Click "Add Sleeves"
 - Add all the games you need sleeved
 - Cick the (❌) icon to remove a game from the "cart"
-
-### **Verified Games**
-
-A select few number of games have a checkmark (☑) next to their name. These games have been personally measured and counted by me, and if I could, I would offer a guarantee. 😁
 
 ### **Game missing?**
 
@@ -49,22 +47,22 @@ _Add as many sleeve sizes as necessary_
 
 ### **Future Updates**
 - Verify all games from BGG list
+- Import user list from BGG
 - Could not be added (from user Import)
 - Allow a select community to update and add games themselves (Call out for contributors!)
 - Allow community to update, and only allow a select view to 'verify'
 - Add a "purchase" button that sends the user to Amazon (or other affiliates)
 - Add sleeve colors to the names in the cart total
 - Allow multiple of the same game to be added
-- Allow users to change the sleeve brand
 - Style the "cart" a little better
-- Show edition/versions
 - Link to expansions from base game
 - Create an API endpoint for people to export this data
 - Reverse search (I have "x" games, which sleeves will fit them)
-- Show images/videos of sleeved cards
+- Show multiple images/videos of sleeved cards
 - Analytics to see what are the most commonly searched games
+- ~~Show edition/versions~~
+- ~~Allow users to change the sleeve brand~~
 - ~~Pop-up/lightbox to explain what the site is/how it works~~
-- ~~Import user list from BGG~~
 - ~~Empty cart/clear all button~~
 - ~~Show 'no results' response when searching~~
 - ~~Add ALL of the games from BGG list~~
@@ -114,7 +112,11 @@ _Add as many sleeve sizes as necessary_
  - Update brand name
  - Add sleeve size
  - Update sleeve size
- 
+
+### Image stuff
+
+`for file in *.jpg; do convert $file -resize x300 -quality 80 $file; done`
+`for file in *.png; do convert $file -resize x300 -quality 80 $file; done`
 
 ### **Thanks!**
 

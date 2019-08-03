@@ -13,7 +13,7 @@ if (session_status() == PHP_SESSION_NONE) {
 ?>
 		<div class="contribute">
 			<div class="how">
-				Using the search bar or import button, add the games from your collection to the cart.<br />
+				Using the search bar, add the games from your collection to the cart.<br />
 				Once all the games have been added, refer to the Total's section to purchase all the sleeves you need!
 			</div>
 			<a href="https://github.com/thedeviousdev/Card-Sleeves" target="_blank">

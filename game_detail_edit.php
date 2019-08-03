@@ -5,24 +5,15 @@ include_once('game.php');
 include_once('card.php');
 include_once('new_game_object.php');
 include_once('sleeve_empty.php');
+include_once('sleeve_groups.php');
+include_once('convert_bgg_to_id.php');
+
 
 if(isset($_POST['game'])) {
 	
 	$game_ID = $_POST['game'];
 	game_detail(new_game_object($game_ID));
 
-}
-
-function convert_bgg_to_id($bggid) {
-	$id = false;
-	$db = new PDO('sqlite:data/games_db.sqlite');
-
-  $result = $db->query("SELECT * FROM Game WHERE BGGID ='" . $bggid ."'");
-  foreach($result as $row) {
-  	$id = $row['Id'];
-  }
-
-  return $id;
 }
 
 function game_detail($game){
@@ -39,21 +30,14 @@ function game_detail($game){
 		<input type="text" value="<?php echo $game->get_edition(); ?>" name="edition">
 
 		<div class="controls">
-			<?php 
-			// if($game->get_verified()) {
-			// 	echo '<span class="submit" id="verify" data-id="' . $gam+e->get_id() . '" data-value="0">Unverify</span>';
-			// }
-			// else {
-			// 	echo '<span class="submit" id="verify" data-id="' . $game->get_id() . '" data-value="1">Verify</span>';
-			// }
-			?>
-			
+
 			<span class="submit" id="delete" data-id="<?php echo $game->get_id(); ?>">Delete</span>
+
 			<?php
 			if($game->get_base() != NULL) {
 				?>
 				<h3>Base Game: <br /><?php
-				$base_game = new_game_object(convert_bgg_to_id($game->get_base()));
+				$base_game = new_game_object($game->get_base());
 				echo $base_game->get_name();
 				?>
 				</h3>
@@ -67,6 +51,7 @@ function game_detail($game){
 			<?php
 			}
 			?>
+			<?php sleeve_groups(); ?>
 		</div>
 		<div class="table">
 			<div class="row">

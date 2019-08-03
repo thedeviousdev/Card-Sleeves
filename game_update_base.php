@@ -3,6 +3,7 @@
 include_once('game_detail_edit.php');
 include_once('new_game_object.php');
 include_once('game_exists.php');
+include_once('convert_bgg_to_id.php');
 
 function get_id_from_URL($url) {
   $parse = parse_url($url);
@@ -15,10 +16,14 @@ function update_base($id, $base){
 
   echo $base_id;
 
+  // if(game_exists($base_id) || $base_id == NULL) {
   if(game_exists($base_id) || $base_id == NULL) {
     try {
       $db = new PDO('sqlite:data/games_db.sqlite');
-      $db->exec("UPDATE Game SET BaseGame = '" . $base_id  . "' WHERE Id = '" . $id . "';");
+
+      $non_bgg_id = convert_bgg_to_id($base_id);
+
+      $db->exec("UPDATE Game SET BaseGame = '" . $non_bgg_id  . "' WHERE Id = '" . $id . "';");
 
       return game_detail(new_game_object($id));
 

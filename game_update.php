@@ -18,7 +18,7 @@ if(isset($_POST['game_id'])) {
       card_update($game_ID, $quantity[$i], $card_nb[$i], $sleeve[$i]);
   }
 
-  if(isset($_POST['base_id']) && $_POST['base_id'] !== NULL && $_POST['base_id'] !== "") {
+  if(isset($_POST['base_id'])) {
     $base_ID = $_POST['base_id'];
 
     update_base($game_ID, $base_ID);
@@ -30,13 +30,13 @@ if(isset($_POST['game_id'])) {
     update_image($game_ID, $image);
   }
 
-  if(isset($_POST['edition']) && $_POST['edition'] !== NULL && $_POST['edition'] !== "") {
+  if(isset($_POST['edition'])) {
     $edition = $_POST['edition'];
 
     update_edition($game_ID, $edition);
   }
 
-  if(isset($_POST['year']) && $_POST['year'] !== NULL && $_POST['year'] !== "") {
+  if(isset($_POST['year'])) {
     $year = $_POST['year'];
 
     update_year($game_ID, $year);

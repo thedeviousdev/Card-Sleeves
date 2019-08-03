@@ -345,6 +345,30 @@ $(document).on('click', '.btn_remove', function() {
 });
 
 
+$(document).on('click', '#add_sleeve_groups_btn', function( event ) {
+  event.preventDefault();
+  
+  var group_id = document.getElementById('sleeve_group').value;
+  var qty = document.getElementById('sleeve_qty').value;
+  var nb = document.getElementById('sleeve_nb').value;
+
+ 	$.ajax({
+	  method: "POST",
+	  url: "sleeve_groups.php",
+	  data: {
+	  	sleevegroup: group_id,
+	  	sleeveqty: qty,
+	  	sleevenb: nb,
+	  },
+    success: function(data) {
+	  	// new_sleeve_row(data);
+			$(".table").append(data);
+    },
+	})
+  .done(function( msg ) {});
+});
+
+
 $(document).on('submit', '.card-expander-game-cards-form', function( event ) {
   event.preventDefault();
   var data = $(this).serialize();
