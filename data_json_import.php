@@ -7,7 +7,7 @@ $json = json_decode($string, true);
 $file = 'data/games_db.sqlite';
 
 $sleeve_brands[0] = null;
-$sleeve_brands[1] = "Mayday Games";
+$sleeve_brands[1] = "Mayday";
 $sleeve_brands[2] = "Arcane Tinmen";
 $sleeve_brands[3] = "Artipia";
 $sleeve_brands[4] = "BCW";
@@ -59,28 +59,31 @@ if (file_exists($file)) {
 
 			  	// Iterate through all the sleeves
 	        foreach ($game['sleeves'] as $sleeve) {
-	        	$brand_key = array_search($sleeve['sleeve_brand'], $sleeve_brands);
-	        	$nb_cards = $sleeve['card_total'];
-	        	$sleeve_size = $sleeve['sleeve_size'];
-	        	$card_nb = $sleeve['card_nb'];
+	        	if($sleeve['sleeve_brand'] === 'Mayday') {
+		        		
+		        	$brand_key = array_search($sleeve['sleeve_brand'], $sleeve_brands);
+		        	$nb_cards = $sleeve['card_total'];
+		        	$sleeve_size = $sleeve['sleeve_size'];
+		        	$card_nb = $sleeve['card_nb'];
 
-	        	// Don't insert 0 totals
-	        	if($nb_cards != 0 && $nb_cards !== '?') {
-		        	// Get all of the sleeve sizes from all the companies
-							$sleeve_result = $db->query("SELECT * FROM Sleeve WHERE CompanyID = '" . $brand_key . "'");
+		        	// Don't insert 0 totals
+		        	if($nb_cards != 0 && $nb_cards !== '?') {
+			        	// Get all of the sleeve sizes from all the companies
+								$sleeve_result = $db->query("SELECT * FROM Sleeve WHERE CompanyID = '" . $brand_key . "'");
 
-						  foreach($sleeve_result as $sleeve_row) {
-			        	$sleeve_id = $sleeve_row['Id'];
-			        	$sleeve_name = $sleeve_row['SleeveName'];
+							  foreach($sleeve_result as $sleeve_row) {
+				        	$sleeve_id = $sleeve_row['Id'];
+				        	$sleeve_name = $sleeve_row['SleeveName'];
 
-			        	// If the sleeve name is in the sleeve string
-								$pos = strpos($sleeve_size, $sleeve_name);
+				        	// If the sleeve name is in the sleeve string
+									$pos = strpos($sleeve_size, $sleeve_name);
 
-								if ($pos !== false) {
-				    			$db->exec("INSERT INTO Cards (GameId, SleeveId, CardNb, Quantity) VALUES ('" . $game_id . "', '" . $sleeve_id . "', '" . $card_nb . "', '" . $nb_cards . "');");
-				    			break;
-								}
-						  }
+									if ($pos !== false) {
+					    			$db->exec("INSERT INTO Cards (GameId, SleeveId, CardNb, Quantity) VALUES ('" . $game_id . "', '" . $sleeve_id . "', '" . $card_nb . "', '" . $nb_cards . "');");
+					    			break;
+									}
+							  }
+							}
 						}
 				  }
 				}
@@ -93,28 +96,31 @@ if (file_exists($file)) {
 
 			  	// Iterate through all the sleeves
 	        foreach ($game['sleeves'] as $sleeve) {
-	        	$brand_key = array_search($sleeve['sleeve_brand'], $sleeve_brands);
-	        	$nb_cards = $sleeve['card_total'];
-	        	$sleeve_size = $sleeve['sleeve_size'];
-	        	$card_nb = $sleeve['card_nb'];
+	        	if($sleeve['sleeve_brand'] === 'Mayday') {
 
-	        	// Don't insert 0 totals
-	        	if($nb_cards != 0 && $nb_cards !== '?') {
-		        	// Get all of the sleeve sizes from all the companies
-							$sleeve_result = $db->query("SELECT * FROM Sleeve WHERE CompanyID = '" . $brand_key . "'");
+		        	$brand_key = array_search($sleeve['sleeve_brand'], $sleeve_brands);
+		        	$nb_cards = $sleeve['card_total'];
+		        	$sleeve_size = $sleeve['sleeve_size'];
+		        	$card_nb = $sleeve['card_nb'];
 
-						  foreach($sleeve_result as $sleeve_row) {
-			        	$sleeve_id = $sleeve_row['Id'];
-			        	$sleeve_name = $sleeve_row['SleeveName'];
+		        	// Don't insert 0 totals
+		        	if($nb_cards != 0 && $nb_cards !== '?') {
+			        	// Get all of the sleeve sizes from all the companies
+								$sleeve_result = $db->query("SELECT * FROM Sleeve WHERE CompanyID = '" . $brand_key . "'");
 
-			        	// If the sleeve name is in the sleeve string
-								$pos = strpos($sleeve_size, $sleeve_name);
+							  foreach($sleeve_result as $sleeve_row) {
+				        	$sleeve_id = $sleeve_row['Id'];
+				        	$sleeve_name = $sleeve_row['SleeveName'];
 
-								if ($pos !== false) {
-				    			$db->exec("INSERT INTO Cards (GameId, SleeveId, CardNb, Quantity) VALUES ('" . $game_id . "', '" . $sleeve_id . "', '" . $card_nb . "', '" . $nb_cards . "');");
-								}
-						  }
-						}
+				        	// If the sleeve name is in the sleeve string
+									$pos = strpos($sleeve_size, $sleeve_name);
+
+									if ($pos !== false) {
+					    			$db->exec("INSERT INTO Cards (GameId, SleeveId, CardNb, Quantity) VALUES ('" . $game_id . "', '" . $sleeve_id . "', '" . $card_nb . "', '" . $nb_cards . "');");
+									}
+							  }
+							}
+	        	}
 				  }
 				}
 			}

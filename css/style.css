@@ -1375,3 +1375,13 @@ aside h3 .reveal {
     flex-grow: 1;
     padding: 15px 15px 30px;
 }
+
+::-moz-selection { /* Code for Firefox */
+  color: #fff;
+  background: #392d44;
+}
+
+::selection {
+  color: #fff; 
+  background: #392d44;
+}

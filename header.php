@@ -10,7 +10,15 @@
 
       gtag('config', 'UA-84986821-2');
     </script>
-    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MW7K76T');</script>
+    <!-- End Google Tag Manager -->    
+
+
     <meta property="og:title" content="Sleeved.io">
     <meta property="og:image" content="https://sleeved.io/preview.jpg">
     <meta property="og:description" content="Automagically calculates all of the sleeves you need for your board & card games.">
@@ -40,6 +48,10 @@
     <script src="js/script.js?v=2.1.0"></script>     
   </head>
   <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MW7K76T"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <div class="wrapper index">
     <header>
       <div class="logo">

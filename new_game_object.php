@@ -32,7 +32,8 @@ function new_game_object($g){
 					FROM Cards 
 					INNER JOIN Sleeve ON Cards.SleeveId = Sleeve.Id
 					INNER JOIN SleeveCompany ON Sleeve.CompanyID = SleeveCompany.Id
-					WHERE Cards.GameId ='" . $g . "' AND Cards.CardNb = '" . $i . "';");
+					WHERE Cards.GameId ='" . $g . "' AND Cards.CardNb = '" . $i . "'
+					ORDER BY SleeveCompany.Name;");
 
 
 			  foreach($sleeves as $sleeve) {

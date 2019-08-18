@@ -29,6 +29,12 @@ function decodeHtml(html) {
 function search(game_id = null) {
   var game = $('.form_search .game-select').val();
 
+   window.dataLayer = window.dataLayer || [];
+   window.dataLayer.push({
+		'event': 'Search',
+		'searchValue': game,
+   });
+
   if(game_id !== null)
   	game = game_id;
 
@@ -371,7 +377,22 @@ $(document).on('click', '#add_sleeve_groups_btn', function( event ) {
 
 $(document).on('submit', '.card-expander-game-cards-form', function( event ) {
   event.preventDefault();
+  var game_id = $(this).find('input[name="game_id"]').val();
+  console.log(game_id);
+
+  var brand_array = [];
+  $(this).find('option:selected').each(function() { 
+		brand_array.push($(this).text()); 
+	}); 
+
   var data = $(this).serialize();
+
+	window.dataLayer = window.dataLayer || [];
+	window.dataLayer.push({
+		'event': 'AddSleeves',
+		'gameId': game_id,
+		'sleeveBrand': brand_array
+	});
 
  	$.ajax({
 	  method: "POST",
