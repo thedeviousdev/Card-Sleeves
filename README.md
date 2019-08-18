@@ -1,6 +1,6 @@
 # Sleeved.io
 
-The purpose of this site is to help the all of the board game geeks out there sleeve their precious games!
+The purpose of this site is to help all of the board game geeks out there sleeve their precious games!
 
 ##### **How to use it:**
 - Type in the name of a game into the search bar
