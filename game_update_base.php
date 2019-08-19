@@ -16,7 +16,6 @@ function update_base($id, $base){
 
   echo $base_id;
 
-  // if(game_exists($base_id) || $base_id == NULL) {
   if(game_exists($base_id) || $base_id == NULL) {
     try {
       $db = new PDO('sqlite:data/games_db.sqlite');
