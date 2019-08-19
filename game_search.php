@@ -156,7 +156,7 @@ function game_search($g, $page){
 		  		?>
 
 			  		<div class="card-expander-no-cards">
-			  			<span>No cards recorded for this game!</span>
+			  			<span>No cards recorded for this game! <a href="https://github.com/thedeviousdev/Card-Sleeves" target="_blank">Want to help by adding it? :)</a></span>
 			  		</div>
 			  		<?php
 			  	}
