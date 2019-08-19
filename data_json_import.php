@@ -42,7 +42,7 @@ if (file_exists($file)) {
       $parts = explode('/', $parse['path']);
       $bggid = $parts[2];
 
-			print_r($game);
+			// print_r($game);
 
 			// Check to see if any games already exist with BGGID
 		  $count = $db->query("SELECT * FROM Game WHERE BGGID = '" . $bggid . "'")->fetchColumn();
@@ -59,7 +59,7 @@ if (file_exists($file)) {
 
 			  	// Iterate through all the sleeves
 	        foreach ($game['sleeves'] as $sleeve) {
-	        	if($sleeve['sleeve_brand'] === 'Mayday') {
+	        	if($sleeve['sleeve_brand'] === 'Paladin') {
 		        		
 		        	$brand_key = array_search($sleeve['sleeve_brand'], $sleeve_brands);
 		        	$nb_cards = $sleeve['card_total'];
@@ -96,7 +96,7 @@ if (file_exists($file)) {
 
 			  	// Iterate through all the sleeves
 	        foreach ($game['sleeves'] as $sleeve) {
-	        	if($sleeve['sleeve_brand'] === 'Mayday') {
+	        	if($sleeve['sleeve_brand'] === 'Paladin') {
 
 		        	$brand_key = array_search($sleeve['sleeve_brand'], $sleeve_brands);
 		        	$nb_cards = $sleeve['card_total'];
@@ -112,10 +112,17 @@ if (file_exists($file)) {
 				        	$sleeve_id = $sleeve_row['Id'];
 				        	$sleeve_name = $sleeve_row['SleeveName'];
 
+				        	// echo '<br>sleeve_size: ' . $sleeve_size;
+				        	// echo '<br>sleeve_name: ' . $sleeve_name;
+
 				        	// If the sleeve name is in the sleeve string
 									$pos = strpos($sleeve_size, $sleeve_name);
 
 									if ($pos !== false) {
+
+					        	echo '<br>sleeve_size: ' . $sleeve_size;
+					        	echo '<br>sleeve_name: ' . $sleeve_name;
+
 					    			$db->exec("INSERT INTO Cards (GameId, SleeveId, CardNb, Quantity) VALUES ('" . $game_id . "', '" . $sleeve_id . "', '" . $card_nb . "', '" . $nb_cards . "');");
 									}
 							  }

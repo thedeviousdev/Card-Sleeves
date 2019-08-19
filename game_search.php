@@ -135,7 +135,7 @@ function game_search($g, $page){
 											$sleeves = $card->get_sleeves();
 											foreach($sleeves as $sleeve) {
 												?>
-											  <option value="<?php echo $sleeve->get_id(); ?>"><?php echo $sleeve->get_brand(); ?></option>
+											  <option value="<?php echo $sleeve->get_id(); ?>"><?php echo $sleeve->get_brand() . ' | ' . $sleeve->get_name(); ?></option>
 											<?php
 											}
 											?>		

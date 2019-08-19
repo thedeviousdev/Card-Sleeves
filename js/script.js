@@ -27,6 +27,7 @@ function decodeHtml(html) {
 }
 
 function search(game_id = null) {
+
   var game = $('.form_search .game-select').val();
 
    window.dataLayer = window.dataLayer || [];
@@ -49,6 +50,7 @@ function search(game_id = null) {
 	})
   .done(function( msg ) {
   	$(".search").html(msg);
+	  window.history.pushState( {} , '', '?search=' + game );
   });		
 }
 

@@ -1255,7 +1255,7 @@ aside h3 .reveal {
   }
 
   .card-expander {
-    width: calc(500% - 140px);
+    width: calc(500% - 175px);
   }
 }
 
@@ -1335,6 +1335,7 @@ aside h3 .reveal {
 .card-expander-game-cards-form {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .card-expander-game-cards-form-sleeve {
     display: flex;

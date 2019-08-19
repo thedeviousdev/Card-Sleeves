@@ -67,7 +67,3 @@
         </form>
       </div>
     </header>
-    <div class="search">
-      <div class="popup-cart">
-        <div class="flex"><div></div></div>        
-      </div>

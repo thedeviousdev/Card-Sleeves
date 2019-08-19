@@ -32,6 +32,9 @@ function update_base($id, $base){
       print 'Exception : '. $e->getMessage();
     }
   }
+  else {
+    return false;
+  }
 
 }
 ?>

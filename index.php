@@ -5,12 +5,31 @@ include_once("game_session.php");
 include_once("header.php");
 include_once("cart_total.php");
 include_once("game_total.php");
+include_once('game_search.php');
 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 
 ?>
+  <div class="search">
+  	<?php 
+
+		if(isset($_GET['search'])) {
+			$game_name = $_GET['search'];
+			if(isset($_POST['page'])) {
+				$page = $_POST['page'];
+			}
+			else 
+				$page = 1;
+
+			game_search($game_name, $page);
+		}
+		else {
+		?>
+    <div class="popup-cart">
+      <div class="flex"><div></div></div>        
+    </div>
 		<div class="contribute">
 			<div class="how">
 				Using the search bar, add the games from your collection to the cart.<br />
@@ -21,6 +40,7 @@ if (session_status() == PHP_SESSION_NONE) {
 				<span>Contribute?</span>
 			</a>
 		</div>
+		<?php } ?>
 	</div>
 
 	<aside>
