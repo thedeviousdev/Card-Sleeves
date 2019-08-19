@@ -1375,6 +1375,7 @@ aside h3 .reveal {
     justify-content: center;
     flex-grow: 1;
     padding: 15px 15px 30px;
+    text-align: center;
 }
 
 ::-moz-selection { /* Code for Firefox */
