@@ -2,6 +2,7 @@
 include_once('game_session.php');
 include_once('new_game_object.php');
 include_once('bgg_user_owned_search.php');
+// include_once('sleeve_brands.php');
 
 // Query DB for game names from search input
 // Display game details for the Home page
@@ -115,7 +116,7 @@ function game_search($g, $page, $search_type){
 					</div>
 				</div>
 			</div>
-			<h3>Search results:</h3><br />
+			<h3>Search results: </h3><br />
 			<div class="cards">
 				
 			<?php
@@ -188,7 +189,14 @@ function game_search($g, $page, $search_type){
 			  				}
 				  			?>
 				  			<div class="card-expander-game-cards-form-submit">
-									<button type="submit" value="Submit" class="card-expander-game-cards-form-submit-button">Add Sleeves</button>	  				
+									<button type="submit" value="Submit" class="card-expander-game-cards-form-submit-button">
+										<span>
+											Add Sleeves											
+										</span>
+										<div class="loading-anim">
+											<i class="fas fa-check"></i>
+										</div>
+									</button>	  				
 				  			</div>
 							</form>
 			  		</div>

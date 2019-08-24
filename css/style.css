@@ -1388,3 +1388,31 @@ aside h3 .reveal {
   color: #fff; 
   background: #392d44;
 }
+
+.loading .loading-anim {
+    display: block;
+    transform: translateY(-18px);
+}
+.loading-anim {
+    height: 0;
+    font-size: 18px;
+    transform: translateY(18px);
+    transition: .3s all;
+}
+.card-expander-game-cards-form-submit-button {
+    overflow: hidden;
+}
+.card-expander-game-cards-form-submit-button span {
+    transition: .3s all;
+    transform: translateY(0);
+    display: block;
+}
+.loading .card-expander-game-cards-form-submit-button span {
+    display: block;
+    transform: translateY(-36px);
+}
+
+.loading-anim img {
+    border-radius: 0;
+    box-shadow: none;
+}

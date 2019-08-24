@@ -390,9 +390,12 @@ $(document).on('click', '#add_sleeve_groups_btn', function( event ) {
 
 
 $(document).on('submit', '.card-expander-game-cards-form', function( event ) {
+	const self = this;
   event.preventDefault();
   var game_id = $(this).find('input[name="game_id"]').val();
   console.log(game_id);
+
+	$(self).addClass('loading');
 
   var brand_array = [];
   $(this).find('option:selected').each(function() { 
@@ -424,6 +427,11 @@ $(document).on('submit', '.card-expander-game-cards-form', function( event ) {
 		  	// $(".current_games").append(msg);
 		  	update_cart_contents();
 		  	update_total();
+				setTimeout(function() {
+				  $(self).removeClass('loading');
+				}, 1500);
+
+		  	// $(self).removeClass('loading');
 		  });
 		// }
   });
