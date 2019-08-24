@@ -24,7 +24,7 @@ if (session_status() == PHP_SESSION_NONE) {
 			else 
 				$page = 1;
 
-			game_search($game_name, $page);
+			game_search($game_name, $page, 'game');
 		}
 
 		else if(isset($_GET['username'])) {
@@ -38,7 +38,7 @@ if (session_status() == PHP_SESSION_NONE) {
 			
 			$username_game_string = bgg_search($username);	
 			if($username_game_string)
-				game_search_user($username_game_string, $page);
+				game_search($username_game_string, $page, 'user');
 			else
 				echo 'Invalid';
 		}
