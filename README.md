@@ -46,20 +46,30 @@ Set the post title to `[Update] Game Name`
 _Add as many sleeve sizes as necessary_
 
 ### **Future Updates**
+- Preferred brand dropdown
+- Remember brand
+- Show card's size
+- Unspecified card amount but shows dropdown (no button to add sleeves)
+- Style sleeve dropdown
+- Incorporate 'none' option for a certain card
+- Detail about sleeve
+- User login/sign up
+- Commenting on games/sleeves
+- FAQ
+- Report issue button
 - Verify all games from BGG list
-- Import user list from BGG
-- Could not be added (from user Import)
 - Allow a select community to update and add games themselves (Call out for contributors!)
 - Allow community to update, and only allow a select view to 'verify'
-- Add a "purchase" button that sends the user to Amazon (or other affiliates)
 - Add sleeve colors to the names in the cart total
-- Allow multiple of the same game to be added
-- Style the "cart" a little better
-- Link to expansions from base game
 - Create an API endpoint for people to export this data
 - Reverse search (I have "x" games, which sleeves will fit them)
+- Add a "purchase" button that sends the user to Amazon (or other affiliates)
 - Show multiple images/videos of sleeved cards
-- Analytics to see what are the most commonly searched games
+- Incorporate ratings into search results
+- Allow multiple of the same game to be added
+- ~~Import user list from BGG~~
+- ~~Link to expansions from base game~~
+- ~~Analytics to see what are the most commonly searched games~~
 - ~~Show edition/versions~~
 - ~~Allow users to change the sleeve brand~~
 - ~~Pop-up/lightbox to explain what the site is/how it works~~

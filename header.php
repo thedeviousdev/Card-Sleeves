@@ -45,7 +45,7 @@
     <script src="assets/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js"></script> 
     <script src="assets/fontawesome/svg-with-js/js/fontawesome-all.min.js" type="text/javascript"></script>
 
-    <script src="js/script.js?v=2.1.0"></script>     
+    <script src="js/script.js?v=2.2.0"></script>     
   </head>
   <body>
   <!-- Google Tag Manager (noscript) -->
