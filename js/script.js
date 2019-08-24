@@ -120,11 +120,23 @@ $(document).on('click', '.open_game', function(e) {
 $(document).on('click', 'footer span', function() {
 	var page = $(this).data('page');
 	var game_name = $('.search_result').data('game_name');
+	// var user_name = $('.search_result').data('user');
+	var url_params = new URLSearchParams(window.location.search);
+	var user_name = url_params.get('username');
+	var data = '';
 
-  var data = {
-  	game : game_name,
-  	page : page
-  }
+	if (user_name !== '' && user_name !== null) {
+	  data = {
+	  	username : user_name,
+	  	page : page
+	  }
+	}
+	else {
+	  data = {
+	  	game : game_name,
+	  	page : page
+	  }
+	}
   
  	$.ajax({
 	  method: "POST",
@@ -423,13 +435,13 @@ $(document).on('submit', '.bgg_user_import', function( event ) {
 
  	$.ajax({
 	  method: "POST",
-	  url: "bgg_user_owned_search.php",
+	  url: "game_search.php",
 	  data: data
 	})
   .done(function( msg ) {
   	if(msg != 'Invalid') {
-	  	update_cart_contents();
-	  	update_total();
+	  	$(".search").html(msg);
+		  window.history.pushState( {} , '', '?' + data );
 	  	$('.user_import').fadeOut();
 	  	$('.error').hide();
 	  }

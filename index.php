@@ -16,6 +16,7 @@ if (session_status() == PHP_SESSION_NONE) {
   	<?php 
 
 		if(isset($_GET['search'])) {
+			echo 'game isset';
 			$game_name = $_GET['search'];
 			if(isset($_POST['page'])) {
 				$page = $_POST['page'];
@@ -25,11 +26,39 @@ if (session_status() == PHP_SESSION_NONE) {
 
 			game_search($game_name, $page);
 		}
+
+		else if(isset($_GET['username'])) {
+			$username = trim($_GET['username']);
+
+			if(isset($_POST['page'])) {
+				$page = $_POST['page'];
+			}
+			else 
+				$page = 1;
+			
+			$username_game_string = bgg_search($username);	
+			if($username_game_string)
+				game_search_user($username_game_string, $page);
+			else
+				echo 'Invalid';
+		}
 		else {
 		?>
-    <div class="popup-cart">
-      <div class="flex"><div></div></div>        
-    </div>
+
+		<div class="popup-cart user_import">
+			<div class="flex">
+				<div>
+					<span class="close"><i class="fas fa-times-square"></i></span>
+					<form action="" class="bgg_user_import">
+						<h3>Enter Board Game Geek Username</h3>
+						<span class="error">Invalid Username</span>
+						<input type="text" name="username" value="" placeholder="" id="username">
+						
+						<input type="submit" value="Search" class="submit">
+					</form>
+				</div>
+			</div>
+		</div>
 		<div class="contribute">
 			<div class="how">
 				Using the search bar, add the games from your collection to the cart.<br />
@@ -60,21 +89,6 @@ if (session_status() == PHP_SESSION_NONE) {
 				?>
 			</div>
 		</div>
-		<div class="popup-cart user_import">
-			<div class="flex">
-				<div>
-					<span class="close"><i class="fas fa-times-square"></i></span>
-					<form action="" class="bgg_user_import">
-						<h3>Enter Board Game Geek Username</h3>
-						<span class="error">Invalid Username</span>
-						<input type="text" name="username" value="" placeholder="" id="username">
-						
-						<input type="submit" value="Search" class="submit">
-					</form>
-				</div>
-			</div>
-		</div>
-
 	</aside>
 </div>
 <?php

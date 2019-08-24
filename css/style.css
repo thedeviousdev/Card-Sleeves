@@ -843,11 +843,12 @@ aside h3 .submit {
 }
 .popup-cart.user_import {
     position: fixed;
-    right: 0;
+    left: 0;
     left: initial;
 
-    width: 25%;
+    width: 75%;
     height: 100vh;
+    z-index: 1;
 }
 .popup-cart.user_import div {
     position: relative;

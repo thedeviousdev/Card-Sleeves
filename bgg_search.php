@@ -31,7 +31,7 @@ if(isset($_POST['url'])) {
 	}
 	else {
 		?>
-		<div class="popup-cart" style="display: flex;"><div class="flex"><div>werwerewPlease enter a valid Board Game Geek URL</div></div></div>
+		<div class="popup-cart" style="display: flex;"><div class="flex"><div>Please enter a valid Board Game Geek URL</div></div></div>
 		<?php
 	}
 }
@@ -78,7 +78,7 @@ function add_game($bgg, $name, $year, $image, $base_id = NULL) {
 			if($base_id != NULL)
 				$db->exec('INSERT INTO Game (Name, Year, URL, Image, BGGID, Verified, BaseGame) VALUES ("' . $name . '", "' . $year . '", "' . $url . '", "' . $image_path . '", "' . $bgg . '", 0, "' . $base_id . '");');
 			else
-				$db->exec('INSERT INTO Game (Name, Year, URL, Image, BGGID, Verified, BaseGame) VALUES ("' . $name . '", "' . $year . '", "' . $url . '", "' . $image_path . '", "' . $bgg . '", 0, 0);');
+				$db->exec('INSERT INTO Game (Name, Year, URL, Image, BGGID, Verified) VALUES ("' . $name . '", "' . $year . '", "' . $url . '", "' . $image_path . '", "' . $bgg . '", 0);');
 
 		  $game_id = $db->lastInsertId();
 		  ?>
