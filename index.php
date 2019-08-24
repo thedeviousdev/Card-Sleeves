@@ -16,7 +16,6 @@ if (session_status() == PHP_SESSION_NONE) {
   	<?php 
 
 		if(isset($_GET['search'])) {
-			echo 'game isset';
 			$game_name = $_GET['search'];
 			if(isset($_POST['page'])) {
 				$page = $_POST['page'];

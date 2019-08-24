@@ -231,10 +231,11 @@ function game_search($g, $page, $search_type){
 		  if($count > 50) {
 		  	echo '<footer class="navigation">';
 		  	if($page != 1) {
-					echo '<span data-page="' . ($page - 1) .'" id="previous"><</span>';
+					echo '<span data-page="' . ($page - 1) .'" id="previous"><i class="fas fa-chevron-left
+					"></i></span>';
 				}
 				if($count > ($page * 50)) {
-					echo '<span data-page="' . ($page + 1) .'" id="next">></span>';					
+					echo '<span data-page="' . ($page + 1) .'" id="next"><i class="fas fa-chevron-right"></i></span>';					
 				}
 				echo '</footer>';
 			} 
