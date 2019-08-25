@@ -455,7 +455,6 @@ $(document).on('submit', '.bgg_user_import', function( event ) {
 	  }
 	  else 
 	  	$('.error').show();
-
   });
 });
 
@@ -493,4 +492,22 @@ $(document).on('click', '.card-expander-close', function() {
   $('.card').removeClass('is-inactive');
   // $('.card').not($(this).closest('.card')).removeClass('is-inactive');
 
+});
+
+$(document).on('change', '.card-expander-game-cards-form-sleeve-wrapper-dropdown', function() { 
+	const self = this;
+
+	let data = {
+		sleeve_id: $(self).val()
+	}
+
+ 	$.ajax({
+	  method: "POST",
+	  url: "sleeve_size.php",
+	  data: data
+	})
+  .done(function( msg ) {
+  	console.log(msg);
+  	$(self).closest('form').find('.card-expander-game-cards-form-sleeve-size').html(msg);
+  });
 });

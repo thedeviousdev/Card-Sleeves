@@ -1343,12 +1343,12 @@ aside h3 .reveal {
     background-color: #BFB8AD;
     flex-direction: column;
     border-radius: 15px;
-    padding: 15px;
+    padding: 20px 15px;
     text-align: center;
     margin: 0 15px 15px 0;
     color: #383838;
     min-height: 200px;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .card-expander-game-cards-form-sleeve h3 {
     font-size: 50px;
@@ -1428,4 +1428,16 @@ aside h3 .reveal {
 }
 .card-expander-game-details-wrapper-text strong {
     padding: 0 15px 0 10px;
+}
+
+.card-expander-game-cards-form-sleeve p {
+    font-size: 16px;
+}
+.card-expander-game-cards-form-sleeve h3 {
+    padding: 0;
+    flex-basis: unset;
+}
+
+.card-expander-game-cards-form-sleeve h2 {
+    margin: 0 0 5px;
 }

@@ -2,7 +2,7 @@
 include_once('game_session.php');
 include_once('new_game_object.php');
 include_once('bgg_user_owned_search.php');
-// include_once('sleeve_brands.php');
+include_once('sleeve_size.php');
 
 // Query DB for game names from search input
 // Display game details for the Home page
@@ -166,16 +166,19 @@ function game_search($g, $page, $search_type){
 
 				  			<?php
 			  				foreach($cards as $key => $card) {
+									$sleeves = $card->get_sleeves();
 			  					?>
 			  					<div class="card-expander-game-cards-form-sleeve">
-										<h2>Card <?php echo ++$key; ?></h2>
+			  						<div>
+											<h2>Card <?php echo ++$key; ?></h2>
+											<p class="card-expander-game-cards-form-sleeve-size"><?php echo get_sleeve_size($sleeves[0]->get_id()); ?></p>
+			  						</div>
 			  						<h3><?php echo $card->get_nb_cards(); ?></h3>
 
 			  						<div class="card-expander-game-cards-form-sleeve-wrapper">
 		  								
-											<select name="<?php echo $card->get_id(); ?>">
+											<select class="card-expander-game-cards-form-sleeve-wrapper-dropdown" name="<?php echo $card->get_id(); ?>">
 											<?php
-											$sleeves = $card->get_sleeves();
 											foreach($sleeves as $sleeve) {
 												?>
 											  <option value="<?php echo $sleeve->get_id(); ?>"><?php echo $sleeve->get_brand() . ' | ' . $sleeve->get_name(); ?></option>
