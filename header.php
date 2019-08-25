@@ -37,7 +37,7 @@
     <link href="https://fonts.googleapis.com/css?family=Hind:400,600|Montserrat:400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/EasyAutocomplete-1.3.5/easy-autocomplete.min.css">
     <link href="css/style.css?v=2.3.0" rel="stylesheet" type="text/css">
-    <link href="assets/fontawesome/all.css" rel="stylesheet">
+    <link href="assets/fontawesome/all.min.css" rel="stylesheet">
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
