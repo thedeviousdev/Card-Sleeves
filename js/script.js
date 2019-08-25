@@ -507,7 +507,6 @@ $(document).on('change', '.card-expander-game-cards-form-sleeve-wrapper-dropdown
 	  data: data
 	})
   .done(function( msg ) {
-  	console.log(msg);
-  	$(self).closest('form').find('.card-expander-game-cards-form-sleeve-size').html(msg);
+  	$(self).closest('.card-expander-game-cards-form-sleeve').find('.card-expander-game-cards-form-sleeve-size').html(msg);
   });
 });
