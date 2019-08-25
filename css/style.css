@@ -1160,13 +1160,13 @@ aside h3 .reveal {
     padding-bottom: 10px;
 }
 .card-expander-game-details-wrapper-text li {
-    list-style: disc;
+    /*list-style: disc;*/
     line-height: 1;
     margin-left: 20px;
     font-size: 17px;
 }
-.card-expander-game-details-wrapper-text ul {
-    margin-left: 20px;
+.card-expander-game-details-wrapper-text ul {    margin-left: 14px;
+    margin-top: 5px;
 }
 .card.is-collapsed .card-inner:after {
   content: "";
