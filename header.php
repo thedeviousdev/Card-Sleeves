@@ -43,7 +43,7 @@
     <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
     <!-- <script src="js/jquery-3.1.1.min.js"></script> -->
     <script src="assets/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js"></script> 
-    <script src="assets/fontawesome/svg-with-js/js/fontawesome-all.min.js" type="text/javascript"></script>
+    <script src="assets/fontawesome/all.min.js" type="text/javascript"></script>
 
     <script src="js/script.js?v=2.2.0"></script>     
   </head>

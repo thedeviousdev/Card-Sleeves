@@ -147,11 +147,11 @@ function game_search($g, $page, $search_type){
 		  		<div class="card-expander-game-details">
 				  	<div class="card-expander-game-details-wrapper-text">
 					  	<h2><?php echo $game->get_name(); ?></h2>
-					  	<p><strong>Year:</strong> <?php echo $game->get_year(); ?></p>
-  						<p><strong>Edition:</strong> <?php if($game->get_edition() != '') { echo $game->get_edition(); } else { echo '--';}?></p>
-					  	<p><strong>BoardGameGeek: </strong><a href="<?php echo $game->get_URL(); ?>" target="_blank">Link</a></p>
-  						<p><strong>Base Game:</strong> <?php if($base_game != NULL) { echo '<a href="#" class="open_game" data-game_id="' . $base_game->get_id() . '">' . $base_game->get_name() . '</a>'; } else { echo '--';}?></p>
-  						<p><strong>Expansions:</strong> <?php if($game_expansions !== FALSE) { echo $game_expansions; } else { echo '--';}?></p>
+					  	<p><span class="card-expander-game-details-wrapper-text-icons"><i class="fas fa-clock"></i></span><strong>Year:</strong> <?php echo $game->get_year(); ?></p>
+  						<p><span class="card-expander-game-details-wrapper-text-icons"><i class="fad fa-layer-group"></i></span><strong>Edition:</strong> <?php if($game->get_edition() != '') { echo $game->get_edition(); } else { echo '--';}?></p>
+					  	<p><span class="card-expander-game-details-wrapper-text-icons"><i class="fas fa-link"></i></span><strong>BoardGameGeek: </strong><a href="<?php echo $game->get_URL(); ?>" target="_blank">Link</a></p>
+  						<p><span class="card-expander-game-details-wrapper-text-icons"><i class="fas fa-dice-six"></i></span><strong>Base Game:</strong> <?php if($base_game != NULL) { echo '<a href="#" class="open_game" data-game_id="' . $base_game->get_id() . '">' . $base_game->get_name() . '</a>'; } else { echo '--';}?></p>
+  						<p><span class="card-expander-game-details-wrapper-text-icons"><i class="fas fa-dice"></i></span><strong>Expansions:</strong> <?php if($game_expansions !== FALSE) { echo $game_expansions; } else { echo '--';}?></p>
 	  					</p>
 
 				  	</div>			  			

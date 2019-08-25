@@ -37,29 +37,31 @@ if(isset($_POST['url'])) {
 }
 
 function bgg_search($id, $base_id = NULL){
-	$uri = 'https://www.boardgamegeek.com/xmlapi2/thing?id='  . $id;
-	$response = file_get_contents($uri);
-	$xml = simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA);
-	$json = json_encode($xml);
-	$array = json_decode($json,TRUE);
-	// echo '<pre>';
-	// print_r($array);
-	// echo '</pre>';
-	$thumbnail = $array['item']['image'];
-
-	if (array_key_exists(0, $array['item']['name']))
-		$name = $array['item']['name'][0]['@attributes']['value'];
-	else
-		$name = $array['item']['name']['@attributes']['value'];
-
-	$year = $array['item']['yearpublished']['@attributes']['value'];
-
 	// Before adding this into the DB, check to see if it exists already
 	if(!game_exists($id)) {
-		if($base_id != NULL)
-			add_game($id, $name, $year, $thumbnail, $base_id);
+		$uri = 'https://www.boardgamegeek.com/xmlapi2/thing?id='  . $id;
+		$response = file_get_contents($uri);
+		$xml = simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA);
+		$json = json_encode($xml);
+		$array = json_decode($json,TRUE);
+		// echo '<pre>';
+		// print_r($array);
+		// echo '</pre>';
+		$thumbnail = $array['item']['image'];
+
+		if (array_key_exists(0, $array['item']['name']))
+			$name = $array['item']['name'][0]['@attributes']['value'];
 		else
+			$name = $array['item']['name']['@attributes']['value'];
+
+		$year = $array['item']['yearpublished']['@attributes']['value'];
+
+		if($base_id != NULL) {
+			add_game($id, $name, $year, $thumbnail, $base_id);
+		}
+		else {
 			add_game($id, $name, $year, $thumbnail);
+		}
 	}
 	else {
 		?>

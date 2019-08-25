@@ -1416,3 +1416,16 @@ aside h3 .reveal {
     border-radius: 0;
     box-shadow: none;
 }
+
+.card-expander-game-details-wrapper-text p {
+    display: flex;
+    align-items: center;    
+}
+.card-expander-game-details-wrapper-text-icons {
+    font-size: 14px;
+    color: #ffc800;
+    width: 15px;
+}
+.card-expander-game-details-wrapper-text strong {
+    padding: 0 15px 0 10px;
+}
