@@ -191,19 +191,19 @@ $(document).on('submit', '.cart_item_form', function( event ) {
   });
 });
 
-$(document).on('click', '#verify', function() {
+$(document).on('click', '#accessory', function() {
 
   var id = $(this).data('id');
   var value = $(this).data('value');
 
   var data = {
   	id : id,
-  	verify : value
+  	accessory : value
   }
 
  	$.ajax({
 	  method: "POST",
-	  url: "game_verify.php",
+	  url: "game_accessory.php",
 	  data: data
 	})
   .done(function( msg ) {

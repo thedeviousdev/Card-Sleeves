@@ -14,9 +14,9 @@ class game {
 	var $base = 0;
 	var $cards = array();
 	var $sleeves = array();
-	var $expansions = array();
+	var $accessory = 0;
 
-	function __construct($id, $name, $year, $img, $URL, $card_arr, $verified, $base = NULL, $edition = NULL, $expansions = NULL) {
+	function __construct($id, $name, $year, $img, $URL, $card_arr, $verified, $base = NULL, $edition = NULL, $accessory = NULL) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->year = $year;
@@ -26,7 +26,7 @@ class game {
 		$this->cards = $card_arr;
 		$this->verified = $verified;
 		$this->base = $base;
-		$this->expansions = $expansions;
+		$this->accessory = $accessory;
 	}
 
 	// Setters
@@ -60,8 +60,8 @@ class game {
 	function set_cart_sleeve($sleeves){
 		$this->sleeves = $sleeves;
 	}
-	function add_expansion($expansion){
-		$this->$expansions[] = $expansion;
+	function set_accessory($accessory){
+		$this->$accessory = $accessory;
 	}
 
 	// Getters
@@ -95,8 +95,8 @@ class game {
 	function get_cart_sleeve(){
 		return $this->sleeves;
 	}
-	function get_expansions(){
-		return $this->expansions;
+	function get_accessory(){
+		return $this->accessory;
 	}
 
 	function reset_sleeves() {

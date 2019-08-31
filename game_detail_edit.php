@@ -31,6 +31,13 @@ function game_detail($game){
 
 		<div class="controls">
 
+			<?php if($game->get_accessory()) {
+				echo '<span class="submit" id="accessory" data-id="' . $game->get_id() . '" data-value="0">Unaccessory</span>';
+			}
+			else {
+				echo '<span class="submit" id="accessory" data-id="' . $game->get_id() . '" data-value="1">Accessory</span>';
+			}
+			?>
 			<span class="submit" id="delete" data-id="<?php echo $game->get_id(); ?>">Delete</span>
 
 			<?php

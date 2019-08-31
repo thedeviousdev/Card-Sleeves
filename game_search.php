@@ -82,19 +82,19 @@ function game_search($g, $page, $search_type){
 		  $limit = ($page - 1) * 50;
 
 		  if($page != 1)
-			  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%' ORDER BY Name ASC LIMIT 50 OFFSET " . $limit . ";");
+			  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%' AND Accessory = 0 ORDER BY Name ASC LIMIT 50 OFFSET " . $limit . ";");
 			else
-			  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%' ORDER BY Name ASC LIMIT 50;");			
+			  $result = $db->query("SELECT * FROM Game WHERE Name LIKE '%" . $g . "%' AND Accessory = 0 ORDER BY Name ASC LIMIT 50;");			
 		}
 		else {
-		  $count = $db->query("SELECT COUNT(*) FROM Game WHERE BGGID IN ( " . $g . " )")->fetchColumn();
+		  $count = $db->query("SELECT COUNT(*) FROM Game WHERE BGGID IN ( " . $g . " ) AND Accessory = 0")->fetchColumn();
 		  $limit = ($page - 1) * 50;
 
 		  if($page != 1) {
-			  $result = $db->query("SELECT * FROM Game WHERE BGGID IN ( " . $g . " ) ORDER BY Name ASC LIMIT 50 OFFSET " . $limit . ";");
+			  $result = $db->query("SELECT * FROM Game WHERE BGGID IN ( " . $g . " ) AND Accessory = 0 ORDER BY Name ASC LIMIT 50 OFFSET " . $limit . ";");
 		  }
 			else {
-			  $result = $db->query("SELECT * FROM Game WHERE BGGID IN ( " . $g . " ) ORDER BY Name ASC LIMIT 50;");
+			  $result = $db->query("SELECT * FROM Game WHERE BGGID IN ( " . $g . " ) AND Accessory = 0 ORDER BY Name ASC LIMIT 50;");
 			}
 		}
 

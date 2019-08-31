@@ -50,7 +50,7 @@ function new_game_object($g){
 		  }
 
 
-	  	$new_game = new game($g, $game['Name'], $game['Year'], $game['Image'], $game['URL'], $cards_arr, $game['Verified'], $game['BaseGame'], $game['Edition']);
+	  	$new_game = new game($g, $game['Name'], $game['Year'], $game['Image'], $game['URL'], $cards_arr, $game['Verified'], $game['BaseGame'], $game['Edition'], $game['Accessory']);
 		  return $new_game;
 	  }
 	}
