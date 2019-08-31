@@ -12,19 +12,11 @@ include_once('convert_bgg_to_id.php');
 if(isset($_POST['game'])) {
 	
 	$game_ID = $_POST['game'];
-
-	echo $game_ID;
-	echo '<pre>';
-	print_r(new_game_object($game_ID));
-	echo '</pre>';
-
 	game_detail(new_game_object($game_ID));
 
 }
 
 function game_detail($game){
-
-	var_dump($game);
 	?>
 	<div class="popup-cart"><div class="flex"><div>Success!</div></div></div>
 	<form action="" class="cart_item_form">
