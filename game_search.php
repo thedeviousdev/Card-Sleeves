@@ -127,6 +127,10 @@ function game_search($g, $page, $search_type){
 		  	$game_expansions = expansion_search($game->get_id());
 				$cards = $game->get_cards();
 
+				// echo '<pre>';
+				// print_r($cards);
+				// echo '</pre>';
+
 		  	if($game->get_base() != '') {
 			  	$base_game = new_game_object($game->get_base());
 			  }
@@ -166,11 +170,14 @@ function game_search($g, $page, $search_type){
 
 				  			<?php
 			  				foreach($cards as $key => $card) {
+			  					// echo '<pre>';
+			  					// print_r($card);
+			  					// echo '</pre>';
 									$sleeves = $card->get_sleeves();
 			  					?>
 			  					<div class="card-expander-game-cards-form-sleeve">
 			  						<div>
-											<h2>Card <?php echo ++$key; ?></h2>
+											<h2>Card <?php echo $key; ?></h2>
 											<p class="card-expander-game-cards-form-sleeve-size"><?php echo get_sleeve_size($sleeves[0]->get_id()); ?></p>
 			  						</div>
 			  						<h3><?php echo $card->get_nb_cards(); ?></h3>

@@ -22,7 +22,7 @@ function new_game_object($g){
 		  	$nb_of_cards = $nb_of_card['NbOfCards'];
 		  }
 
-		  for($i = 1; $i <= $nb_of_cards; $i++) {
+		  for($i = 0; $i < $nb_of_cards; $i++) {
 			  $sleeves_arr = array();
 			  $quantity = NULL;
 			  $card_id = NULL;
