@@ -49,14 +49,14 @@ function bgg_list_import() {
 
 		$json = json_encode($xml);
 		
-		$file = 'export.txt'; 
+		$file = 'data/export.txt'; 
 		$open = fopen( $file, "w" ); 
 	  $write = fputs( $open, $json ); 
 	  fclose( $open );
 		$array = json_decode($json,TRUE);
 	}
 	else {
-		$response = file_get_contents('export.txt');
+		$response = file_get_contents('data/export.txt');
 		// For testing purposes
 		// $response = file_get_contents('sample_txt.txt');
 
@@ -77,31 +77,27 @@ function bgg_list_import() {
 
 		$result = db_find_game_with_bggid($db, $bgg_game_id);
 
-		echo "<tr><td>" . $index . "</td>";
-
 		if($result->fetchColumn() > 0) {
-			update_game_details_from_geeklist($db, $bgg_content, $bgg_last_edit_date, $bgg_game_id);
+			update_game_details_from_geeklist($db, $index, $bgg_content, $bgg_last_edit_date, $bgg_game_id);
 		}
 		else {
 			// Add Game because it doesn't exist in our DB yet
 			bgg_search($bgg_game_id);
 
-			update_game_details_from_geeklist($db, $bgg_content, $bgg_last_edit_date, $bgg_game_id, true);
+			update_game_details_from_geeklist($db, $index, $bgg_content, $bgg_last_edit_date, $bgg_game_id, true);
 		}
 
 		// For sample testing
 		if($i == 3)
 			break;
 		$i++;
-
-		echo "</tr>";
 	}
 
 	echo "</table>";
 	echo '--------------------------------<br />';
 }
 
-function update_game_details_from_geeklist($db, $bgg_content, $bgg_last_edit_date, $bgg_game_id, $new_entry = false) {
+function update_game_details_from_geeklist($db, $index, $bgg_content, $bgg_last_edit_date, $bgg_game_id, $new_entry = false) {
 	$game_id = '';
 
 	$result = db_find_game_with_bggid($db, $bgg_game_id);
@@ -122,7 +118,7 @@ function update_game_details_from_geeklist($db, $bgg_content, $bgg_last_edit_dat
 
   		db_insert_cards($db, $game_id, $cards);
 
-			echo "<td>" . $game_id . "</td><td>" . $bgg_game_id . "</td>";
+			echo "<tr><td>" . $index . "</td><td>" . $game_id . "</td><td>" . $bgg_game_id . "</td></tr>";
 
   	// 	echo 'Game ID: ' . $bgg_game_id . '<br />';
 			// echo '<pre>';
