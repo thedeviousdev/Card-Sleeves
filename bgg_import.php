@@ -87,10 +87,10 @@ function bgg_list_import() {
 			update_game_details_from_geeklist($db, $index, $bgg_content, $bgg_last_edit_date, $bgg_game_id, true);
 		}
 
-		// For sample testing
-		if($i == 3)
-			break;
-		$i++;
+		// // For sample testing
+		// if($i == 3)
+		// 	break;
+		// $i++;
 	}
 
 	echo "</table>";
