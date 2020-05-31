@@ -97,7 +97,7 @@ function bgg_list_import() {
 	echo '--------------------------------<br />';
 }
 
-function update_game_details_from_geeklist($db, $index, $bgg_content, $bgg_last_edit_date, $bgg_game_id, $new_entry = false) {
+function update_game_details_from_geeklist($db, $game_index, $bgg_content, $bgg_last_edit_date, $bgg_game_id, $new_entry = false) {
 	$game_id = '';
 
 	$result = db_find_game_with_bggid($db, $bgg_game_id);
@@ -118,7 +118,7 @@ function update_game_details_from_geeklist($db, $index, $bgg_content, $bgg_last_
 
   		db_insert_cards($db, $game_id, $cards);
 
-			echo "<tr><td>" . $index . "</td><td>" . $game_id . "</td><td>" . $bgg_game_id . "</td></tr>";
+			echo "<tr><td>" . $game_index . "</td><td>" . $game_id . "</td><td>" . $bgg_game_id . "</td></tr>";
 
   	// 	echo 'Game ID: ' . $bgg_game_id . '<br />';
 			// echo '<pre>';
