@@ -83,6 +83,7 @@ function bgg_list_import() {
 		else {
 			// Add Game because it doesn't exist in our DB yet
 			bgg_search($bgg_game_id);
+			sleep(10);
 
 			update_game_details_from_geeklist($db, $index, $bgg_content, $bgg_last_edit_date, $bgg_game_id, true);
 		}
