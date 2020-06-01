@@ -209,7 +209,7 @@ function game_search($g, $page, $search_type){
 		  		?>
 
 			  		<div class="card-expander-no-cards">
-			  			<span>No cards recorded for this game! <br /><a href="https://github.com/thedeviousdev/Card-Sleeves" target="_blank">Want to help by adding it? :)</a></span>
+			  			<span>No cards recorded for this game! <br /><a href="https://boardgamegeek.com/thread/1070190/card-sleeve-sizes-games-additionscorrectionssugges" target="_blank">Want to help by adding it? :)</a></span>
 			  		</div>
 			  		<?php
 			  	}
@@ -227,7 +227,7 @@ function game_search($g, $page, $search_type){
 			<?php
 		  if(!$count) {
 		  	?>
-		  	<div class="no_results">Game has not been added yet. <br /><a href="https://github.com/thedeviousdev/Card-Sleeves" target="_blank">Want to help by adding it? :)</a></div>
+		  	<div class="no_results">Game has not been added yet. <br /><a href="https://boardgamegeek.com/thread/1070190/card-sleeve-sizes-games-additionscorrectionssugges" target="_blank">Want to help by adding it? :)</a></div>
 			<?php
 		  }
 		  // Navigation

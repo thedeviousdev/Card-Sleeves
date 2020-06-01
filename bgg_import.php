@@ -106,9 +106,10 @@ function update_game_details_from_geeklist($db, $game_index, $bgg_content, $bgg_
   foreach($result as $index => $row) {
   	$db_last_edit_date = $row['BGGLastEditDate'];
   	$game_id = $row['Id'];
+  	$override = $row['Override'];
 
   	// Only update the entry if the post has been updated
-  	if($bgg_last_edit_date !== $db_last_edit_date) {
+  	if(!$override && $bgg_last_edit_date !== $db_last_edit_date) {
   		// echo 'dates dont match';
   		db_update_bgg_date($db, $bgg_game_id, $bgg_last_edit_date);
   		$cards = regex_card_data($db, $bgg_content);
