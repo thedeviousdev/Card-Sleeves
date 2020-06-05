@@ -88,10 +88,10 @@ function bgg_list_import() {
 			update_game_details_from_geeklist($db, $index, $bgg_content, $bgg_last_edit_date, $bgg_game_id, true);
 		}
 
-		// // For sample testing
-		// if($i == 3)
-		// 	break;
-		// $i++;
+		// For sample testing
+		if($i == 3)
+			break;
+		$i++;
 	}
 
 	echo "</table>";
@@ -225,8 +225,11 @@ function regex_card_data($db, $bgg_content) {
 			break;
 		}
 
+		echo 'strcmp($line, "")' . strcmp($line, "") . '<br>';
+		echo "strpos($line, 'edition')" . strpos($line, 'edition'). '<br>';
+
 		// If the line is empty, continue through to the next line
-		if(strcmp($line, "") === 0 || strpos($line, 'edition') === false) {
+		if(strcmp($line, "") === 0 && strpos($line, 'edition') === false) {
 			if(array_key_exists($card_set, $cards) && count($cards[$card_set]['cards'])) {
 				$card_qty_found = false;
 				$card_set++;
