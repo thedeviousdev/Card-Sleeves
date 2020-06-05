@@ -225,9 +225,6 @@ function regex_card_data($db, $bgg_content) {
 			break;
 		}
 
-		echo 'strcmp($line, "")' . strcmp($line, "") . '<br>';
-		echo "strpos($line, 'edition')" . strpos($line, 'edition'). '<br>';
-
 		// If the line is empty, continue through to the next line
 		if(strcmp($line, "") === 0 && strpos($line, 'edition') === false) {
 			if(array_key_exists($card_set, $cards) && count($cards[$card_set]['cards'])) {
