@@ -1,5 +1,5 @@
 <?php 
-include_once("login_session.php");
+// include_once("login_session.php");
 // Display card details for edit page
 include_once('game.php');
 include_once('card.php');
@@ -9,7 +9,7 @@ include_once('sleeve_groups.php');
 include_once('convert_bgg_to_id.php');
 
 
-if(isset($_POST['game'])) {
+if($_SESSION["loggedIn"] && isset($_POST['game'])) {
 	
 	$game_ID = $_POST['game'];
 	game_detail(new_game_object($game_ID));

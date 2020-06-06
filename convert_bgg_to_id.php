@@ -1,5 +1,5 @@
 <?php 
-include_once("login_session.php");
+// include_once("login_session.php");
 // Use the BGGID to get the ID
 
 function convert_bgg_to_id($bggid) {

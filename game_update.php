@@ -1,9 +1,9 @@
 <?php 
-include_once("login_session.php");
+// include_once("login_session.php");
 include_once('game_update_base.php');
 // Update a card's details or add a new card
 
-if(isset($_POST['game_id'])) {
+if($_SESSION["loggedIn"] && isset($_POST['game_id'])) {
   
   $game_ID = $_POST['game_id'];
   

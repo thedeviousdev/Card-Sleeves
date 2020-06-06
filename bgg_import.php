@@ -1,6 +1,6 @@
 <?php 
 // Search BGG using U
-include_once("login_session.php");
+// include_once("login_session.php");
 include_once('game.php');
 include_once('card.php');
 include_once('new_game_object.php');
@@ -9,6 +9,15 @@ include_once('update_game_list.php');
 include_once('game_detail_edit.php');
 include_once('bgg_search.php');
 include_once('game_exists.php');
+
+// https://www.phpjabbers.com/measuring-php-page-load-time-php17.html
+// Timing
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$start = $time;
+
+
 bgg_list_import();
 
 /*
@@ -37,31 +46,12 @@ function bgg_list_import() {
 	$db = new PDO('sqlite:data/games_db.sqlite');
 
 	$i = 0;
-	$bgg_list_id = 164572;
-	// $bgg_list_id = 272582; // Smaller list
 
-	// Toggle this to use a exported file from BGG
-	if(false) {
-		$uri = 'https://www.boardgamegeek.com/xmlapi/geeklist/' . $bgg_list_id;
+	$response = file_get_contents('data/export.txt');
+	// For testing purposes
+	// $response = file_get_contents('sample_txt.txt');
 
-		$response = file_get_contents($uri);
-		$xml = simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA);
-
-		$json = json_encode($xml);
-		
-		$file = 'data/export.txt'; 
-		$open = fopen( $file, "w" ); 
-	  $write = fputs( $open, $json ); 
-	  fclose( $open );
-		$array = json_decode($json,TRUE);
-	}
-	else {
-		$response = file_get_contents('data/export.txt');
-		// For testing purposes
-		// $response = file_get_contents('sample_txt.txt');
-
-		$array = json_decode($response, TRUE);
-	}
+	$array = json_decode($response, TRUE);
 
 	echo '--------------------------------<br />';
 	echo 'Updated games<br />';
@@ -338,3 +328,13 @@ function db_insert_cards($db, $game_id, $cards) {
 	  print 'Exception : '. $e->getMessage();
 	}	
 }
+
+
+// Timing
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$finish = $time;
+$total_time = round(($finish - $start), 4);
+
+echo 'Script completed after ' . $total_time . ' seconds.';

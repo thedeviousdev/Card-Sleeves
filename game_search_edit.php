@@ -1,9 +1,9 @@
 <?php 
-include_once("login_session.php");
+// include_once("login_session.php");
 // Query DB for game names from search input
 // Display game details for the Edit page
 
-if(isset($_POST['game'])) {
+if($_SESSION["loggedIn"] && isset($_POST['game'])) {
 	$game_name = $_POST['game'];
 	game_search($game_name);
 }

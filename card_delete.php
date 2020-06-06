@@ -1,9 +1,9 @@
 <?php 
-include_once("login_session.php");
+// include_once("login_session.php");
 // Deletes a Card row from the Card DB
 // Used on Game editing pages
 
-if(isset($_POST['sleeve_id'])) {
+if($_SESSION["loggedIn"] && isset($_POST['sleeve_id'])) {
 
   $sleeve_id = $_POST['sleeve_id'];
   $card_nb = $_POST['card_nb'];

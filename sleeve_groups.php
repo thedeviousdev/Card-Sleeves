@@ -1,10 +1,10 @@
 <?php
-include_once("login_session.php");
+// include_once("login_session.php");
 include_once("sleeve_empty.php");
 // List sleeve groups
 
 
-if(isset($_POST['sleevegroup'])) {
+if($_SESSION["loggedIn"] && isset($_POST['sleevegroup'])) {
 	get_sleeves_from_group($_POST['sleevegroup'], $_POST['sleevenb'], $_POST['sleeveqty']);
 }
 

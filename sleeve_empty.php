@@ -1,9 +1,9 @@
 <?php
-include_once("login_session.php");
+// include_once("login_session.php");
 // Blank rows for form
 
 
-if(isset($_POST['sleeve_list'])) {
+if($_SESSION["loggedIn"] && isset($_POST['sleeve_list'])) {
 	sleeve_list_dropdown();
 }
 
