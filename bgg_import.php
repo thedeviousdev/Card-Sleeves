@@ -223,7 +223,7 @@ function regex_card_data($db, $bgg_content) {
 		// Games may have expansions in their description, they are generally indicated by the word 'Expansions' or multiple dashes
 		// Currently not handling expansions with the automated script
 		if ($nb_of_cards !== '' && (strpos($lowercase_line, 'expansion') === 0 || strpos($line, '--') === 0)) {
-			echo "Expansion: " . $line . "<br>";
+			// echo "Expansion: " . $line . "<br>";
 
 			break;
 		}
@@ -235,7 +235,7 @@ function regex_card_data($db, $bgg_content) {
 				$card_set++;
 			}
 
-			echo "Skip: " . $line . "<br>";
+			// echo "Skip: " . $line . "<br>";
 
 			$line_break = true;
 			continue;
