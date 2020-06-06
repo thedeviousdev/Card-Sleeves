@@ -1,9 +1,10 @@
 <?php
 include_once("login_session.php");
+include_once('directory.php');
 // To update games that were added before I saved the BGG ID
 
 try {
-  $db = new PDO('sqlite:data/games_db.sqlite');
+  $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
   $result = $db->query("SELECT * FROM Game");
 
   foreach($result as $row) {

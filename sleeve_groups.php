@@ -1,16 +1,17 @@
 <?php
 // include_once("login_session.php");
+include_once('directory.php');
 include_once("sleeve_empty.php");
 // List sleeve groups
 
 
-if($_SESSION["loggedIn"] && isset($_POST['sleevegroup'])) {
+if(session_status() != PHP_SESSION_NONE && $_SESSION["loggedIn"] && isset($_POST['sleevegroup'])) {
 	get_sleeves_from_group($_POST['sleevegroup'], $_POST['sleevenb'], $_POST['sleeveqty']);
 }
 
 function sleeve_groups() {
 
-	$db = new PDO('sqlite:data/games_db.sqlite');
+	$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
   $groups = $db->query("SELECT * FROM SleeveGroupName" );
   ?>
 	<div class="row">
@@ -34,7 +35,7 @@ function sleeve_groups() {
 
 function get_sleeves_from_group($group_id, $nb, $qty) {
 
-	$db = new PDO('sqlite:data/games_db.sqlite');
+	$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
   $group = $db->query("SELECT SleeveGroups.SleeveId, SleeveCompany.Name, Sleeve.SleeveName FROM SleeveGroups INNER JOIN Sleeve ON SleeveGroups.SleeveId = Sleeve.Id INNER JOIN SleeveCompany ON SleeveCompany.Id = Sleeve.CompanyID WHERE GroupId = " . $group_id);
 
 	$rows = array();

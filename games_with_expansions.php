@@ -1,10 +1,11 @@
 <?php
+include_once('directory.php');
 
-$file = 'data/games_db.sqlite';
+$file = dir_path() . '/data/games_db.sqlite';
 if (file_exists($file)) {
 
 	try {
-	  $db = new PDO('sqlite:data/games_db.sqlite');
+	  $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 		$result = $db->query("SELECT * FROM Game WHERE BaseGame IS NULL LIMIT 500");
 		$id_string = '';
@@ -57,7 +58,7 @@ function set_db_status($g) {
 	$string_no_comma = rtrim($g, ',');
 
 	try {
-	  $db = new PDO('sqlite:data/games_db.sqlite');
+	  $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 	  $result = $db->query("UPDATE Game SET BaseGame = 'Done' WHERE BGGID IN (" . $string_no_comma . ");");
 	}
 	catch(PDOException $e) 	{

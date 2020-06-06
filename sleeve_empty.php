@@ -1,15 +1,16 @@
 <?php
 // include_once("login_session.php");
+include_once('directory.php');
 // Blank rows for form
 
 
-if($_SESSION["loggedIn"] && isset($_POST['sleeve_list'])) {
+if(session_status() != PHP_SESSION_NONE && $_SESSION["loggedIn"] && isset($_POST['sleeve_list'])) {
 	sleeve_list_dropdown();
 }
 
 function sleeve_list($selected_id = NULL) {
 
-	$db = new PDO('sqlite:data/games_db.sqlite');
+	$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
   $sleeves = $db->query("SELECT Sleeve.Id, Sleeve.CompanyID, Sleeve.SleeveName, SleeveCompany.Name
 		FROM Sleeve
 		INNER JOIN SleeveCompany ON Sleeve.CompanyID = SleeveCompany.Id" );

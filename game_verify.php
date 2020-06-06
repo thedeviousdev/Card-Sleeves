@@ -1,5 +1,6 @@
 <?php 
 // Update the verify status of a game
+include_once('directory.php');
 include_once('game_detail_edit.php');
 include_once('new_game_object.php');
 
@@ -14,7 +15,7 @@ if(isset($_POST['verify'])) {
 function update_verify($id, $verify){
 
   try {
-    $db = new PDO('sqlite:data/games_db.sqlite');
+    $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
     $db->exec("UPDATE Game SET Verified = '" . $verify  . "' WHERE Id = '" . $id . "';");
 
     return game_detail(new_game_object($id));

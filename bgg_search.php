@@ -1,6 +1,7 @@
 <?php 
 // Search BGG using U
 // include_once("login_session.php");
+include_once('directory.php');
 include_once('game.php');
 include_once('card.php');
 include_once('new_game_object.php');
@@ -9,7 +10,7 @@ include_once('update_game_list.php');
 include_once('game_detail_edit.php');
 include_once('game_exists.php');
 
-if(isset($_POST['url']) && $_SESSION["loggedIn"]) {
+if(isset($_POST['url']) && session_status() != PHP_SESSION_NONE && $_SESSION["loggedIn"]) {
 	
 	$url = $_POST['url'];
 	$parse = parse_url($url);
@@ -47,7 +48,11 @@ function bgg_search($id, $base_id = NULL){
 		// echo '<pre>';
 		// print_r($array);
 		// echo '</pre>';
-		$thumbnail = $array['item']['image'];
+		if(!array_key_exists("image", $array['item']))
+			return;
+		else
+			$thumbnail = $array['item']['image'];
+
 
 		if (array_key_exists(0, $array['item']['name']))
 			$name = $array['item']['name'][0]['@attributes']['value'];
@@ -76,7 +81,7 @@ function add_game($bgg, $name, $year, $image, $base_id = NULL) {
 
 	if($image_path != false) {
 		try {
-			$db = new PDO('sqlite:data/games_db.sqlite');
+			$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 			if($base_id != NULL)
 				$db->exec('INSERT INTO Game (Name, Year, URL, Image, BGGID, Verified, BaseGame) VALUES ("' . $name . '", "' . $year . '", "' . $url . '", "' . $image_path . '", "' . $bgg . '", 0, "' . $base_id . '");');
 			else
@@ -103,14 +108,14 @@ function download_image($name, $image_url, $year){
 
 	$path = $clean_name . $year . "." . $extension;
 
-	if (!file_exists($path)) {
+	if (!file_exists(dir_path() . '/' . $path)) {
 		$download = file_get_contents($image_url);
 
 		if($download === false){
 			return false;
 		}
 		else {
-		  file_put_contents('img/' . $path, $download);
+		  file_put_contents(dir_path() . '/img/' . $path, $download);
 		  return $path;
 		}
 	}

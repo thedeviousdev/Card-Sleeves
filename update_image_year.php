@@ -1,14 +1,15 @@
 <?php
 include_once("login_session.php");
+include_once('directory.php');
 
-$string = file_get_contents("data/bgg_list.json");
+$string = file_get_contents(dir_path() . "/data/bgg_list.json");
 $json = json_decode($string, true);
 
-$file = 'data/games_db.sqlite';
+$file = dir_path() . 'data/games_db.sqlite';
 if (file_exists($file)) {
 
 	try {
-	  $db = new PDO('sqlite:data/games_db.sqlite');
+	  $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 
 		$result = $db->query("SELECT * FROM Game WHERE Image = '0' LIMIT 100");
@@ -62,7 +63,7 @@ function update_game($bgg, $name, $year, $image) {
 	echo 'UPDATE Game SET Year = "' . $year . '", Image = "' . $image_path . '" WHERE BGGID = "' . $bgg . '";';
 	if($image_path != false) {
 		try {
-			$db = new PDO('sqlite:data/games_db.sqlite');
+			$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 			$db->exec('UPDATE Game SET Year = "' . $year . '", Image = "' . $image_path . '" WHERE BGGID = "' . $bgg . '";');
 		}

@@ -1,5 +1,6 @@
 <?php
 include_once("login_session.php");
+include_once('directory.php');
 // Populates Game & Card DB for the first time from CSV file
 // Populates Sleeve sizes
 // TODO: Add more company alternatives
@@ -7,13 +8,13 @@ $file = 'data/games_db.sqlite';
 if (!file_exists($file)) {
 
 	try {
-	  $db = new PDO('sqlite:data/games_db.sqlite');
+	  $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 	  $db->exec("CREATE TABLE Game (Id INTEGER PRIMARY KEY, Name TEXT, Language TEXT, Year INTEGER, Edition TEXT, URL TEXT, Image TEXT, BGGID INTEGER, Verified INTEGER DEFAULT 0)");
 
 	  $db->exec("CREATE TABLE GameCards (Id INTEGER PRIMARY KEY, GameID INTEGER, CardNumber TEXT, Width INTEGER, Height INTEGER);");
 
 
-		if (($handle = fopen("data/Sleeves_test.csv", "r")) !== FALSE) {
+		if (($handle = fopen(dir_path() . "/data/Sleeves_test.csv", "r")) !== FALSE) {
 			$game_arr = array();
 
 	    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -49,7 +50,7 @@ if (!file_exists($file)) {
 
     $encoded_rows = array_map('utf8_encode', $game_arr);
 		$json_data = json_encode($encoded_rows);
-		file_put_contents("data/games.json",$json_data);
+		file_put_contents(dir_path() . "/data/games.json",$json_data);
 
 	  $db = NULL;
 	}
@@ -58,7 +59,7 @@ if (!file_exists($file)) {
 	}
 
 	try {
-	  $db = new PDO('sqlite:data/games_db.sqlite');
+	  $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 	  $db->exec("CREATE TABLE SleeveCompany (Id INTEGER PRIMARY KEY, Name TEXT)");
 	  $db->exec("INSERT INTO SleeveCompany (Name) VALUES ('Mayday Games');");
 	  $pk_sleeve_id = $db->lastInsertId();
@@ -66,7 +67,7 @@ if (!file_exists($file)) {
 	  $db->exec("CREATE TABLE Sleeve (Id INTEGER PRIMARY KEY, CompanyID INTEGER, SleeveName TEXT, Width INTEGER, Height INTEGER);");
 
 
-		if (($handle = fopen("data/Sleeves_Mayday.csv", "r")) !== FALSE) {
+		if (($handle = fopen(dir_path() . "/data/Sleeves_Mayday.csv", "r")) !== FALSE) {
 			$game_arr = array();
 
 	    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {

@@ -1,7 +1,9 @@
 <?php 
+include_once('directory.php');
+
 function game_exists($id) {
 	try {
-		$db = new PDO('sqlite:data/games_db.sqlite');
+		$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 	  $result = $db->query("SELECT * FROM Game WHERE BGGID ='" . $id ."'");
 	  if($result->fetchColumn() > 0)

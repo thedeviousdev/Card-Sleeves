@@ -2,6 +2,7 @@
 // Update the accessory status of a game
 include_once('game_detail_edit.php');
 include_once('new_game_object.php');
+include_once('directory.php');
 
 if(isset($_POST['accessory'])) {
   
@@ -14,7 +15,7 @@ if(isset($_POST['accessory'])) {
 function update_accessory($id, $accessory){
 
   try {
-    $db = new PDO('sqlite:data/games_db.sqlite');
+    $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
     $db->exec("UPDATE Game SET Accessory = '" . $accessory  . "' WHERE Id = '" . $id . "';");
 
     return game_detail(new_game_object($id));

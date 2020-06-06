@@ -1,5 +1,6 @@
 <?php 
 // Update the verify status of a game
+include_once('directory.php');
 include_once('game_detail_edit.php');
 include_once('new_game_object.php');
 include_once('game_exists.php');
@@ -18,7 +19,7 @@ function update_base($id, $base){
 
   if(game_exists($base_id) || $base_id == NULL) {
     try {
-      $db = new PDO('sqlite:data/games_db.sqlite');
+      $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
       $non_bgg_id = convert_bgg_to_id($base_id);
 

@@ -1,4 +1,5 @@
 <?php 
+include_once('directory.php');
 include_once('game_session.php');
 include_once('new_game_object.php');
 include_once('bgg_user_owned_search.php');
@@ -37,7 +38,7 @@ else if(isset($_POST['username'])) {
 
 function expansion_search($g) {
 	try {
-		$db = new PDO('sqlite:data/games_db.sqlite');
+		$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 	  $count = $db->query("SELECT COUNT(*) FROM Game WHERE BaseGame = '" . $g . "'")->fetchColumn();
 	  $result = $db->query("SELECT * FROM Game WHERE BaseGame = '" . $g . "'");
@@ -75,7 +76,7 @@ function game_search($g, $page, $search_type){
 	$g = str_replace("'", "''", $g);
 
 	try {
-		$db = new PDO('sqlite:data/games_db.sqlite');
+		$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 		if($search_type === 'game') {
 		  $count = $db->query("SELECT COUNT(*) FROM Game WHERE Name LIKE '%" . $g . "%'")->fetchColumn();

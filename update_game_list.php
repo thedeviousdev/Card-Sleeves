@@ -1,10 +1,11 @@
 <?php
 // include_once("login_session.php");
+include_once('directory.php');
 // Update games.json game names, used for search bar
 
 function update_json() {
   try {
-    $db = new PDO('sqlite:data/games_db.sqlite');
+    $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
     $result = $db->query("SELECT * FROM Game");
 
   	$game_arr = array();
@@ -16,7 +17,7 @@ function update_json() {
 
     $encoded_rows = array_map('htmlentities', $game_arr);
   	$json_data = json_encode($encoded_rows);
-  	file_put_contents("data/games.json",$json_data);
+  	file_put_contents(dir_path() . "/data/games.json",$json_data);
 
     $db = NULL;
     // echo 'done';

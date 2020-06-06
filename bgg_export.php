@@ -25,7 +25,6 @@ $rootPath = realpath($_SERVER['DOCUMENT_ROOT']);
 $htmlPath = str_replace($rootPath, '', $filePath);
 
 $file = $htmlPath . '/data/export.txt';
-echo $file;
 
 $open = fopen( $file, "w" ); 
 $write = fputs( $open, $json ); 
@@ -39,4 +38,7 @@ $time = $time[1] + $time[0];
 $finish = $time;
 $total_time = round(($finish - $start), 4);
 
-echo 'File exported after ' . $total_time . ' seconds.';
+date_default_timezone_set('Australia/Melbourne');
+echo "===============================\n";
+echo "Updated: " . date("Y-m-d H:i:s") . "\n";
+echo "Execution Time: " . $total_time . " seconds\n";

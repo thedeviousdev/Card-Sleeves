@@ -1,9 +1,10 @@
 <?php 
 // include_once("login_session.php");
+include_once('directory.php');
 include_once('game_update_base.php');
 // Update a card's details or add a new card
 
-if($_SESSION["loggedIn"] && isset($_POST['game_id'])) {
+if(session_status() != PHP_SESSION_NONE && $_SESSION["loggedIn"] && isset($_POST['game_id'])) {
   
   $game_ID = $_POST['game_id'];
   
@@ -47,7 +48,7 @@ if($_SESSION["loggedIn"] && isset($_POST['game_id'])) {
 function update_image($g, $image){
   echo 'update_image';
   try {
-    $db = new PDO('sqlite:data/games_db.sqlite');
+    $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
     $check = $db->query("SELECT * FROM Game WHERE Id ='" . $g ."';");
     if ($check->fetchColumn() > 0) {
@@ -71,7 +72,7 @@ function update_image($g, $image){
 function update_edition($g, $edition){
   echo 'update_edition';
   try {
-    $db = new PDO('sqlite:data/games_db.sqlite');
+    $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
     $check = $db->query("SELECT * FROM Game WHERE Id ='" . $g ."';");
     if ($check->fetchColumn() > 0) {
@@ -94,7 +95,7 @@ function update_edition($g, $edition){
 function update_year($g, $year){
   echo 'update_year';
   try {
-    $db = new PDO('sqlite:data/games_db.sqlite');
+    $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
     $check = $db->query("SELECT * FROM Game WHERE Id ='" . $g ."';");
     if ($check->fetchColumn() > 0) {
@@ -117,7 +118,7 @@ function update_year($g, $year){
 function card_update($g, $quantity, $card_nb, $sleeve_id, $base_id = NULL){
 
   try {
-    $db = new PDO('sqlite:data/games_db.sqlite');
+    $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
     // Check for results first
     $check = $db->query("SELECT * FROM Cards WHERE GameID ='" . $g ."' AND SleeveId ='" . $sleeve_id . "' AND CardNb ='" . $card_nb . "';");
 

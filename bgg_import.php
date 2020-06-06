@@ -9,6 +9,8 @@ include_once('update_game_list.php');
 include_once('game_detail_edit.php');
 include_once('bgg_search.php');
 include_once('game_exists.php');
+include_once('directory.php');
+
 
 // https://www.phpjabbers.com/measuring-php-page-load-time-php17.html
 // Timing
@@ -43,19 +45,22 @@ Insert things
 */
 
 function bgg_list_import() {
-	$db = new PDO('sqlite:data/games_db.sqlite');
+	$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 	$i = 0;
 
-	$response = file_get_contents('data/export.txt');
+	$response = file_get_contents(dir_path() . '/data/export.txt');
 	// For testing purposes
 	// $response = file_get_contents('sample_txt.txt');
 
 	$array = json_decode($response, TRUE);
 
-	echo '--------------------------------<br />';
-	echo 'Updated games<br />';
-	echo "<table border='1' style='border-collapse:collapse;'><tr><td></td><td>Game ID</td><td>BGG ID</td></tr>";
+	date_default_timezone_set('Australia/Melbourne');
+	echo "===================================================================\n";
+	echo "| Updated: " . date("Y-m-d H:i:s") . "\n";
+	echo "===============================\n";
+	echo "-------------------------------\n";
+	// echo "<table border='1' style='border-collapse:collapse;'><tr><td></td><td>Game ID</td><td>BGG ID</td></tr>";
 
 	foreach($array['item'] as $index => &$game) {
 
@@ -83,9 +88,6 @@ function bgg_list_import() {
 		// 	break;
 		// $i++;
 	}
-
-	echo "</table>";
-	echo '--------------------------------<br />';
 }
 
 function update_game_details_from_geeklist($db, $game_index, $bgg_content, $bgg_last_edit_date, $bgg_game_id, $new_entry = false) {
@@ -110,7 +112,12 @@ function update_game_details_from_geeklist($db, $game_index, $bgg_content, $bgg_
 
   		db_insert_cards($db, $game_id, $cards);
 
-			echo "<tr><td>" . $game_index . "</td><td>" . $game_id . "</td><td>" . $bgg_game_id . "</td></tr>";
+  		echo "Index: " . $game_index . "\n";
+  		echo "Game ID: " . $game_id . "\n";
+  		echo "BGG ID: " . $bgg_game_id . "\n";
+			echo "-------------------------------\n";
+
+			// echo "<tr><td>" . $game_index . "</td><td>" . $game_id . "</td><td>" . $bgg_game_id . "</td></tr>";
 
   	// 	echo 'Game ID: ' . $bgg_game_id . '<br />';
 			// echo '<pre>';
@@ -337,4 +344,7 @@ $time = $time[1] + $time[0];
 $finish = $time;
 $total_time = round(($finish - $start), 4);
 
-echo 'Script completed after ' . $total_time . ' seconds.';
+
+echo "===============================\n";
+echo "| Execution Time: " . $total_time . " seconds\n";
+echo "===================================================================\n";

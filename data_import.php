@@ -1,6 +1,6 @@
 <?php
 include_once("login_session.php");
-if (($handle = fopen("data/games_export_1.csv", "r")) !== FALSE) {
+if (($handle = fopen(dir_path() . "/data/games_export_1.csv", "r")) !== FALSE) {
 	$game_arr = array();
 	// echo '10';
   while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -53,6 +53,6 @@ if (($handle = fopen("data/games_export_1.csv", "r")) !== FALSE) {
   fclose($handle);
 
 	$json_data = json_encode($game_arr);
-	file_put_contents("data/new.json",$json_data);
+	file_put_contents(dir_path() . "/data/new.json",$json_data);
 }
 ?>

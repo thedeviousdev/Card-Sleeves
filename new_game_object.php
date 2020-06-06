@@ -1,6 +1,7 @@
 <?php 
 // Create Game object w/ Cards
 
+include_once('directory.php');
 include_once('game.php');
 include_once('card.php');
 include_once('sleeve.php');
@@ -8,7 +9,7 @@ include_once('sleeve.php');
 function new_game_object($g){
 
 	try {
-		$db = new PDO('sqlite:data/games_db.sqlite');
+		$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 	  $result = $db->query("SELECT * FROM Game WHERE Id = '" . $g . "'");
 

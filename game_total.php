@@ -1,5 +1,6 @@
 <?php 
 // Tally cards in cart
+include_once('directory.php');
 
 include_once('game.php');
 include_once('card.php');
@@ -16,7 +17,7 @@ if(isset($_POST['total'])) {
 
 function set_sleeve($company_ID) {
 
-	$db = new PDO('sqlite:data/games_db.sqlite');
+	$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
   $result = $db->query("SELECT * FROM Sleeve WHERE CompanyID = '" . $company_ID . "'");
 
   $sleeve_arr = array();

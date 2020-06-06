@@ -1,10 +1,11 @@
 <?php
 include_once("login_session.php");
+include_once('directory.php');
 
-$string = file_get_contents("data/new_3.json");
+$string = file_get_contents(dir_path() . "/data/new_3.json");
 $json = json_decode($string, true);
 
-$file = 'data/games_db.sqlite';
+$file = dir_path() . '/data/games_db.sqlite';
 
 $sleeve_brands[0] = null;
 $sleeve_brands[1] = "Mayday";
@@ -32,7 +33,7 @@ $sleeve_brands[21] = "Ultra-Pro";
 if (file_exists($file)) {
 
 	try {
-	  $db = new PDO('sqlite:data/games_db.sqlite');
+	  $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 		echo '<pre>';
 		foreach ($json as $game) {

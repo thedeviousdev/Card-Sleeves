@@ -1,16 +1,17 @@
 <?php
 include_once("login_session.php");
+include_once('directory.php');
 include_once("game_update_base.php");
 include_once('bgg_search.php');
 
-$string = file_get_contents("data/bgg_list.json");
+$string = file_get_contents(dir_path() . "data/bgg_list.json");
 $json = json_decode($string, true);
 
-$file = 'data/games_db.sqlite';
+$file = dir_path() . 'data/games_db.sqlite';
 if (file_exists($file)) {
 
 	try {
-	  $db = new PDO('sqlite:data/games_db.sqlite');
+	  $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 		$result = $db->query("SELECT * FROM Game WHERE BaseGame IS NULL LIMIT 2");
 		$id_string = '';
@@ -60,7 +61,7 @@ function bgg_search_expansion($id){
 				echo $bgg_xpac_id . '<br/>';
 
 				try {
-				  $db = new PDO('sqlite:data/games_db.sqlite');
+				  $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 					$result = $db->query("SELECT * FROM Game WHERE BGGID = " . $bgg_xpac_id);
 
@@ -86,7 +87,7 @@ function bgg_search_expansion($id){
 		}
 
 		try {
-		  $db = new PDO('sqlite:data/games_db.sqlite');
+		  $db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 			$result = $db->query("SELECT * FROM Game WHERE BGGID = " . $base_id);
 

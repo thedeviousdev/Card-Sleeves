@@ -1,7 +1,9 @@
 <?php 
+include_once('directory.php');
+
 function sleeve_brands_form() {
 	try {
-		$db = new PDO('sqlite:data/games_db.sqlite');
+		$db = new PDO('sqlite:' . dir_path() . '/data/games_db.sqlite');
 
 	  $result = $db->query("SELECT * FROM SleeveCompany");
 
