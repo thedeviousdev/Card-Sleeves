@@ -218,15 +218,16 @@ function regex_card_data($db, $bgg_content) {
 
 	// Loop through Query2 values
 	foreach($bgg_content_split_by_lines as $line) {
+		$lowercase_line = strtolower($line);
 
 		// Games may have expansions in their description, they are generally indicated by the word 'Expansions' or multiple dashes
 		// Currently not handling expansions with the automated script
-		if (strpos($line, 'Expansion') !== false && strpos($line, '--') !== false) {
+		if (strpos($lowercase_line, 'expansion') !== false && strpos($line, '--') !== false) {
 			break;
 		}
 
 		// If the line is empty, continue through to the next line
-		if(strcmp($line, "") === 0 && strpos($line, 'edition') === false && strpos($line, '[thing=')) {
+		if(strcmp($line, "") === 0 && strpos($lowercase_line, 'edition') === false && strpos($lowercase_line, '[thing=')) {
 			if(array_key_exists($card_set, $cards) && count($cards[$card_set]['cards'])) {
 				$card_qty_found = false;
 				$card_set++;
